@@ -116,13 +116,13 @@ function HeroCtas({ locale = "en" }: { locale?: Locale }) {
     >
       <Link
         href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-        className="inline-flex h-[50px] w-[312px] items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-[17px] text-[18px] font-medium leading-none text-black shadow-[0_2px_6px_rgba(10,20,40,0.08)] transition hover:bg-gray-50 md:h-[67px] md:w-auto md:px-7 md:text-[24px]"
+        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-6 text-[15px] font-medium leading-none text-black shadow-[0_2px_6px_rgba(10,20,40,0.08)] transition hover:bg-gray-50 sm:w-auto"
       >
         {copy.bookCall}
       </Link>
       <Link
         href="https://portal.reacherapp.com/login"
-        className="inline-flex h-[50px] w-[312px] items-center justify-center rounded-full bg-[#3559e9] px-8 text-[18px] font-medium leading-none !text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.25)] transition hover:bg-blue-700 md:h-[67px] md:w-auto md:px-7 md:text-[24px]"
+        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full bg-[#3559e9] px-6 text-[15px] font-medium leading-none !text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.25)] transition hover:bg-blue-700 sm:w-auto"
         style={{ color: "#fff" }}
       >
         {copy.trial}
@@ -247,12 +247,12 @@ function FeaturesMenu({ label }: { label: string }) {
         aria-expanded={open}
         onClick={openNow}
         onFocus={openNow}
-        className={`inline-flex items-center gap-1 transition ${open ? "text-[#101828]" : "text-[#475467] hover:text-[#101828]"}`}
+        className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13.5px] font-medium transition ${open ? "bg-[#f2f4f7] text-[#101828]" : "text-[#475467] hover:bg-[#f2f4f7] hover:text-[#101828]"}`}
       >
         {label}
         <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
-      <div className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
+      <div className={`absolute left-0 top-full pt-3 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
         <div className="w-[640px] whitespace-normal rounded-[20px] border border-black/5 bg-white p-3 text-left shadow-[0_24px_60px_-12px_rgba(16,24,40,0.22)] ring-1 ring-black/5">
           <div className="grid grid-cols-3 gap-1">
             {featureGroups.map((group) => (
@@ -283,37 +283,39 @@ function FeaturesMenu({ label }: { label: string }) {
 function DesktopNav({ locale = "en" }: { locale?: Locale }) {
   const copy = heroCopy[locale];
   const scrolled = useScrolled();
-  const leftLinks = copy.navLinks.slice(0, 4);
-  const rightLinks = copy.navLinks.slice(4, 8);
+  const links = copy.navLinks;
   const productLabel = locale === "pt" ? "Produto" : "Product";
+  const trialLabel = locale === "pt" ? "Comece grátis" : "Start free trial";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 hidden lg:block">
       <nav
-        className={`pointer-events-auto mx-auto mt-3 flex h-[56px] w-[min(1180px,calc(100%-40px))] items-center justify-center gap-[18px] whitespace-nowrap rounded-full border px-6 text-[12.5px] font-medium text-[#475467] transition-all duration-300 ${
+        className={`pointer-events-auto mx-auto mt-3 flex h-[58px] w-[calc(100%-40px)] max-w-[1320px] items-center justify-between gap-3 whitespace-nowrap rounded-full border border-[#1e2d52]/[0.07] bg-white/85 pl-4 pr-2 tracking-[-0.02em] backdrop-blur-md transition-shadow duration-300 ${
           scrolled
-            ? "border-black/[0.06] bg-white/85 shadow-[0_10px_34px_rgba(16,24,40,0.12)] backdrop-blur-xl"
-            : "border-white/50 bg-white/55 shadow-[0_6px_24px_rgba(16,24,40,0.07)] backdrop-blur-md"
+            ? "shadow-[0_6px_22px_rgba(30,45,82,0.14)]"
+            : "shadow-[0_1px_2px_rgba(30,45,82,0.12),0_0_0_1px_rgba(30,45,82,0.04)]"
         }`}
       >
-        <FeaturesMenu label={productLabel} />
-        {leftLinks.map(([label, href]) => (
-          <Link key={label} href={localizeHref(href, locale)} className="inline-flex shrink-0 items-center transition hover:text-[#101828]">
-            {label}
+        <div className="flex min-w-0 items-center gap-0.5">
+          <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="mr-2 flex shrink-0 items-center gap-2 pl-1 pr-1">
+            <Image src={appIcon} alt="" width={30} height={30} className="h-[30px] w-[30px] rounded-[8px] object-contain shadow-[0_1px_3px_rgba(16,24,40,0.18)]" priority unoptimized />
+            <span className="text-[15px] font-semibold tracking-[-0.02em] text-[#101828]">Reacher</span>
           </Link>
-        ))}
-        <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="inline-flex shrink-0 items-center justify-center gap-2 px-1 transition hover:scale-[1.03]">
-          <Image src={appIcon} alt="" width={30} height={30} className="h-[30px] w-[30px] rounded-[8px] object-contain shadow-[0_1px_3px_rgba(16,24,40,0.18)]" priority unoptimized />
-          <span className="text-[13px] font-semibold leading-none text-[#101828]">Reacher</span>
-        </Link>
-        {rightLinks.map(([label, href]) => (
-          <Link key={label} href={localizeHref(href, locale)} className="inline-flex shrink-0 items-center transition hover:text-[#101828]">
-            {label}
+          <FeaturesMenu label={productLabel} />
+          {links.map(([label, href]) => (
+            <Link key={label} href={localizeHref(href, locale)} className="shrink-0 rounded-full px-3 py-2 text-[13.5px] font-medium text-[#475467] transition hover:bg-[#f2f4f7] hover:text-[#101828]">
+              {label}
+            </Link>
+          ))}
+        </div>
+        <div className="flex shrink-0 items-center gap-1">
+          <Link href={LOGIN_URL} className="rounded-full px-3.5 py-2 text-[13.5px] font-medium text-[#475467] transition hover:text-[#101828]">
+            {copy.login}
           </Link>
-        ))}
-        <Link href={LOGIN_URL} className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#3559e9] px-5 py-2.5 text-[13px] font-medium leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:bg-blue-600">
-          {copy.login}
-        </Link>
+          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-[#3559e9] px-[18px] py-2.5 text-[13px] font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28)] transition hover:bg-blue-600">
+            {trialLabel}
+          </Link>
+        </div>
       </nav>
     </header>
   );
@@ -427,9 +429,14 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
         alt="TikTok Shop Partner"
         width={155}
         height={42}
-        className="absolute left-[36px] top-[88px] z-10 h-auto w-[112px] md:left-[55px] md:top-[82px] md:w-[155px]"
+        className="absolute left-[24px] top-[80px] z-10 h-auto w-[110px] lg:hidden"
         priority
       />
+      <div className="pointer-events-none absolute inset-x-0 top-[78px] z-10 hidden lg:block">
+        <div className="mx-auto flex w-[calc(100%-40px)] max-w-[1320px] justify-end pr-1">
+          <Image src={logo} alt="TikTok Shop Partner" width={155} height={42} className="h-auto w-[150px]" priority />
+        </div>
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-9 pt-[226px] text-center md:pb-12 md:pt-[140px] lg:pt-[160px]">
         <motion.h1
@@ -528,7 +535,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-          className="overflow-hidden rounded-[1.7rem] border border-blue-100 bg-gradient-to-b from-[#eef5ff] to-white p-3 pt-8 shadow-xl shadow-blue-900/10"
+          className="overflow-hidden rounded-[1.4rem] shadow-xl shadow-blue-900/10"
         >
           {locale === "pt" ? (
             <div className="mx-auto mb-3 w-fit rounded-full border border-[#b9c7f5] bg-[#edf6ff] px-3.5 py-1.5 text-center text-[11px] font-medium leading-none text-[#1f2937] shadow-[0_0_0_5px_rgba(237,246,255,0.92)]">
@@ -536,7 +543,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
               {copy.carouselLabels[activeShot]}
             </div>
           ) : null}
-          <Image src={heroShots[activeShot]} alt="Reacher dashboard" width={1035} height={490} className="h-auto w-full rounded-[1.05rem]" priority />
+          <Image src={heroShots[activeShot]} alt="Reacher dashboard" width={1035} height={490} className="block h-auto w-full" priority />
         </motion.div>
       </div>
 
@@ -548,7 +555,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
           {heroShots.map((src, index) => (
             <div
               key={src}
-              className={`relative w-[1035px] shrink-0 overflow-hidden rounded-[2.5rem] border border-blue-100 bg-gradient-to-b from-[#eef5ff] to-white p-6 pt-[70px] shadow-2xl shadow-blue-900/10 transition-opacity duration-700 ${
+              className={`relative w-[1035px] shrink-0 overflow-hidden rounded-[2rem] shadow-2xl shadow-blue-900/10 transition-opacity duration-700 ${
                 index === activeShot ? "opacity-100" : "opacity-70"
               }`}
             >
@@ -561,7 +568,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
                   </div>
                 </>
               ) : null}
-              <Image src={src} alt="Reacher dashboard" width={1035} height={490} className="rounded-[1.6rem]" priority={index < 2} />
+              <Image src={src} alt="Reacher dashboard" width={1035} height={490} className="block w-full" priority={index < 2} />
             </div>
           ))}
         </div>
