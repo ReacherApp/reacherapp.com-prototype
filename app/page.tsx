@@ -41,6 +41,7 @@ const brandLogos = [
 
 const features = [
   {
+    id: "creator-discovery",
     title: "AI Creator Discovery",
     saved: "10+ hours saved",
     copy: "Describe your ideal creator. AI matches based on their actual video content, style, and demographics.",
@@ -48,6 +49,7 @@ const features = [
       "https://framerusercontent.com/images/9pQSPFM0J5002wQ6OnzgRUQH6kk.png?scale-down-to=1024&width=2152&height=1000",
   },
   {
+    id: "automated-outreach",
     title: "Automated Outreach",
     saved: "40+ hours saved",
     copy: "Reach thousands of creators daily through DMs, collab invites, email, and sample requests.",
@@ -58,6 +60,7 @@ const features = [
 
 const intelligence = [
   {
+    id: "social-intelligence",
     title: "Social Intelligence",
     saved: "Competitor insights",
     copy: "Track top-performing brands, products, and videos on TikTok Shop. Spy on competitor creators and one-click target them with outreach.",
@@ -65,6 +68,7 @@ const intelligence = [
       "https://framerusercontent.com/images/LKcKJp3qqCMdKiDJUytPQHw4ao4.png?scale-down-to=1024&width=2960&height=1344",
   },
   {
+    id: "creative-agent",
     title: "Creative Agent",
     saved: "10+ hours saved",
     copy: "AI analyzes your best-performing videos and generates ready-to-share creative briefs in minutes.",
@@ -75,6 +79,7 @@ const intelligence = [
 
 const scale = [
   {
+    id: "crm",
     title: "CRM",
     saved: "10+ hours saved",
     copy: "Track every creator's status, messages, samples, and GMV in one place. Group and segment creators to run targeted automations.",
@@ -82,6 +87,7 @@ const scale = [
       "https://framerusercontent.com/images/CTXSsOa8J35dNanOUYDsi3uRqs.png?scale-down-to=1024&width=2960&height=1344",
   },
   {
+    id: "campaigns",
     title: "Campaigns",
     saved: "20+ hours saved",
     copy: "Run retainers, challenges, and contests to keep creators posting. Set reward structures, track GMV per campaign, and share via Automations or Discord.",
@@ -325,7 +331,7 @@ function SectionHeading({ badge, title, copy }: { badge: string; title: string; 
 
 function ImageCard({ item, compact = false }: { item: typeof features[number]; compact?: boolean }) {
   return (
-    <article className={`overflow-hidden rounded-[2rem] bg-white text-slate-950 shadow-2xl shadow-blue-950/10 ring-1 ring-black/5 ${compact ? "p-4 md:p-8" : "p-6 md:p-8"}`}>
+    <article id={item.id} className={`scroll-mt-28 overflow-hidden rounded-[2rem] bg-white text-slate-950 shadow-2xl shadow-blue-950/10 ring-1 ring-black/5 ${compact ? "p-4 md:p-8" : "p-6 md:p-8"}`}>
       <div className={compact ? "grid items-center gap-8 md:grid-cols-[0.7fr_1.3fr]" : ""}>
         <div>
           {compact ? (
