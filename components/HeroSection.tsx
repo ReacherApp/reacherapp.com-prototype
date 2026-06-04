@@ -234,11 +234,11 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
         alt="TikTok Shop Partner"
         width={155}
         height={42}
-        className="absolute left-[24px] top-[80px] z-10 h-auto w-[92px] lg:hidden"
+        className="absolute left-1/2 top-[92px] z-10 h-auto w-[92px] -translate-x-1/2 lg:hidden"
         priority
       />
-      <div className="pointer-events-none absolute inset-x-0 top-[82px] z-10 hidden lg:block">
-        <div className="mx-auto flex w-[calc(100%-40px)] max-w-[1320px] justify-end pr-1">
+      <div className="pointer-events-none absolute inset-x-0 top-[102px] z-10 hidden lg:block">
+        <div className="mx-auto flex w-[calc(100%-40px)] max-w-[1320px] justify-center">
           <Image src={logo} alt="TikTok Shop Partner" width={155} height={42} className="h-auto w-[118px]" priority />
         </div>
       </div>
