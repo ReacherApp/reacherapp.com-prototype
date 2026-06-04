@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { ArrowUp, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type HeroSectionProps = {
@@ -126,6 +126,70 @@ function HeroCtas({ locale = "en" }: { locale?: Locale }) {
       >
         {copy.trial}
       </Link>
+    </motion.div>
+  );
+}
+
+const askPrompts = {
+  en: [
+    "Find creators for my skincare brand",
+    "Show me competitor brand intelligence",
+    "Which creators drive the most GMV?",
+    "Analyze top TikTok Shop videos in my niche",
+  ],
+  pt: [
+    "Encontre criadores para minha marca",
+    "Mostre inteligência de marcas concorrentes",
+    "Quais criadores geram mais GMV?",
+    "Analise os vídeos de melhor desempenho",
+  ],
+} as const;
+
+function HeroAskBar({ locale = "en" }: { locale?: Locale }) {
+  const prompts = askPrompts[locale];
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
+
+  useEffect(() => {
+    const full = prompts[index];
+    let timer: ReturnType<typeof setTimeout>;
+    if (phase === "typing") {
+      timer =
+        text.length < full.length
+          ? setTimeout(() => setText(full.slice(0, text.length + 1)), 42)
+          : setTimeout(() => setPhase("pausing"), 1600);
+    } else if (phase === "pausing") {
+      timer = setTimeout(() => setPhase("deleting"), 700);
+    } else if (text.length > 0) {
+      timer = setTimeout(() => setText(full.slice(0, text.length - 1)), 20);
+    } else {
+      setIndex((current) => (current + 1) % prompts.length);
+      setPhase("typing");
+      timer = setTimeout(() => {}, 0);
+    }
+    return () => clearTimeout(timer);
+  }, [text, phase, index, prompts]);
+
+  const caption = locale === "pt" ? "Acompanhe tudo. Pergunte qualquer coisa." : "Track everything. Ask anything.";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", damping: 16, stiffness: 95, delay: 0.52 }}
+      className="mx-auto mt-8 w-full max-w-[330px] sm:max-w-[560px]"
+    >
+      <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/65 py-2 pl-5 pr-2 shadow-[0_14px_44px_rgba(16,24,40,0.13)] ring-1 ring-black/[0.04] backdrop-blur-xl md:pl-6">
+        <span className="flex min-w-0 flex-1 items-center overflow-hidden whitespace-nowrap text-left text-[15px] text-[#475467] md:text-[17px]">
+          {text || " "}
+          <span className="ml-[1px] inline-block h-[1.05em] w-[2px] shrink-0 translate-y-[2px] animate-pulse bg-[#3559e9]" />
+        </span>
+        <button type="button" aria-label="Ask Reacher" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#101828] text-white transition hover:bg-[#1d2939] md:h-11 md:w-11">
+          <ArrowUp size={19} strokeWidth={2.2} />
+        </button>
+      </div>
+      <p className="mt-3 text-[13px] font-medium text-[#667085] md:text-[14px]">{caption}</p>
     </motion.div>
   );
 }
@@ -300,6 +364,8 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
         >
           {copy.subtitle}
         </motion.p>
+
+        <HeroAskBar locale={locale} />
 
         <HeroCtas locale={locale} />
 
