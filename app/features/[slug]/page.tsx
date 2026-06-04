@@ -1,0 +1,151 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowRight, Check } from "lucide-react";
+import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
+import { localizedAlternates } from "@/lib/seo";
+import { features, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
+
+type Params = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return features.map((f) => ({ slug: f.slug }));
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const feature = getFeature(slug);
+  if (!feature) return {};
+  return {
+    title: `${feature.positioning} | Reacher`,
+    description: feature.oneLiner,
+    alternates: localizedAlternates(`/features/${feature.slug}`),
+  };
+}
+
+export default async function FeaturePage({ params }: Params) {
+  const { slug } = await params;
+  const feature = getFeature(slug);
+  if (!feature) notFound();
+
+  const Icon = feature.Icon;
+  const groupLabel = groupLabelForSlug(slug) ?? "Product";
+  const related = relatedFeatures(slug);
+
+  return (
+    <main className="min-h-screen overflow-hidden bg-white text-black">
+      <ReacherHeader active="" />
+
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#d8e6ff_0%,#e9f1ff_46%,#ffffff_92%)] px-6 pb-20 pt-[150px] text-center">
+        <div className="mx-auto max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#cdddff] bg-white/70 px-4 py-1.5 text-[13px] font-semibold text-[#3559e9]">
+            <Icon size={15} strokeWidth={2.2} /> {groupLabel}
+          </span>
+          <h1 className="mx-auto mt-6 max-w-[18ch] text-balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-slate-950 md:text-[58px]">
+            {feature.positioning}
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-8 text-slate-600">{feature.oneLiner}</p>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="https://portal.reacherapp.com/login"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
+            >
+              Get 14 day free trial
+            </Link>
+            <Link
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-7 text-[15px] font-semibold text-slate-900 transition hover:bg-slate-50"
+            >
+              Book a demo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">Capabilities</p>
+          <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
+            Everything {feature.name} gives your team
+          </h2>
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            {feature.capabilities.map((cap) => (
+              <div key={cap} className="flex items-start gap-3.5 rounded-2xl border border-slate-100 bg-[#f8faff] p-5 ring-1 ring-black/[0.02]">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-white">
+                  <Check size={15} strokeWidth={3} />
+                </span>
+                <p className="text-[16px] leading-7 text-slate-700">{cap}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7faff] px-6 py-20 md:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-balance text-2xl font-medium leading-9 tracking-[-0.01em] text-slate-800 md:text-[26px] md:leading-10">
+            {feature.value}
+          </p>
+          <p className="mt-9 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">Who it&apos;s for</p>
+          <p className="mx-auto mt-2 max-w-xl text-lg text-slate-600">{feature.whoFor}</p>
+        </div>
+      </section>
+
+      {related.length > 0 ? (
+        <section className="px-6 py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-bold tracking-[-0.02em] text-slate-950">More in {groupLabel}</h2>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((r) => {
+                const RIcon = r.Icon;
+                return (
+                  <Link
+                    key={r.slug}
+                    href={`/features/${r.slug}`}
+                    className="group rounded-2xl border border-slate-100 bg-white p-6 ring-1 ring-black/[0.02] transition hover:border-[#cdddff] hover:shadow-[0_14px_34px_rgba(16,24,40,0.08)]"
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff]">
+                      <RIcon size={19} strokeWidth={2} />
+                    </span>
+                    <h3 className="mt-4 text-[17px] font-semibold text-slate-950">{r.name}</h3>
+                    <p className="mt-1.5 text-[14px] leading-6 text-slate-500">{r.navBlurb}</p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-[#3559e9]">
+                      Learn more <ArrowRight size={14} className="transition group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0b55f4] via-[#3559e9] to-[#335CFF] px-6 py-16 text-center text-white">
+          <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold tracking-[-0.03em] md:text-5xl">
+            Grow TikTok Shop revenue on autopilot
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-pretty text-lg text-white/85">
+            Join 1000+ brands using Reacher to manage every creator relationship.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="https://portal.reacherapp.com/login"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
+            >
+              Get 14 day free trial
+            </Link>
+            <Link
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-7 text-[15px] font-semibold text-white transition hover:bg-white/10"
+            >
+              Book a demo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <ReacherFooter />
+    </main>
+  );
+}

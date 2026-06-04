@@ -7,7 +7,7 @@ import type { Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
-import CursorRipple from "@/components/CursorRipple";
+import RocketCursor from "@/components/RocketCursor";
 import MouseAmbient from "@/components/MouseAmbient";
 
 type HeroSectionProps = {
@@ -181,20 +181,23 @@ function HeroAskBar({ locale = "en" }: { locale?: Locale }) {
       transition={{ type: "spring", damping: 16, stiffness: 95, delay: 0.52 }}
       className="mx-auto mt-8 w-full max-w-[330px] sm:max-w-[560px]"
     >
-      <div className="flex items-center gap-2 rounded-full border border-white/70 bg-white/65 py-2 pl-5 pr-2 shadow-[0_14px_44px_rgba(16,24,40,0.13)] ring-1 ring-black/[0.04] backdrop-blur-xl md:pl-6">
+      <Link
+        href="https://portal.reacherapp.com/login"
+        aria-label="Ask Reacher — sign up"
+        className="flex items-center gap-2 rounded-full border border-white/70 bg-white/65 py-2 pl-5 pr-2 shadow-[0_14px_44px_rgba(16,24,40,0.13)] ring-1 ring-black/[0.04] backdrop-blur-xl transition hover:shadow-[0_18px_50px_rgba(16,24,40,0.16)] md:pl-6"
+      >
         <span className="flex min-w-0 flex-1 items-center overflow-hidden whitespace-nowrap text-left text-[15px] text-[#475467] md:text-[17px]">
           {text || " "}
           <span className="ml-[1px] inline-block h-[1.05em] w-[2px] shrink-0 translate-y-[2px] animate-pulse bg-[#3559e9]" />
         </span>
-        <button
-          type="button"
-          aria-label="Ask Reacher"
-          className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[length:160%_160%] bg-[linear-gradient(120deg,#04C8F9_0%,#3559e9_50%,#335CFF_100%)] text-white shadow-[0_4px_16px_rgba(53,89,233,0.45)] ring-1 ring-white/30 transition hover:shadow-[0_6px_22px_rgba(53,89,233,0.6)] md:h-11 md:w-11"
+        <span
+          aria-hidden
+          className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[length:160%_160%] bg-[linear-gradient(120deg,#04C8F9_0%,#3559e9_50%,#335CFF_100%)] text-white shadow-[0_4px_16px_rgba(53,89,233,0.45)] ring-1 ring-white/30 transition md:h-11 md:w-11"
           style={{ animation: "ai-gradient 6s ease infinite" }}
         >
           <Sparkles size={18} strokeWidth={2.2} className="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]" />
-        </button>
-      </div>
+        </span>
+      </Link>
     </motion.div>
   );
 }
@@ -227,7 +230,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
     <section className="relative overflow-hidden bg-white text-black">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
       <MouseAmbient />
-      <CursorRipple />
+      <RocketCursor />
       <SiteNav locale={locale} />
 
       <Image
