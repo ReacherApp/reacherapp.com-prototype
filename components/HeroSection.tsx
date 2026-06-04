@@ -26,8 +26,8 @@ const heroCopy = {
     titleBottom: "on Autopilot",
     mobileLines: ["Grow TikTok Shop", "Revenue on Autopilot"],
     subtitle: "Grow your TikTok Shop with AI-powered tools to manage all your creator relationships.",
-    bookCall: "Book a call",
-    trial: "Start your free trial",
+    bookCall: "Book a demo",
+    trial: "Get 14 day free trial",
     trusted: "Trusted by over",
     brands: "brands",
     backed: "Backed by",
@@ -54,8 +54,8 @@ const heroCopy = {
     titleBottom: "no piloto automático",
     mobileLines: ["Faça a receita da", "TikTok Shop crescer", "no piloto automático"],
     subtitle: "Expanda sua TikTok Shop com ferramentas com inteligência artificial para gerenciar todos os seus relacionamentos com criadores.",
-    bookCall: "Agende uma chamada",
-    trial: "Comece seu teste gratuito",
+    bookCall: "Agende uma demo",
+    trial: "Teste grátis de 14 dias",
     trusted: "Com a confiança de mais de",
     brands: "marcas",
     backed: "Apoiado por",
@@ -221,9 +221,9 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
 
   return (
     <section className="relative overflow-hidden bg-white text-black">
-      <div className="pointer-events-none absolute left-1/2 top-[-190px] h-[690px] w-[92%] max-w-[1120px] -translate-x-1/2 rounded-[100%] bg-[#335CFF]/18 blur-[115px]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_2%,rgba(199,216,255,0.96)_0%,rgba(223,233,255,0.78)_42%,rgba(255,255,255,0.98)_82%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(215,228,255,0.62)_0%,rgba(239,245,255,0.54)_45%,#ffffff_92%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[760px] bg-[radial-gradient(60%_42%_at_16%_10%,rgba(255,255,255,0.95)_0%,transparent_46%),radial-gradient(52%_36%_at_84%_4%,rgba(255,255,255,0.92)_0%,transparent_44%),radial-gradient(70%_50%_at_52%_-14%,rgba(255,255,255,0.6)_0%,transparent_58%),radial-gradient(40%_28%_at_70%_30%,rgba(255,255,255,0.7)_0%,transparent_50%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-[-150px] h-[520px] w-[78%] max-w-[980px] -translate-x-1/2 rounded-[100%] bg-[#6f9eff]/15 blur-[120px]" />
       <SiteNav locale={locale} />
 
       <Image
@@ -262,7 +262,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.82, y: 0 }}
           transition={{ type: "spring", damping: 14, stiffness: 100, delay: 0.42 }}
-          className="mx-auto mt-4 max-w-[342px] text-[17px] leading-[1.82] text-[#343947] md:mt-5 md:max-w-[500px] md:text-[20px] md:leading-[30px]"
+          className="mx-auto mt-4 max-w-[342px] text-[17px] leading-[1.82] text-[#343947] md:mt-5 md:max-w-none md:whitespace-nowrap md:text-[20px] md:leading-[30px]"
         >
           {copy.subtitle}
         </motion.p>
