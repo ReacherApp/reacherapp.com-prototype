@@ -58,8 +58,8 @@ a {
   to { transform: translateX(0); }
 }
 
-.animate-marquee-left { animation: marquee-left 48s linear infinite; }
-.animate-marquee-right { animation: marquee-right 48s linear infinite; }
+.animate-marquee-left { animation: marquee-left 72s linear infinite; }
+.animate-marquee-right { animation: marquee-right 72s linear infinite; }
 
 @keyframes ai-gradient {
   0%, 100% { background-position: 0% 50%; }

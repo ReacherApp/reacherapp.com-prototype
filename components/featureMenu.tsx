@@ -31,19 +31,19 @@ export const featureGroups: readonly FeatureGroup[] = [
     items: [
       {
         name: "AI Creator Search",
-        blurb: "Describe your ideal creator — AI matches by real video content.",
+        blurb: "AI matches creators by video content.",
         anchor: "creator-discovery",
         Icon: Search,
       },
       {
         name: "Outreach Automations",
-        blurb: "DMs, collab invites, email, re-engage & AI chatbot at scale.",
+        blurb: "DMs, invites, email & AI chatbot.",
         anchor: "automated-outreach",
         Icon: Send,
       },
       {
         name: "Creator Community",
-        blurb: "Run campaigns, payments & content with your own community.",
+        blurb: "Campaigns, payments & content in-house.",
         anchor: "campaigns",
         Icon: HeartHandshake,
       },
@@ -54,19 +54,19 @@ export const featureGroups: readonly FeatureGroup[] = [
     items: [
       {
         name: "Social Intelligence",
-        blurb: "Track top brands, products & videos — benchmark competitors.",
+        blurb: "Track top brands, products & videos.",
         anchor: "social-intelligence",
         Icon: TrendingUp,
       },
       {
         name: "Halo Effect",
-        blurb: "Measure the organic sales lift driven by creator content.",
+        blurb: "Measure organic sales lift from content.",
         anchor: "social-intelligence",
         Icon: ChartPie,
       },
       {
         name: "Content & Creative Agent",
-        blurb: "Manage videos & lives; auto-generate ready-to-share briefs.",
+        blurb: "Manage content; auto-generate briefs.",
         anchor: "creative-agent",
         Icon: Clapperboard,
       },
@@ -77,25 +77,25 @@ export const featureGroups: readonly FeatureGroup[] = [
     items: [
       {
         name: "Creator CRM",
-        blurb: "Every creator's status, messages, samples & GMV in one place.",
+        blurb: "Status, samples & GMV in one place.",
         anchor: "crm",
         Icon: Users,
       },
       {
         name: "Buyer Engagement",
-        blurb: "Re-engage buyers with order-based outreach & automations.",
+        blurb: "Re-engage buyers via order outreach.",
         anchor: "automated-outreach",
         Icon: ShoppingBag,
       },
       {
         name: "GMV Max",
-        blurb: "Automate spark codes & ad budget to maximize GMV.",
+        blurb: "Automate spark codes & ad budget.",
         anchor: "campaigns",
         Icon: Rocket,
       },
       {
         name: "Analytics Dashboard",
-        blurb: "All your affiliate metrics, halo effect & GMV in one view.",
+        blurb: "Metrics, halo & GMV in one view.",
         anchor: "social-intelligence",
         Icon: LayoutDashboard,
       },

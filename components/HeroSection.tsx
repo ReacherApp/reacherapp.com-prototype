@@ -172,8 +172,6 @@ function HeroAskBar({ locale = "en" }: { locale?: Locale }) {
     return () => clearTimeout(timer);
   }, [text, phase, index, prompts]);
 
-  const caption = locale === "pt" ? "Acompanhe tudo. Pergunte qualquer coisa." : "Track everything. Ask anything.";
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -197,7 +195,6 @@ function HeroAskBar({ locale = "en" }: { locale?: Locale }) {
           <ArrowUp size={19} strokeWidth={2.4} className="relative drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]" />
         </button>
       </div>
-      <p className="mt-3 text-[13px] font-medium text-[#667085] md:text-[14px]">{caption}</p>
     </motion.div>
   );
 }
@@ -330,7 +327,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
                         height={144}
                         sizes="172px"
                         quality={100}
-                        className="h-auto max-h-[26px] w-auto max-w-full object-contain opacity-60 grayscale transition md:max-h-[38px]"
+                        className="h-auto max-h-[26px] w-auto max-w-full object-contain opacity-70 transition [filter:grayscale(1)_sepia(1)_hue-rotate(188deg)_saturate(1.8)_brightness(0.92)] md:max-h-[38px]"
                       />
                     </span>
                   ))}

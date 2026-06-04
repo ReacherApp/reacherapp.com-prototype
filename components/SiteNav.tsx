@@ -107,20 +107,20 @@ function FeaturesMenu({ label, locale }: { label: string; locale: Locale }) {
         <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
       <div className={`absolute left-0 top-full pt-3 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
-        <div className="w-[860px] whitespace-normal rounded-[24px] border border-black/5 bg-white p-5 text-left shadow-[0_28px_70px_-14px_rgba(16,24,40,0.24)] ring-1 ring-black/5">
-          <div className="grid grid-cols-3 gap-5">
+        <div className="w-[1040px] whitespace-normal rounded-[24px] border border-black/5 bg-white p-5 text-left shadow-[0_28px_70px_-14px_rgba(16,24,40,0.24)] ring-1 ring-black/5">
+          <div className="grid grid-cols-3 gap-x-8 gap-y-0">
             {featureGroups.map((group) => (
               <div key={group.label} className="px-1">
                 <p className="px-3 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-[#98a2b3]">{group.label}</p>
-                <div className="mt-3 flex flex-col gap-1">
+                <div className="mt-2 flex flex-col gap-1">
                   {group.items.map(({ name, blurb, anchor, Icon }) => (
-                    <Link key={anchor} href={localizeHref(`/#${anchor}`, locale)} onClick={() => setOpen(false)} className="group flex gap-3.5 rounded-[16px] p-3 transition hover:bg-[#f3f6ff]">
-                      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff] transition group-hover:bg-[#3559e9] group-hover:text-white group-hover:ring-[#3559e9]">
+                    <Link key={anchor} href={localizeHref(`/#${anchor}`, locale)} onClick={() => setOpen(false)} className="group flex items-center gap-3.5 rounded-[14px] px-3 py-2.5 transition hover:bg-[#f3f6ff]">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff] transition group-hover:bg-[#3559e9] group-hover:text-white group-hover:ring-[#3559e9]">
                         <Icon size={19} strokeWidth={2} />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-[15px] font-semibold leading-tight text-slate-900">{name}</span>
-                        <span className="mt-1 block text-[12.5px] leading-[1.45] text-slate-500">{blurb}</span>
+                        <span className="block text-[14.5px] font-semibold leading-tight text-slate-900">{name}</span>
+                        <span className="mt-0.5 block truncate text-[12.5px] leading-snug text-slate-500">{blurb}</span>
                       </span>
                     </Link>
                   ))}
