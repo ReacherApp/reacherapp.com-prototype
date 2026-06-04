@@ -240,16 +240,21 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
       <div className="pointer-events-none absolute left-1/2 top-[-150px] h-[520px] w-[78%] max-w-[980px] -translate-x-1/2 rounded-[100%] bg-[#6f9eff]/15 blur-[120px]" />
       <div ref={glowRef} aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300" />
-      <SiteNav locale={locale} partnerBadge={logo} />
+      <SiteNav locale={locale} />
 
       <Image
         src={logo}
         alt="TikTok Shop Partner"
         width={155}
         height={42}
-        className="absolute left-[24px] top-[80px] z-10 h-auto w-[110px] lg:hidden"
+        className="absolute left-[24px] top-[80px] z-10 h-auto w-[92px] lg:hidden"
         priority
       />
+      <div className="pointer-events-none absolute inset-x-0 top-[82px] z-10 hidden lg:block">
+        <div className="mx-auto flex w-[calc(100%-40px)] max-w-[1320px] justify-end pr-1">
+          <Image src={logo} alt="TikTok Shop Partner" width={155} height={42} className="h-auto w-[118px]" priority />
+        </div>
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-9 pt-[226px] text-center md:pb-12 md:pt-[140px] lg:pt-[160px]">
         <motion.h1
