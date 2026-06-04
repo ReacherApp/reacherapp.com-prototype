@@ -253,7 +253,10 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
             </motion.span>
           ))}
           <br />
-          <motion.span variants={wordVariants} className="inline-block">
+          <motion.span
+            variants={wordVariants}
+            className="inline-block bg-gradient-to-r from-[#04C8F9] via-[#3559e9] to-[#335CFF] bg-clip-text text-transparent"
+          >
             {copy.titleBottom}
           </motion.span>
         </motion.h1>
