@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ArrowUp, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowUp, ChevronDown, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { featureGroups, featureItems } from "@/components/featureMenu";
 
 type HeroSectionProps = {
   logo: string;
@@ -207,21 +208,95 @@ function useScrolled(threshold = 16) {
   return scrolled;
 }
 
+function useMenu() {
+  const [open, setOpen] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cancel = () => {
+    if (timer.current) {
+      clearTimeout(timer.current);
+      timer.current = null;
+    }
+  };
+  const openNow = () => {
+    cancel();
+    setOpen(true);
+  };
+  const closeSoon = () => {
+    cancel();
+    timer.current = setTimeout(() => setOpen(false), 140);
+  };
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  useEffect(() => () => cancel(), []);
+  return { open, setOpen, openNow, closeSoon };
+}
+
+function FeaturesMenu({ label }: { label: string }) {
+  const { open, setOpen, openNow, closeSoon } = useMenu();
+  return (
+    <div className="relative inline-flex shrink-0 items-center" onMouseEnter={openNow} onMouseLeave={closeSoon}>
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={openNow}
+        onFocus={openNow}
+        className={`inline-flex items-center gap-1 transition ${open ? "text-[#101828]" : "text-[#475467] hover:text-[#101828]"}`}
+      >
+        {label}
+        <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
+        <div className="w-[640px] whitespace-normal rounded-[20px] border border-black/5 bg-white p-3 text-left shadow-[0_24px_60px_-12px_rgba(16,24,40,0.22)] ring-1 ring-black/5">
+          <div className="grid grid-cols-3 gap-1">
+            {featureGroups.map((group) => (
+              <div key={group.label} className="px-2 py-2">
+                <p className="px-2 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-[#98a2b3]">{group.label}</p>
+                <div className="mt-1.5 flex flex-col">
+                  {group.items.map(({ name, blurb, anchor, Icon }) => (
+                    <Link key={anchor} href={`#${anchor}`} onClick={() => setOpen(false)} className="group flex gap-2.5 rounded-[12px] p-2 transition hover:bg-[#f3f6ff]">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-[9px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff] transition group-hover:bg-[#3559e9] group-hover:text-white group-hover:ring-[#3559e9]">
+                        <Icon size={15} strokeWidth={2} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[12.5px] font-semibold leading-tight text-slate-900">{name}</span>
+                        <span className="mt-0.5 block text-[11px] leading-[1.35] text-slate-500">{blurb}</span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DesktopNav({ locale = "en" }: { locale?: Locale }) {
   const copy = heroCopy[locale];
   const scrolled = useScrolled();
   const leftLinks = copy.navLinks.slice(0, 4);
   const rightLinks = copy.navLinks.slice(4, 8);
+  const productLabel = locale === "pt" ? "Produto" : "Product";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 hidden lg:block">
       <nav
-        className={`pointer-events-auto mx-auto mt-3 flex h-[56px] w-[min(1060px,calc(100%-40px))] items-center justify-center gap-[20px] whitespace-nowrap rounded-full border px-6 text-[12.5px] font-medium text-[#475467] transition-all duration-300 ${
+        className={`pointer-events-auto mx-auto mt-3 flex h-[56px] w-[min(1180px,calc(100%-40px))] items-center justify-center gap-[18px] whitespace-nowrap rounded-full border px-6 text-[12.5px] font-medium text-[#475467] transition-all duration-300 ${
           scrolled
             ? "border-black/[0.06] bg-white/85 shadow-[0_10px_34px_rgba(16,24,40,0.12)] backdrop-blur-xl"
             : "border-white/50 bg-white/55 shadow-[0_6px_24px_rgba(16,24,40,0.07)] backdrop-blur-md"
         }`}
       >
+        <FeaturesMenu label={productLabel} />
         {leftLinks.map(([label, href]) => (
           <Link key={label} href={localizeHref(href, locale)} className="inline-flex shrink-0 items-center transition hover:text-[#101828]">
             {label}
@@ -280,15 +355,33 @@ function MobileNav({ locale = "en" }: { locale?: Locale }) {
               <X size={24} strokeWidth={1.9} />
             </button>
           </div>
-          <div className="flex flex-1 flex-col items-center gap-[clamp(10px,2.6vh,24px)] overflow-y-auto px-6 pb-8 pt-4 text-[19px] font-medium text-[#475467]">
-            {links.map(([label, href]) => (
-              <Link key={label} href={localizeHref(href, locale)} onClick={close} className="shrink-0 leading-tight transition hover:text-[#101828]">
-                {label}
+          <div className="flex-1 overflow-y-auto px-5 pb-8 pt-2">
+            <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#98a2b3]">
+              {locale === "pt" ? "Produto" : "Product"}
+            </p>
+            <div className="mt-2 flex flex-col">
+              {featureItems.map(({ name, blurb, anchor, Icon }) => (
+                <Link key={anchor} href={`#${anchor}`} onClick={close} className="flex gap-3 rounded-2xl px-2 py-2.5 transition active:bg-[#f3f6ff]">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff]">
+                    <Icon size={16} strokeWidth={2} />
+                  </span>
+                  <span>
+                    <span className="block text-[15px] font-semibold leading-tight text-slate-900">{name}</span>
+                    <span className="mt-0.5 block text-[12.5px] leading-snug text-slate-500">{blurb}</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col items-center gap-[clamp(10px,2.4vh,22px)] text-[18px] font-medium text-[#475467]">
+              {links.map(([label, href]) => (
+                <Link key={label} href={localizeHref(href, locale)} onClick={close} className="shrink-0 leading-tight transition hover:text-[#101828]">
+                  {label}
+                </Link>
+              ))}
+              <Link href={LOGIN_URL} onClick={close} className="mt-2 flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold text-white">
+                {copy.login}
               </Link>
-            ))}
-            <Link href={LOGIN_URL} onClick={close} className="mt-2 flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold text-white">
-              {copy.login}
-            </Link>
+            </div>
           </div>
         </div>
       ) : null}
