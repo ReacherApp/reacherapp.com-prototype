@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { featureGroups, featureItems } from "@/components/featureMenu";
+import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type HeroSectionProps = {
   logo: string;
@@ -144,143 +143,39 @@ function useScrolled(threshold = 16) {
   return scrolled;
 }
 
-function useMenu() {
-  const [open, setOpen] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const cancel = () => {
-    if (timer.current) {
-      clearTimeout(timer.current);
-      timer.current = null;
-    }
-  };
-  const openNow = () => {
-    cancel();
-    setOpen(true);
-  };
-  const closeSoon = () => {
-    cancel();
-    timer.current = setTimeout(() => setOpen(false), 140);
-  };
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
-  useEffect(() => () => cancel(), []);
-  return { open, setOpen, openNow, closeSoon };
-}
-
-const triggerClass = (open: boolean) =>
-  `inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[13.5px] font-medium transition ${
-    open ? "bg-white/[0.12] text-white ring-1 ring-white/20" : "text-white/70 hover:text-white"
-  }`;
-
-const panelClass =
-  "rounded-[20px] border border-white/10 bg-[#101019]/95 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] backdrop-blur-2xl";
-
-function ProductMenu({ label }: { label: string }) {
-  const { open, setOpen, openNow, closeSoon } = useMenu();
-  return (
-    <div className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
-      <button type="button" aria-haspopup="true" aria-expanded={open} onClick={openNow} onFocus={openNow} className={triggerClass(open)}>
-        {label}
-        <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
-      </button>
-      <div className={`absolute left-0 top-full pt-2.5 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
-        <div className={`${panelClass} w-[640px] p-3`}>
-          <div className="grid grid-cols-3 gap-1">
-            {featureGroups.map((group) => (
-              <div key={group.label} className="px-2 py-2">
-                <p className="px-2 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-white/35">{group.label}</p>
-                <div className="mt-1.5 flex flex-col">
-                  {group.items.map(({ name, blurb, anchor, Icon }) => (
-                    <Link key={anchor} href={`#${anchor}`} onClick={() => setOpen(false)} className="group flex gap-2.5 rounded-[12px] p-2 transition hover:bg-white/[0.06]">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-[9px] bg-white/[0.08] text-white ring-1 ring-white/10 transition group-hover:bg-[#3559e9] group-hover:ring-[#3559e9]">
-                        <Icon size={15} strokeWidth={2} />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-[12.5px] font-semibold leading-tight text-white">{name}</span>
-                        <span className="mt-0.5 block text-[11px] leading-[1.35] text-white/45">{blurb}</span>
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CompanyMenu({ label, links, locale }: { label: string; links: readonly (readonly [string, string])[]; locale: Locale }) {
-  const { open, setOpen, openNow, closeSoon } = useMenu();
-  return (
-    <div className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
-      <button type="button" aria-haspopup="true" aria-expanded={open} onClick={openNow} onFocus={openNow} className={triggerClass(open)}>
-        {label}
-        <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
-      </button>
-      <div className={`absolute left-0 top-full pt-2.5 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
-        <div className={`${panelClass} w-[230px] p-2`}>
-          {links.map(([itemLabel, href]) => (
-            <Link key={itemLabel} href={localizeHref(href, locale)} onClick={() => setOpen(false)} className="block rounded-[11px] px-3 py-2.5 text-[13px] font-medium text-white/70 transition hover:bg-white/[0.06] hover:text-white">
-              {itemLabel}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function DesktopNav({ locale = "en" }: { locale?: Locale }) {
   const copy = heroCopy[locale];
   const scrolled = useScrolled();
-  const nl = copy.navLinks;
-  const companyLinks = [nl[0], nl[3], nl[5], nl[6], nl[7], nl[4]] as const;
-  const pricing = nl[1];
-  const affiliate = nl[2];
-  const productLabel = locale === "pt" ? "Produto" : "Product";
-  const companyLabel = locale === "pt" ? "Empresa" : "Company";
-  const trialLabel = locale === "pt" ? "Comece grátis" : "Start free trial";
+  const leftLinks = copy.navLinks.slice(0, 4);
+  const rightLinks = copy.navLinks.slice(4, 8);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 hidden lg:block">
-      <div
-        className={`pointer-events-auto mx-auto mt-3 flex h-[58px] w-[min(1180px,calc(100%-40px))] items-center justify-between gap-4 rounded-full border px-2.5 pl-5 transition-all duration-300 ${
+      <nav
+        className={`pointer-events-auto mx-auto mt-3 flex h-[56px] w-[min(1060px,calc(100%-40px))] items-center justify-center gap-[20px] whitespace-nowrap rounded-full border px-6 text-[12.5px] font-medium text-[#475467] transition-all duration-300 ${
           scrolled
-            ? "border-white/10 bg-[#0b0b12]/85 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.55)] backdrop-blur-2xl"
-            : "border-white/[0.08] bg-[#0b0b12]/55 backdrop-blur-xl"
+            ? "border-black/[0.06] bg-white/85 shadow-[0_10px_34px_rgba(16,24,40,0.12)] backdrop-blur-xl"
+            : "border-white/50 bg-white/55 shadow-[0_6px_24px_rgba(16,24,40,0.07)] backdrop-blur-md"
         }`}
       >
-        <div className="flex items-center gap-1">
-          <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="mr-2 flex items-center gap-2">
-            <Image src={appIcon} alt="" width={30} height={30} className="h-[30px] w-[30px] rounded-[8px] object-contain" priority unoptimized />
-            <span className="text-[15px] font-semibold tracking-[-0.01em] text-white">Reacher</span>
+        {leftLinks.map(([label, href]) => (
+          <Link key={label} href={localizeHref(href, locale)} className="inline-flex shrink-0 items-center transition hover:text-[#101828]">
+            {label}
           </Link>
-          <ProductMenu label={productLabel} />
-          <CompanyMenu label={companyLabel} links={companyLinks} locale={locale} />
-          <Link href={localizeHref(pricing[1], locale)} className="rounded-full px-3.5 py-2 text-[13.5px] font-medium text-white/70 transition hover:text-white">
-            {pricing[0]}
+        ))}
+        <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="inline-flex shrink-0 items-center justify-center gap-2 px-1 transition hover:scale-[1.03]">
+          <Image src={appIcon} alt="" width={30} height={30} className="h-[30px] w-[30px] rounded-[8px] object-contain shadow-[0_1px_3px_rgba(16,24,40,0.18)]" priority unoptimized />
+          <span className="text-[13px] font-semibold leading-none text-[#101828]">Reacher</span>
+        </Link>
+        {rightLinks.map(([label, href]) => (
+          <Link key={label} href={localizeHref(href, locale)} className="inline-flex shrink-0 items-center transition hover:text-[#101828]">
+            {label}
           </Link>
-          <Link href={localizeHref(affiliate[1], locale)} className="rounded-full px-3.5 py-2 text-[13.5px] font-medium text-white/70 transition hover:text-white">
-            {affiliate[0]}
-          </Link>
-        </div>
-        <div className="flex items-center gap-1">
-          <Link href={LOGIN_URL} className="rounded-full px-4 py-2 text-[13.5px] font-medium text-white/75 transition hover:text-white">
-            {copy.login}
-          </Link>
-          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-white px-[18px] py-2.5 text-[13px] font-semibold text-[#0b0b12] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90">
-            {trialLabel}
-          </Link>
-        </div>
-      </div>
+        ))}
+        <Link href={LOGIN_URL} className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#3559e9] px-5 py-2.5 text-[13px] font-medium leading-none text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:bg-blue-600">
+          {copy.login}
+        </Link>
+      </nav>
     </header>
   );
 }
@@ -288,26 +183,22 @@ function DesktopNav({ locale = "en" }: { locale?: Locale }) {
 function MobileNav({ locale = "en" }: { locale?: Locale }) {
   const [open, setOpen] = useState(false);
   const copy = heroCopy[locale];
-  const nl = copy.navLinks;
-  const companyLinks = [nl[0], nl[3], nl[5], nl[6], nl[7], nl[4], nl[1], nl[2]] as const;
-  const productLabel = locale === "pt" ? "Produto" : "Product";
-  const companyLabel = locale === "pt" ? "Empresa" : "Company";
-  const trialLabel = locale === "pt" ? "Comece grátis" : "Start free trial";
+  const links = copy.navLinks;
   const close = () => setOpen(false);
 
   return (
     <>
       <div className="pointer-events-none fixed inset-x-0 top-0 z-50 lg:hidden">
-        <div className="pointer-events-auto mx-auto mt-2.5 flex h-[54px] w-[calc(100%-24px)] items-center justify-between rounded-full border border-white/10 bg-[#0b0b12]/85 pl-4 pr-2 text-white backdrop-blur-xl">
+        <div className="pointer-events-auto mx-auto mt-2.5 flex h-[52px] w-[calc(100%-24px)] items-center justify-between rounded-full border border-black/[0.06] bg-white/85 pl-4 pr-2 shadow-[0_8px_26px_rgba(16,24,40,0.12)] backdrop-blur-xl">
           <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="flex items-center gap-2">
             <Image src={appIcon} alt="" width={28} height={28} className="h-7 w-7 rounded-[7px] object-contain" priority unoptimized />
-            <span className="text-[15px] font-semibold text-white">Reacher</span>
+            <span className="text-[15px] font-semibold text-[#101828]">Reacher</span>
           </Link>
           <div className="flex items-center gap-1.5">
-            <Link href={LOGIN_URL} className="rounded-full bg-white px-3.5 py-2 text-[12.5px] font-semibold text-[#0b0b12]">
-              {trialLabel}
+            <Link href={LOGIN_URL} className="rounded-full bg-[#3559e9] px-4 py-2 text-[12.5px] font-semibold text-white">
+              {copy.login}
             </Link>
-            <button type="button" onClick={() => setOpen(true)} aria-label="Open menu" className="flex h-9 w-9 items-center justify-center text-white">
+            <button type="button" onClick={() => setOpen(true)} aria-label="Open menu" className="flex h-9 w-9 items-center justify-center text-[#101828]">
               <Menu size={22} strokeWidth={1.9} />
             </button>
           </div>
@@ -315,47 +206,25 @@ function MobileNav({ locale = "en" }: { locale?: Locale }) {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-[#07070b] text-white lg:hidden">
-          <div className="flex h-[64px] shrink-0 items-center justify-between px-5">
+        <div className="fixed inset-0 z-[60] flex flex-col bg-white text-[#101828] lg:hidden">
+          <div className="flex h-[60px] shrink-0 items-center justify-between px-5">
             <Link href={localizeHref("/", locale)} aria-label="Reacher home" onClick={close} className="flex items-center gap-2">
               <Image src={appIcon} alt="" width={28} height={28} className="h-7 w-7 rounded-[7px] object-contain" priority unoptimized />
-              <span className="text-[15px] font-semibold text-white">Reacher</span>
+              <span className="text-[15px] font-semibold text-[#101828]">Reacher</span>
             </Link>
-            <button type="button" onClick={close} aria-label="Close menu" className="flex h-9 w-9 items-center justify-center text-white/85">
+            <button type="button" onClick={close} aria-label="Close menu" className="flex h-9 w-9 items-center justify-center text-[#475467]">
               <X size={24} strokeWidth={1.9} />
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto px-5 pb-8 pt-2">
-            <p className="px-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/35">{productLabel}</p>
-            <div className="mt-2 flex flex-col">
-              {featureItems.map(({ name, blurb, anchor, Icon }) => (
-                <Link key={anchor} href={`#${anchor}`} onClick={close} className="flex gap-3 rounded-2xl px-2 py-2.5 transition active:bg-white/[0.06]">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-white/[0.08] text-white ring-1 ring-white/10">
-                    <Icon size={16} strokeWidth={2} />
-                  </span>
-                  <span>
-                    <span className="block text-[15px] font-semibold leading-tight text-white">{name}</span>
-                    <span className="mt-0.5 block text-[12.5px] leading-snug text-white/45">{blurb}</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-6 px-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/35">{companyLabel}</p>
-            <div className="mt-1 flex flex-col">
-              {companyLinks.map(([label, href]) => (
-                <Link key={label} href={localizeHref(href, locale)} onClick={close} className="rounded-xl px-2 py-3 text-[16px] font-medium text-white/80 transition active:bg-white/[0.06]">
-                  {label}
-                </Link>
-              ))}
-            </div>
-            <div className="mt-7 flex flex-col gap-3">
-              <Link href={LOGIN_URL} onClick={close} className="flex h-12 items-center justify-center rounded-full border border-white/15 text-[15px] font-semibold text-white">
-                {copy.login}
+          <div className="flex flex-1 flex-col items-center gap-[clamp(10px,2.6vh,24px)] overflow-y-auto px-6 pb-8 pt-4 text-[19px] font-medium text-[#475467]">
+            {links.map(([label, href]) => (
+              <Link key={label} href={localizeHref(href, locale)} onClick={close} className="shrink-0 leading-tight transition hover:text-[#101828]">
+                {label}
               </Link>
-              <Link href={LOGIN_URL} onClick={close} className="flex h-12 items-center justify-center rounded-full bg-white text-[15px] font-semibold text-[#0b0b12]">
-                {trialLabel}
-              </Link>
-            </div>
+            ))}
+            <Link href={LOGIN_URL} onClick={close} className="mt-2 flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold text-white">
+              {copy.login}
+            </Link>
           </div>
         </div>
       ) : null}
@@ -466,22 +335,31 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", damping: 18, stiffness: 90, delay: 0.9 }}
-          className="mx-auto mt-[56px] grid w-full max-w-[390px] grid-cols-4 items-center justify-center gap-x-6 gap-y-8 opacity-95 md:mt-[22px] md:flex md:max-w-[1070px] md:flex-wrap md:gap-x-9 md:gap-y-10"
+          className="mt-[44px] w-full [mask-image:linear-gradient(to_right,transparent,#000_7%,#000_93%,transparent)] md:mt-[26px]"
         >
-          {brandLogos.map((src, index) => (
-            <div key={`${src}-${index}`} className="flex min-w-0 items-center justify-center md:w-[calc((100%_-_144px)/5)] lg:w-[122px]">
-              <Image
-                src={src}
-                alt=""
-                width={240}
-                height={144}
-                sizes="(max-width: 767px) 68px, 122px"
-                quality={100}
-                className="h-auto max-h-[30px] max-w-full object-contain md:max-h-[78px]"
-                priority={index < 10}
-              />
-            </div>
-          ))}
+          <div className="mx-auto flex max-w-[1180px] flex-col gap-6 md:gap-8">
+            {[brandLogos.slice(0, Math.ceil(brandLogos.length / 2)), brandLogos.slice(Math.ceil(brandLogos.length / 2))].map((row, rowIndex) => (
+              <div key={rowIndex} className="group flex overflow-hidden">
+                <div
+                  className={`flex w-max shrink-0 items-center ${rowIndex === 0 ? "animate-marquee-left" : "animate-marquee-right"} group-hover:[animation-play-state:paused]`}
+                >
+                  {[...row, ...row].map((src, index) => (
+                    <span key={`${src}-${index}`} className="flex w-[112px] shrink-0 items-center justify-center px-4 md:w-[172px] md:px-7">
+                      <Image
+                        src={src}
+                        alt=""
+                        width={240}
+                        height={144}
+                        sizes="172px"
+                        quality={100}
+                        className="h-auto max-h-[26px] w-auto max-w-full object-contain opacity-60 grayscale transition md:max-h-[38px]"
+                      />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
