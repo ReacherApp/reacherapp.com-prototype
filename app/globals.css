@@ -61,6 +61,16 @@ a {
 .animate-marquee-left { animation: marquee-left 48s linear infinite; }
 .animate-marquee-right { animation: marquee-right 48s linear infinite; }
 
+@keyframes ai-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes ai-twinkle {
+  0%, 100% { opacity: 0.45; transform: scale(0.82); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-left,
   .animate-marquee-right { animation: none; }
