@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ArrowUp, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
 
 type HeroSectionProps = {
@@ -187,12 +187,10 @@ function HeroAskBar({ locale = "en" }: { locale?: Locale }) {
         <button
           type="button"
           aria-label="Ask Reacher"
-          className="group relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[length:160%_160%] bg-[linear-gradient(120deg,#04C8F9_0%,#3559e9_50%,#335CFF_100%)] text-white shadow-[0_4px_16px_rgba(53,89,233,0.45)] ring-1 ring-white/30 transition hover:shadow-[0_6px_22px_rgba(53,89,233,0.6)] md:h-11 md:w-11"
+          className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[length:160%_160%] bg-[linear-gradient(120deg,#04C8F9_0%,#3559e9_50%,#335CFF_100%)] text-white shadow-[0_4px_16px_rgba(53,89,233,0.45)] ring-1 ring-white/30 transition hover:shadow-[0_6px_22px_rgba(53,89,233,0.6)] md:h-11 md:w-11"
           style={{ animation: "ai-gradient 6s ease infinite" }}
         >
-          <span aria-hidden className="pointer-events-none absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_32%_24%,rgba(255,255,255,0.5),transparent_55%)]" />
-          <Sparkles aria-hidden size={9} strokeWidth={2.4} className="absolute right-[7px] top-[7px] text-white/90 [animation:ai-twinkle_2.4s_ease-in-out_infinite]" />
-          <ArrowUp size={19} strokeWidth={2.4} className="relative drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]" />
+          <Sparkles size={18} strokeWidth={2.2} className="drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]" />
         </button>
       </div>
     </motion.div>
@@ -223,12 +221,26 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
     setActiveShot((current) => (current + 1) % shotCount);
   };
 
+  const glowRef = useRef<HTMLDivElement>(null);
+  const handlePointerMove = (event: React.MouseEvent<HTMLElement>) => {
+    const el = glowRef.current;
+    if (!el) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    el.style.background = `radial-gradient(440px circle at ${x}px ${y}px, rgba(53,89,233,0.13), transparent 70%)`;
+    el.style.opacity = "1";
+  };
+  const handlePointerLeave = () => {
+    if (glowRef.current) glowRef.current.style.opacity = "0";
+  };
+
   return (
-    <section className="relative overflow-hidden bg-white text-black">
+    <section className="relative overflow-hidden bg-white text-black" onMouseMove={handlePointerMove} onMouseLeave={handlePointerLeave}>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[760px] bg-[radial-gradient(60%_42%_at_16%_10%,rgba(255,255,255,0.95)_0%,transparent_46%),radial-gradient(52%_36%_at_84%_4%,rgba(255,255,255,0.92)_0%,transparent_44%),radial-gradient(70%_50%_at_52%_-14%,rgba(255,255,255,0.6)_0%,transparent_58%),radial-gradient(40%_28%_at_70%_30%,rgba(255,255,255,0.7)_0%,transparent_50%)]" />
       <div className="pointer-events-none absolute left-1/2 top-[-150px] h-[520px] w-[78%] max-w-[980px] -translate-x-1/2 rounded-[100%] bg-[#6f9eff]/15 blur-[120px]" />
-      <SiteNav locale={locale} />
+      <div ref={glowRef} aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300" />
+      <SiteNav locale={locale} partnerBadge={logo} />
 
       <Image
         src={logo}
@@ -238,11 +250,6 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
         className="absolute left-[24px] top-[80px] z-10 h-auto w-[110px] lg:hidden"
         priority
       />
-      <div className="pointer-events-none absolute inset-x-0 top-[78px] z-10 hidden lg:block">
-        <div className="mx-auto flex w-[calc(100%-40px)] max-w-[1320px] justify-end pr-1">
-          <Image src={logo} alt="TikTok Shop Partner" width={155} height={42} className="h-auto w-[150px]" priority />
-        </div>
-      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pb-9 pt-[226px] text-center md:pb-12 md:pt-[140px] lg:pt-[160px]">
         <motion.h1

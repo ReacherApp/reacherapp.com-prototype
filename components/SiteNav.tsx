@@ -134,7 +134,7 @@ function FeaturesMenu({ label, locale }: { label: string; locale: Locale }) {
   );
 }
 
-function DesktopNav({ locale, active }: { locale: Locale; active: string }) {
+function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: string; partnerBadge?: string }) {
   const copy = navCopy[locale];
   const scrolled = useScrolled();
 
@@ -170,6 +170,9 @@ function DesktopNav({ locale, active }: { locale: Locale; active: string }) {
           <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-[#3559e9] px-[18px] py-2.5 text-[13px] font-semibold !text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28)] transition hover:bg-blue-600">
             {copy.trial}
           </Link>
+          {partnerBadge ? (
+            <Image src={partnerBadge} alt="TikTok Shop Partner" width={150} height={42} className="ml-[60px] h-[38px] w-auto shrink-0 object-contain" unoptimized />
+          ) : null}
         </div>
       </nav>
     </header>
@@ -243,10 +246,10 @@ function MobileNav({ locale, active }: { locale: Locale; active: string }) {
   );
 }
 
-export function SiteNav({ locale = "en", active = "" }: { locale?: Locale; active?: string }) {
+export function SiteNav({ locale = "en", active = "", partnerBadge }: { locale?: Locale; active?: string; partnerBadge?: string }) {
   return (
     <>
-      <DesktopNav locale={locale} active={active} />
+      <DesktopNav locale={locale} active={active} partnerBadge={partnerBadge} />
       <MobileNav locale={locale} active={active} />
     </>
   );
