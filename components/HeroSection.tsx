@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
 import CursorRipple from "@/components/CursorRipple";
+import MouseAmbient from "@/components/MouseAmbient";
 
 type HeroSectionProps = {
   logo: string;
@@ -225,7 +226,7 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
   return (
     <section className="relative overflow-hidden bg-white text-black">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-[-150px] h-[520px] w-[78%] max-w-[980px] -translate-x-1/2 rounded-[100%] bg-[#6f9eff]/15 blur-[120px]" />
+      <MouseAmbient />
       <CursorRipple />
       <SiteNav locale={locale} />
 
