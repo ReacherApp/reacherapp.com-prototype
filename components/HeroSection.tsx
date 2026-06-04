@@ -276,7 +276,7 @@ function DesktopNav({ locale = "en" }: { locale?: Locale }) {
           <Link href={LOGIN_URL} className="rounded-full px-4 py-2 text-[13.5px] font-medium text-white/75 transition hover:text-white">
             {copy.login}
           </Link>
-          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-[#3559e9] px-[18px] py-2.5 text-[13px] font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:bg-blue-600">
+          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-white px-[18px] py-2.5 text-[13px] font-semibold text-[#0b0b12] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90">
             {trialLabel}
           </Link>
         </div>
@@ -304,7 +304,7 @@ function MobileNav({ locale = "en" }: { locale?: Locale }) {
             <span className="text-[15px] font-semibold text-white">Reacher</span>
           </Link>
           <div className="flex items-center gap-1.5">
-            <Link href={LOGIN_URL} className="rounded-full bg-[#3559e9] px-3.5 py-2 text-[12.5px] font-semibold text-white">
+            <Link href={LOGIN_URL} className="rounded-full bg-white px-3.5 py-2 text-[12.5px] font-semibold text-[#0b0b12]">
               {trialLabel}
             </Link>
             <button type="button" onClick={() => setOpen(true)} aria-label="Open menu" className="flex h-9 w-9 items-center justify-center text-white">
@@ -352,7 +352,7 @@ function MobileNav({ locale = "en" }: { locale?: Locale }) {
               <Link href={LOGIN_URL} onClick={close} className="flex h-12 items-center justify-center rounded-full border border-white/15 text-[15px] font-semibold text-white">
                 {copy.login}
               </Link>
-              <Link href={LOGIN_URL} onClick={close} className="flex h-12 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold text-white">
+              <Link href={LOGIN_URL} onClick={close} className="flex h-12 items-center justify-center rounded-full bg-white text-[15px] font-semibold text-[#0b0b12]">
                 {trialLabel}
               </Link>
             </div>
