@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { SocialIconLinks } from "@/components/SocialIconLinks";
+import { SiteNav } from "@/components/SiteNav";
 
 const appIcon = "/reacher-assets/contact/nav-logo.png";
 const lightLogo = "/reacher-assets/shared/reacher-logo-light.svg";
@@ -167,49 +168,7 @@ function MobileHeader({ active = "", locale = "en" }: { active?: string; locale?
 }
 
 export function ReacherHeader({ active = "", locale = "en" }: { active?: string; locale?: Locale }) {
-  const { login, navLinks } = chromeCopy[locale];
-  const leftLinks = navLinks.slice(0, 4);
-  const rightLinks = navLinks.slice(4, 8);
-
-  return (
-    <>
-      <MobileHeader active={active} locale={locale} />
-      <header className="pointer-events-none fixed left-0 right-0 top-0 z-50 hidden h-[66px] lg:block">
-        <div className="absolute inset-x-0 top-0 h-[24px] bg-[#050505]" />
-        <svg
-          viewBox="0 0 1440 44"
-          preserveAspectRatio="none"
-          className="absolute left-0 right-0 top-[21px] h-[44px] w-screen fill-[#050505] shadow-[0px_-2px_0px_0px_#050505]"
-          aria-hidden="true"
-        >
-          <path d="M 0 0 C 83 0 68 44 158 44 L 1282 44 C 1372 44 1357 0 1440 0 L 1440 0 L 0 0 Z" />
-        </svg>
-
-        <nav className="pointer-events-auto absolute left-1/2 top-[23px] flex h-[32px] w-[1010px] -translate-x-1/2 flex-nowrap items-center justify-center gap-[22px] whitespace-nowrap text-[12.5px] font-medium leading-none text-white/82">
-          {leftLinks.map(([label, href]) => (
-            <Link key={label} href={localizeHref(href, locale)} className={`inline-flex h-full shrink-0 items-center transition hover:text-white ${active === label ? "font-bold text-white" : ""}`}>
-              {label}
-            </Link>
-          ))}
-          <Link href={localizeHref("/", locale)} aria-label="Reacher home" className="inline-flex h-full w-[82px] shrink-0 items-center justify-center gap-2 rounded-[10px] transition hover:scale-[1.03]">
-            <Image src={appIcon} alt="" width={31} height={31} className="h-[31px] w-[31px] rounded-[8px] object-contain shadow-[0_1px_3px_rgba(16,24,40,0.18)]" priority unoptimized />
-            <span className="text-[12.5px] font-semibold leading-none text-white">Reacher</span>
-          </Link>
-          {rightLinks.map(([label, href]) => (
-            <Link key={label} href={localizeHref(href, locale)} className={`inline-flex h-full shrink-0 items-center transition hover:text-white ${active === label ? "font-bold text-white" : ""}`}>
-              {label}
-            </Link>
-          ))}
-          <Link
-            href="https://portal.reacherapp.com/login"
-            className="inline-flex h-full shrink-0 items-center justify-center rounded-full bg-[#3559e9] px-5 text-[13px] font-medium leading-none text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.25)] transition hover:bg-blue-700"
-          >
-            {login}
-          </Link>
-        </nav>
-      </header>
-    </>
-  );
+  return <SiteNav locale={locale} active={active} />;
 }
 
 export function PageBadge({ children }: { children: React.ReactNode }) {
