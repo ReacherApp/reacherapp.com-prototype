@@ -5,8 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
+import CursorRipple from "@/components/CursorRipple";
 
 type HeroSectionProps = {
   logo: string;
@@ -221,25 +222,11 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
     setActiveShot((current) => (current + 1) % shotCount);
   };
 
-  const glowRef = useRef<HTMLDivElement>(null);
-  const handlePointerMove = (event: React.MouseEvent<HTMLElement>) => {
-    const el = glowRef.current;
-    if (!el) return;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    el.style.background = `radial-gradient(440px circle at ${x}px ${y}px, rgba(53,89,233,0.13), transparent 70%)`;
-    el.style.opacity = "1";
-  };
-  const handlePointerLeave = () => {
-    if (glowRef.current) glowRef.current.style.opacity = "0";
-  };
-
   return (
-    <section className="relative overflow-hidden bg-white text-black" onMouseMove={handlePointerMove} onMouseLeave={handlePointerLeave}>
+    <section className="relative overflow-hidden bg-white text-black">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
       <div className="pointer-events-none absolute left-1/2 top-[-150px] h-[520px] w-[78%] max-w-[980px] -translate-x-1/2 rounded-[100%] bg-[#6f9eff]/15 blur-[120px]" />
-      <div ref={glowRef} aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300" />
+      <CursorRipple />
       <SiteNav locale={locale} />
 
       <Image
