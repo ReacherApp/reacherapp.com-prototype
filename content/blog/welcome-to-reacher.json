@@ -1,0 +1,25 @@
+{
+  "id": "framer-welcome-to-reacher",
+  "title": "Welcome to Reacher!",
+  "slug": "welcome-to-reacher",
+  "description": "We can't wait to keep you informed of Reacher's latest updates, insights, and strategies to help you thrive on TikTok Shop, whether you're a brand or a creator. Continue reading our Welcome to Reacher blog post and remember to subscribe to our email newsletter to be first to know of any future Reacher news!",
+  "author": "Reacher Bora",
+  "authorImage": "/reacher-assets/blogs/bora.png",
+  "publishedAt": "2024-08-26T00:00:00.000Z",
+  "updatedAt": "2024-08-26T00:00:00.000Z",
+  "canonicalPath": "/blog/welcome-to-reacher",
+  "canonicalUrl": "https://www.reacherapp.com/blog/welcome-to-reacher",
+  "wordCount": 165,
+  "images": {
+    "featured": "/reacher-assets/blogs/post-3.png",
+    "hero": "/reacher-assets/blogs/post-3.png",
+    "card": "/reacher-assets/blogs/post-3.png",
+    "alt": "The number one AI assistant for TikTok Shop brands"
+  },
+  "source": {
+    "table": "framer_legacy_blog",
+    "articleId": "welcome-to-reacher",
+    "contentHubUrl": "https://www.reacherapp.com/blogs/blog/welcome-to-reacher"
+  },
+  "contentHtml": "<article class=\"blog-post-container\"><h3 id=\"thank-you-for-checking-out-our-new-blog-page\">Thank you for checking out our new blog page!</h3><p>We&rsquo;re excited to have you join us.</p><p>Each week, we will post a new blog with the latest updates, insights, and strategies to help you thrive on TikTok Shop, whether you're a brand or a creator. You can also <a href=\"https://reacherapp.us22.list-manage.com/subscribe?u=8a5736279b7472f108f1da5c0&id=ec6ac70efa\" target=\"_blank\" rel=\"noopener noreferrer\">sign up for our email newsletters</a> via the blog page if you prefer to get this information directly via email!</p><p>Our blogs are designed to keep you informed about everything happening on TikTok Shop and in the world of social commerce. We&rsquo;ll share actionable strategies, success stories, and tips on how to grow on the platform&mdash;whether you&rsquo;re using paid tools like Reacher or taking the DIY route.</p><p>At Reacher, our mission is to support your journey on TikTok Shop, providing you with valuable knowledge (for free!) and the resources you need to succeed. Whether you&rsquo;re just starting out or looking to take your efforts to the next level, we&rsquo;re here to help.</p><p>If you ever have any questions or just want to chat, don&rsquo;t hesitate to reach out via our contact page. We&rsquo;re here for you, whether you&rsquo;re using our software or not!</p><p>Welcome to the community, and thanks for being part of the Reacher family!</p></article>"
+}

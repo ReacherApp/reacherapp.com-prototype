@@ -1,0 +1,26 @@
+{
+  "id": "framer-welcome-to-reacher-pt",
+  "title": "Bem-vindo ao Reacher!",
+  "slug": "welcome-to-reacher",
+  "description": "Estratégias, novidades e insights para marcas e criadores prosperarem no TikTok Shop.",
+  "author": "Reacher Bora",
+  "authorImage": "/reacher-assets/blogs/bora.png",
+  "publishedAt": "2024-08-26T00:00:00.000Z",
+  "updatedAt": "2024-08-26T00:00:00.000Z",
+  "canonicalPath": "/pt/blog/welcome-to-reacher",
+  "canonicalUrl": "https://www.reacherapp.com/pt/blog/welcome-to-reacher",
+  "wordCount": 76,
+  "images": {
+    "featured": "/reacher-assets/blogs/post-3.png",
+    "hero": "/reacher-assets/blogs/post-3.png",
+    "card": "/reacher-assets/blogs/post-3.png",
+    "alt": "O assistente de IA número um para marcas de TikTok Shop"
+  },
+  "source": {
+    "table": "framer_legacy_blog",
+    "articleId": "welcome-to-reacher",
+    "contentHubUrl": "https://www.reacherapp.com/pt/blogs/blog/welcome-to-reacher",
+    "locale": "pt-BR"
+  },
+  "contentHtml": "<article class=\"blog-post-container\"><p>Bem-vindo ao Reacher. Nosso objetivo é ajudar marcas a construir programas de criadores mais eficientes, previsíveis e escaláveis no TikTok Shop.</p><p>Criadores são um canal de crescimento poderoso, mas a operação pode ficar complexa: descoberta, outreach, amostras, mensagens, campanhas, pagamentos e analytics.</p><p>O Reacher existe para simplificar esse fluxo. Com automação e inteligência, sua equipe consegue falar com mais criadores, organizar relacionamentos e entender o que realmente gera vendas.</p><p>Neste blog, vamos compartilhar atualizações de produto, dicas de TikTok Shop, estratégias de afiliados e exemplos práticos para ajudar sua marca a crescer.</p></article>"
+}
