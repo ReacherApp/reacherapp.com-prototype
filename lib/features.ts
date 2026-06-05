@@ -58,7 +58,7 @@ export const features: Feature[] = [
     image: "/reacher-assets/features/creator-discovery.png",
     whoFor: "Brand and agency teams who need to source the right TikTok Shop creators fast.",
     value:
-      "Reacher's AI Creator Search lets you describe the creator you want in plain English and ranks the database against GMV, engagement, and post-rate signals. Results save to lists that pipe straight into outreach automations.",
+      "Describe the creator you want in plain English, and Reacher ranks the whole database by GMV, engagement, and post rate — then saves your shortlist into outreach.",
     capabilities: [
       "Natural-language search across a multi-million creator database",
       "Ranks creators by GMV, engagement, and post rate",
@@ -77,7 +77,7 @@ export const features: Feature[] = [
     image: "/reacher-assets/features/social-intelligence.png",
     whoFor: "Brands that want to benchmark competitors and find high-GMV creators and content.",
     value:
-      "Social Intelligence lets you search, filter, and benchmark every brand on TikTok Shop by all-time and 28-day GMV, then save targets and launch automations directly from results. It also breaks down the techniques behind top-performing videos.",
+      "Search, filter, and benchmark every brand, creator, and video on TikTok Shop by all-time and 28-day GMV — then save targets and launch automations from the results.",
     capabilities: [
       "All-time and 28-day GMV per brand, creator, and video",
       "AI search across the brand and creator universe",
@@ -96,7 +96,7 @@ export const features: Feature[] = [
     image: "/reacher-assets/features/automated-outreach.png",
     whoFor: "Brands running affiliate recruitment at scale.",
     value:
-      "Outreach Automation handles recruitment across DM, Target Collab, and email, with follow-ups that only chase non-responders and live status on every run. Sequences personalize names, images, and bonus structures automatically.",
+      "Recruit across DM, Target Collab, and email with personalized sequences and smart follow-ups that only chase non-responders — all auto-throttled to platform limits.",
     capabilities: [
       "Native Target Collab, Open Collab, and DM sequences",
       "Email automations backed by a creator-email database",
@@ -115,7 +115,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop halo effect",
     whoFor: "Brand leaders who need to prove the full impact of TikTok content beyond in-app GMV.",
     value:
-      "The Halo Effect view correlates TikTok views with sales on Amazon, Shopify, and retail, using a configurable lag adjustment to attribute delayed conversions. See base sales, incremental revenue, and relationship strength so cross-channel ROI is provable.",
+      "Correlate TikTok views with sales on Amazon, Shopify, and retail, with a configurable lag for delayed conversions — so cross-channel ROI is finally provable.",
     capabilities: [
       "TikTok views vs Amazon, Shopify, and retail sales",
       "Configurable lag adjustment for delayed sales",
@@ -132,9 +132,10 @@ export const features: Feature[] = [
     positioning: "AI Creative Intelligence for TikTok Shop Creators",
     oneLiner: "Turn your top videos into ready-to-share creative briefs.",
     primaryQuery: "tiktok shop creative briefs",
+    image: "/reacher-assets/features/creative-intelligence.png",
     whoFor: "Brand teams who want to turn winning content into repeatable creator briefs.",
     value:
-      "Creative Intelligence recognizes what the top 10% of affiliates do and extracts the selling points, angle, audience, shot styles, lighting, and demonstration techniques behind it. Breakdowns push to creators weekly via Discord.",
+      "Reacher studies your top affiliate videos and extracts the selling points, angle, audience, shot styles, and techniques — then pushes briefs to creators weekly.",
     capabilities: [
       "Identifies what the top ~10% of affiliates do",
       "Extracts selling points, angle, and audience",
@@ -152,7 +153,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop brand intelligence",
     whoFor: "Brands that want to track competitors and recruit their best-performing creators.",
     value:
-      "Brand Intelligence builds a full profile of any brand on TikTok Shop — GMV trends, top products, and the creators behind their growth. One-click target those creators with outreach automations.",
+      "Build a full profile of any brand on TikTok Shop — GMV trends, top products, and the creators behind their growth — then one-click target those creators.",
     capabilities: [
       "Full brand profiles with GMV trends",
       "Top products and best-selling videos per brand",
@@ -171,7 +172,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop creator crm",
     whoFor: "Affiliate operations teams managing large creator rosters.",
     value:
-      "The Creator CRM tracks every creator with handles, products, status, tags, and GMV, with bulk CSV and filters built for ops. A unified inbox spans all handles and lets you send briefs and pull Spark Codes inline.",
+      "Track every creator's status, products, tags, samples, and GMV in one CRM, with a unified inbox that spans all handles and lets you send briefs inline.",
     capabilities: [
       "Every creator with handle, products, status, tags, and GMV",
       "Filters, columns, and bulk CSV for ops teams",
@@ -190,7 +191,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop sample tracking",
     whoFor: "Ops teams processing high volumes of creator sample requests.",
     value:
-      "Sample Request consolidates every stage into one queue with content-completion and expiring-soon flags inline. Auto-approval agents clear low-risk requests by Ideal Creator Profile, post rate, and GMV.",
+      "Run every sample request as one queue, with completion and expiring-soon flags, and auto-approval agents that clear low-risk requests by profile, post rate, and GMV.",
     capabilities: [
       "One queue across every sample stage",
       "Auto-approval by Ideal Creator Profile, post rate, and GMV",
@@ -209,7 +210,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop re-engage creators",
     whoFor: "Brands that want to recover dormant creators without manual chasing.",
     value:
-      "Re-engage automations move creators through your funnel by following up with those who stalled — non-responders, lapsed posters, or unaccepted invites. Set the triggers and Reacher handles the nudges.",
+      "Automatically win back creators who stalled — non-responders, lapsed posters, and unaccepted invites. Set the triggers and Reacher handles the follow-up nudges.",
     capabilities: [
       "Target lapsed posters and non-responders",
       "Automated, sequenced follow-up nudges",
@@ -228,7 +229,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop ai chatbot",
     whoFor: "Brands whose inbound creator volume is too high to answer by hand.",
     value:
-      "The AI Chatbot answers inbound affiliate messages — sample requests, questions, negotiations — in a voice you configure to your brand. It works around the clock so creators never wait.",
+      "Answer inbound creator messages — sample requests, questions, negotiations — in a voice you configure to your brand, around the clock, so creators never wait.",
     capabilities: [
       "Auto-responds to inbound creator messages",
       "Configurable to your brand voice and rules",
@@ -247,7 +248,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop creator community",
     whoFor: "Brands that manage their creator community and want to operate it from one place.",
     value:
-      "Reacher runs your creator community through Discord: link your own server, message creators from the portal, send to channels, and auto-invite top performers. Campaign payouts auto-trigger on GMV thresholds.",
+      "Run your creator community through Discord: message creators from the portal, send to channels, auto-invite top performers, and trigger payouts on GMV thresholds.",
     capabilities: [
       "Message creators directly from the portal",
       "Link your own Discord server and channels",
@@ -266,7 +267,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop gmv max",
     whoFor: "Brands that want to amplify winning creator content with paid budget.",
     value:
-      "GMV Max automates Spark Code retrieval and ad-budget allocation so your highest-performing affiliate videos get amplified automatically. Set the rules and let the system scale what's working.",
+      "Automatically retrieve Spark Codes and allocate ad budget so your highest-performing affiliate videos get amplified. Set the rules and scale what's working.",
     capabilities: [
       "Automated Spark Code retrieval",
       "Ad-budget automation for top content",
@@ -285,7 +286,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop affiliate analytics",
     whoFor: "Brand leaders and analysts who need a single source of truth for affiliate performance.",
     value:
-      "The Dashboard rolls up affiliate GMV, views, GMV per video and per sample, active creators, and videos posted with sparklines and full-funnel counts. Set goals and export top creators, videos, and products.",
+      "Roll up affiliate GMV, views, per-video and per-sample efficiency, active creators, and top content on one screen — with goals and scheduled reports.",
     capabilities: [
       "Total GMV, views, GMV per video and per sample",
       "Top creators, videos, and products — exportable",
@@ -304,7 +305,7 @@ export const features: Feature[] = [
     primaryQuery: "tiktok shop affiliate profitability",
     whoFor: "Finance and growth leads who need program-level P&L, not just GMV.",
     value:
-      "The P&L view nets affiliate GMV against commissions, sample costs, and ad spend so you see real margin, not just top-line GMV. Break profitability down by creator, campaign, and product.",
+      "Net affiliate GMV against commissions, sample costs, and ad spend to see real margin, not just top-line — broken down by creator, campaign, and product.",
     capabilities: [
       "GMV netted against commissions, samples, and ad spend",
       "Profit and margin by creator, campaign, and product",
@@ -323,7 +324,7 @@ export const features: Feature[] = [
     primaryQuery: "reacher ai agent",
     whoFor: "Teams that want answers and actions in natural language instead of clicking through dashboards.",
     value:
-      "The Reacher Agent answers performance questions in plain English, builds tables you can save, and can take actions across your program. It turns your affiliate data into a conversation.",
+      "Ask performance questions in plain English, get tables you can save, and let the agent take action across your program. Your affiliate data, as a conversation.",
     capabilities: [
       "Ask performance questions in natural language",
       "Generates and saves data tables",
@@ -342,7 +343,7 @@ export const features: Feature[] = [
     primaryQuery: "reacher mcp server",
     whoFor: "Technical teams that want their AI tools to read and act on Reacher data.",
     value:
-      "The Reacher MCP server exposes your creators, GMV, and automations to any Model Context Protocol client, so AI tools like Claude and Cursor can query and act on your program directly.",
+      "Expose your creators, GMV, and automations to any MCP client, so AI tools like Claude and Cursor can query and act on your program directly — with scoped access.",
     capabilities: [
       "Model Context Protocol (MCP) server",
       "Works with Claude, Cursor, and MCP clients",
@@ -361,7 +362,7 @@ export const features: Feature[] = [
     primaryQuery: "reacher api",
     whoFor: "Engineering teams integrating Reacher into their own stack.",
     value:
-      "The Reacher API gives your engineers programmatic access to creators, GMV, samples, and automations, so you can sync data and trigger workflows from your own systems.",
+      "Give your engineers programmatic access to creators, GMV, samples, and automations — so you can sync data and trigger workflows from your own systems.",
     capabilities: [
       "Programmatic access to creators and GMV",
       "Trigger and manage automations via API",
@@ -401,7 +402,7 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
     { title: "Decode viral videos", desc: "See the hooks, selling points, and content angle behind top videos.", image: "/reacher-assets/features/social-intelligence-trending.png" },
   ],
   "automated-outreach": [
-    { title: "Build your list", desc: "Pull creators from search or your CRM." },
+    { title: "Build your list", desc: "Add creators three ways — filter the database, pick a CRM group, or upload a saved list.", image: "/reacher-assets/features/automated-outreach-list.png" },
     { title: "Personalize the message", desc: "AI-tuned DMs and collab invites with product cards, bonuses & dynamic fields — previewed in the creator's inbox.", image: "/reacher-assets/features/automated-outreach-sequence.png" },
     { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
   ],
