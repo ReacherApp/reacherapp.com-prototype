@@ -47,7 +47,7 @@ export default async function FeaturePage({ params }: Params) {
   const related = relatedFeatures(slug);
   const steps = featureSteps[slug];
   const cards = featureCards[slug];
-  const cardGradients = ["from-[#fff1df] to-[#ffe4c8]", "from-[#e6f7ec] to-[#d2efdc]", "from-[#e7efff] to-[#dbe7ff]"];
+  const cardGradients = ["from-[#fff1df] to-[#ffe4c8]", "from-[#e6f7ec] to-[#d2efdc]", "from-[#e7efff] to-[#dbe7ff]", "from-[#f1ebff] to-[#e6dcff]"];
   const autoPoints = steps ? distribute(feature.capabilities, steps.length) : [];
   const stepPoints = steps ? steps.map((s, i) => s.points ?? autoPoints[i] ?? []) : [];
   const faqs = [
@@ -119,12 +119,55 @@ export default async function FeaturePage({ params }: Params) {
         </section>
       ) : null}
 
-      {steps ? (
+      {cards ? (
         <section className="bg-[#f7faff] px-6 py-20 md:py-28">
           <div className="mx-auto max-w-6xl">
             <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
             <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
-              {steps[0]?.label ? `Two ways to use ${feature.name}` : steps.length === 3 ? "From setup to results in 3 steps" : `What ${feature.name} does`}
+              {slug === "creator-community" ? "Four ways to engage your creators" : slug === "halo-effect" ? "Measure the halo across every channel" : `What ${feature.name} does`}
+            </h2>
+            <div className={`mx-auto mt-14 grid gap-6 ${cards.length === 4 ? "max-w-4xl md:grid-cols-2" : cards.length >= 3 ? "max-w-6xl md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
+              {cards.map((card, i) => {
+                const CardIcon = card.icon;
+                return CardIcon ? (
+                  <div key={card.title} className="flex h-full flex-col rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_18px_44px_-24px_rgba(16,24,40,0.18)] ring-1 ring-black/[0.02]">
+                    <span className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${cardGradients[i % cardGradients.length]} text-slate-800`}>
+                      <CardIcon size={20} strokeWidth={1.9} />
+                    </span>
+                    <h3 className="mt-4 text-lg font-bold tracking-[-0.01em] text-slate-950">{card.title}</h3>
+                    <p className="mt-1.5 text-[14.5px] leading-7 text-slate-600">{card.desc}</p>
+                    {card.example ? (
+                      <div className="mt-4 rounded-xl bg-slate-50 px-3.5 py-2.5 text-[12.5px] font-medium text-slate-500 ring-1 ring-slate-100">{card.example}</div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <div key={card.title} className="flex flex-col">
+                    <div className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${cardGradients[i % cardGradients.length]} p-12 shadow-[0_18px_44px_-20px_rgba(16,24,40,0.2)] ring-1 ring-black/[0.04]`}>
+                      {card.stat ? (
+                        <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#0fae6e] ring-1 ring-black/5">↗ {card.stat}</span>
+                      ) : null}
+                      {card.image ? (
+                        <Image src={card.image} alt={card.title} width={420} height={150} className="max-h-[54px] w-auto max-w-[72%] object-contain" />
+                      ) : (
+                        <span className="text-2xl font-bold text-slate-700">{card.title}</span>
+                      )}
+                    </div>
+                    <h3 className="mt-6 text-xl font-bold tracking-[-0.01em] text-slate-950">{card.title}</h3>
+                    <p className="mt-2 text-[15px] leading-7 text-slate-600">{card.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {steps ? (
+        <section className="px-6 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl">
+            <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
+            <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
+              {slug === "creator-community" ? "Track every campaign" : steps.length === 2 && steps[0]?.label ? `Two ways to use ${feature.name}` : steps.length === 3 ? "From setup to results in 3 steps" : `What ${feature.name} does`}
             </h2>
             <div className="mt-16 flex flex-col gap-16 md:mt-20 md:gap-24">
               {steps.map((step, i) => (
@@ -153,35 +196,6 @@ export default async function FeaturePage({ params }: Params) {
                       )}
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {cards ? (
-        <section className="bg-[#f7faff] px-6 py-20 md:py-28">
-          <div className="mx-auto max-w-6xl">
-            <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
-            <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
-              Measure the halo across every channel
-            </h2>
-            <div className={`mx-auto mt-14 grid gap-8 ${cards.length >= 3 ? "max-w-6xl md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
-              {cards.map((card, i) => (
-                <div key={card.title} className="flex flex-col">
-                  <div className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${cardGradients[i % 3]} p-12 shadow-[0_18px_44px_-20px_rgba(16,24,40,0.2)] ring-1 ring-black/[0.04]`}>
-                    {card.stat ? (
-                      <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#0fae6e] ring-1 ring-black/5">↗ {card.stat}</span>
-                    ) : null}
-                    {card.image ? (
-                      <Image src={card.image} alt={card.title} width={420} height={150} className="max-h-[54px] w-auto max-w-[72%] object-contain" />
-                    ) : (
-                      <span className="text-2xl font-bold text-slate-700">{card.title}</span>
-                    )}
-                  </div>
-                  <h3 className="mt-6 text-xl font-bold tracking-[-0.01em] text-slate-950">{card.title}</h3>
-                  <p className="mt-2 text-[15px] leading-7 text-slate-600">{card.desc}</p>
                 </div>
               ))}
             </div>

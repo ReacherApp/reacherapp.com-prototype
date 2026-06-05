@@ -16,6 +16,9 @@ import {
   Bot,
   Plug,
   Code,
+  Target,
+  Radio,
+  Trophy,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -251,6 +254,7 @@ export const features: Feature[] = [
     positioning: "Creator Community for TikTok Shop Affiliate Programs",
     oneLiner: "Run your creator community natively through Discord.",
     primaryQuery: "tiktok shop creator community",
+    image: "/reacher-assets/features/creator-community.png",
     whoFor: "Brands that manage their creator community and want to operate it from one place.",
     value:
       "Run your creator community through Discord: message creators from the portal, send to channels, auto-invite top performers, and trigger payouts on GMV thresholds.",
@@ -441,9 +445,7 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "AI replies instantly", desc: "24/7 answers, with human handoff when needed." },
   ],
   "creator-community": [
-    { title: "Link your Discord", desc: "Connect your server and channels." },
-    { title: "Invite top creators", desc: "Auto-add your best performers." },
-    { title: "Reward & retain", desc: "Run campaigns with automated payouts." },
+    { label: "Tracking", title: "Track every campaign in real time", desc: "ROCS, GMV generated, payouts, and a live creator leaderboard — approve payouts and ping creators on Discord without leaving Reacher.", image: "/reacher-assets/features/creator-community-tracking.png", points: [] },
   ],
   "gmv-max": [
     { title: "Spot winning content", desc: "Find your highest-GMV affiliate videos." },
@@ -477,13 +479,19 @@ export const featureSteps: Record<string, Step[]> = {
   ],
 };
 
-export type FeatureCard = { title: string; desc: string; stat?: string; image?: string };
+export type FeatureCard = { title: string; desc: string; stat?: string; image?: string; icon?: LucideIcon; example?: string };
 
 /** 3-card grid (used instead of the alternating steps for some features). */
 export const featureCards: Record<string, FeatureCard[]> = {
   "halo-effect": [
     { title: "Amazon", desc: "See how TikTok views translate into Amazon orders, with a configurable attribution lag.", stat: "+14%", image: "/reacher-assets/features/logos/amazon.png" },
     { title: "Shopify", desc: "Correlate TikTok content with Shopify revenue and measure incremental sales.", stat: "+9%", image: "/reacher-assets/features/logos/shopify.png" },
+  ],
+  "creator-community": [
+    { icon: RefreshCw, title: "Retainer", desc: "Fixed pay per creator with optional GMV bonus tiers — consistent, quality content on a schedule.", example: "20 posts for $1,000/mo + $250 bonus at $5K GMV" },
+    { icon: Target, title: "Challenge", desc: "Tier-based payouts when creators hit GMV, views, or video-count milestones.", example: "$10K+ GMV → $100 · $20K+ → $200" },
+    { icon: Radio, title: "LIVE Challenge", desc: "Reward GMV generated during TikTok LIVE streams with tiered live milestones.", example: "$10K+ live GMV → $250 · $20K+ → $500" },
+    { icon: Trophy, title: "Leaderboard", desc: "Competitive campaigns where top creators win ranked prizes by GMV, views, or videos.", example: "1st $500 · 2nd $300 · 3rd $100" },
   ],
 };
 
