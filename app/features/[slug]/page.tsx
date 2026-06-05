@@ -102,10 +102,10 @@ export default async function FeaturePage({ params }: Params) {
         </div>
       </section>
 
-      <section className="px-6 pb-10">
-        <div className="mx-auto max-w-5xl">
-          <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
-            {feature.image ? (
+      {feature.image ? (
+        <section className="px-6 pb-10">
+          <div className="mx-auto max-w-5xl">
+            <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
               <Image
                 src={feature.image}
                 alt={`${feature.name} in Reacher`}
@@ -114,26 +114,17 @@ export default async function FeaturePage({ params }: Params) {
                 className="h-auto w-full rounded-[16px]"
                 priority
               />
-            ) : (
-              <div className="flex aspect-[16/9] items-center justify-center rounded-[16px] bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
-                <div className="flex flex-col items-center gap-3 text-[#9bb0e6]">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/70 ring-1 ring-[#d7e2fb]">
-                    <Icon size={26} strokeWidth={1.6} />
-                  </span>
-                  <span className="text-sm font-medium tracking-wide">Product preview</span>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {steps ? (
         <section className="bg-[#f7faff] px-6 py-20 md:py-28">
           <div className="mx-auto max-w-6xl">
             <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
             <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
-              From setup to results in 3 steps
+              {steps.length === 3 ? "From setup to results in 3 steps" : `What ${feature.name} does`}
             </h2>
             <div className="mt-16 flex flex-col gap-16 md:mt-20 md:gap-24">
               {steps.map((step, i) => (

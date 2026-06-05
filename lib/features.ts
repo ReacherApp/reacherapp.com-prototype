@@ -171,6 +171,7 @@ export const features: Feature[] = [
     positioning: "Creator CRM for TikTok Shop Affiliate Teams",
     oneLiner: "Track every creator's status, samples, and GMV in one CRM.",
     primaryQuery: "tiktok shop creator crm",
+    image: "/reacher-assets/features/creator-crm.png",
     whoFor: "Affiliate operations teams managing large creator rosters.",
     value:
       "Track every creator's status, products, tags, samples, and GMV in one CRM, with a unified inbox that spans all handles and lets you send briefs inline.",
@@ -376,7 +377,7 @@ export const features: Feature[] = [
 
 export type Step = { title: string; desc: string; image?: string; points?: string[] };
 
-export const featureSteps: Record<string, [Step, Step, Step]> = {
+export const featureSteps: Record<string, Step[]> = {
   "creator-discovery": [
     {
       title: "Search any way you want",
@@ -413,9 +414,8 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
     { title: "Turn it into a brief", desc: "Generate polished image briefs — hooks, selling points, and content ideas — ready to share with creators.", image: "/reacher-assets/features/creative-intelligence-brief.png" },
   ],
   "brand-intelligence": [
-    { title: "Pick a brand", desc: "Search any competitor on TikTok Shop." },
-    { title: "See their engine", desc: "GMV trends, top products, and key creators." },
-    { title: "Recruit their creators", desc: "One-click target them with outreach." },
+    { title: "Know who's actually buying", desc: "Audience demographics by GMV, plus your lookalike and competitor brands — who buys, where revenue concentrates, and how creators retain.", image: "/reacher-assets/features/brand-intelligence-dashboard.png", points: [] },
+    { title: "Let the AI agent analyze competitors", desc: "An agent profiles competitors, finds the creators driving their GMV, and drafts outreach — automatically.", image: "/reacher-assets/features/brand-intelligence-agent.png", points: [] },
   ],
   "creator-crm": [
     { title: "Sync your roster", desc: "Every creator, status, sample, and GMV in one place." },
