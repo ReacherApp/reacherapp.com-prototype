@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export type CaseStudy = {
@@ -37,7 +36,23 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
 
   return (
     <>
-      <div className="mx-auto mt-14 max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20">
+      <div className="mx-auto mt-12 flex max-w-full flex-wrap items-center justify-center gap-1 rounded-[1.4rem] bg-white/12 p-1.5 ring-1 ring-white/25 backdrop-blur-sm sm:max-w-fit sm:rounded-full">
+        {testimonials.map((testimonial, index) => (
+          <button
+            key={testimonial.brand}
+            type="button"
+            aria-label={`Show ${testimonial.brand} case study`}
+            aria-pressed={index === activeIndex}
+            onClick={() => goTo(index)}
+            className={`rounded-full px-4 py-2 text-[13px] font-semibold transition md:text-sm ${
+              index === activeIndex ? "bg-white text-[#0b3bdb] shadow-sm" : "text-white/75 hover:bg-white/10 hover:text-white"
+            }`}
+          >
+            {testimonial.brand}
+          </button>
+        ))}
+      </div>
+      <div className="mx-auto mt-8 max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active.brand}
@@ -81,35 +96,6 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
         </AnimatePresence>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-4">
-        <button
-          type="button"
-          aria-label="Previous case study"
-          onClick={() => goTo(activeIndex - 1)}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-[#2465f6] text-white shadow-lg shadow-blue-950/20 transition hover:scale-105"
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <div className="flex items-center gap-2 px-1">
-          {testimonials.map((testimonial, index) => (
-            <button
-              key={testimonial.brand}
-              type="button"
-              aria-label={`Show ${testimonial.brand} case study`}
-              onClick={() => goTo(index)}
-              className={`h-2 rounded-full transition-all ${index === activeIndex ? "w-6 bg-white" : "w-2 bg-white/45"}`}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          aria-label="Next case study"
-          onClick={() => goTo(activeIndex + 1)}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-[#2465f6] text-white shadow-lg shadow-blue-950/20 transition hover:scale-105"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
     </>
   );
 }
