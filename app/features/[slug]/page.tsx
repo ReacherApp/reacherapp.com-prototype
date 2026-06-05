@@ -102,18 +102,18 @@ export default async function FeaturePage({ params }: Params) {
 
       <section className="px-6 pb-10">
         <div className="mx-auto max-w-5xl">
-          <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
+          <div className="overflow-hidden rounded-[20px] ring-1 ring-slate-200/80 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.2)]">
             {feature.image ? (
               <Image
                 src={feature.image}
                 alt={`${feature.name} in Reacher`}
                 width={2160}
                 height={1200}
-                className="h-auto w-full rounded-[16px]"
+                className="h-auto w-full"
                 priority
               />
             ) : (
-              <div className="flex aspect-[16/9] items-center justify-center rounded-[16px] bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
+              <div className="flex aspect-[16/9] items-center justify-center bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
                 <div className="flex flex-col items-center gap-3 text-[#9bb0e6]">
                   <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/70 ring-1 ring-[#d7e2fb]">
                     <Icon size={26} strokeWidth={1.6} />
@@ -142,16 +142,16 @@ export default async function FeaturePage({ params }: Params) {
                   <div className="w-full md:w-[42%]">
                     <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Step {i + 1}</span>
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
-                    <p className="mt-3 text-[16px] leading-7 text-slate-600">
+                    <p className="mt-4 text-[16px] leading-7 text-slate-600">
                       {[step.desc, ...(stepPoints[i] ?? []).map((p) => (/[.!?]$/.test(p) ? p : `${p}.`))].join(" ")}
                     </p>
                   </div>
                   <div className="w-full md:w-[58%]">
-                    <div className="overflow-hidden rounded-[20px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2 shadow-[0_24px_60px_-22px_rgba(16,24,40,0.22)] ring-1 ring-black/[0.03]">
+                    <div className="overflow-hidden rounded-[20px] ring-1 ring-slate-200/80 shadow-[0_24px_60px_-22px_rgba(16,24,40,0.16)]">
                       {step.image ? (
-                        <Image src={step.image} alt={`${step.title} — ${feature.name}`} width={1600} height={1000} className="h-auto w-full rounded-[14px]" />
+                        <Image src={step.image} alt={`${step.title} — ${feature.name}`} width={1600} height={1000} className="h-auto w-full" />
                       ) : (
-                        <div className="flex aspect-[16/10] items-center justify-center rounded-[14px] bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
+                        <div className="flex aspect-[16/10] items-center justify-center bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
                           <div className="flex flex-col items-center gap-2 text-[#9bb0e6]">
                             <Icon size={26} strokeWidth={1.6} />
                             <span className="text-xs font-medium tracking-wide">Step {i + 1} preview</span>
