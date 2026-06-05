@@ -425,7 +425,7 @@ export const featureSteps: Record<string, Step[]> = {
   ],
   "sample-management": [
     { title: "Requests come in", desc: "Every sample request lands in one queue." },
-    { title: "Auto-approve the rest", desc: "Agents clear low-risk requests by profile & GMV." },
+    { title: "Auto-approve or deny by rule", desc: "Set min GMV, engagement, followers, and post rate — or always approve from your lists and CSVs.", image: "/reacher-assets/features/sample-management-autoapprove.png" },
     { title: "Track to content", desc: "Follow each sample from shipped to posted." },
   ],
   "re-engage": [
