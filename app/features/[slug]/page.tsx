@@ -9,6 +9,19 @@ import { features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures 
 
 type Params = { params: Promise<{ slug: string }> };
 
+/** spread the feature's capabilities across its steps, in order */
+function distribute<T>(arr: T[], n: number): T[][] {
+  const out: T[][] = Array.from({ length: n }, () => []);
+  const base = Math.floor(arr.length / n);
+  const rem = arr.length % n;
+  let idx = 0;
+  for (let s = 0; s < n; s++) {
+    const count = base + (s < rem ? 1 : 0);
+    for (let k = 0; k < count; k++) out[s].push(arr[idx++]);
+  }
+  return out;
+}
+
 export function generateStaticParams() {
   return features.map((f) => ({ slug: f.slug }));
 }
@@ -33,6 +46,7 @@ export default async function FeaturePage({ params }: Params) {
   const groupLabel = groupLabelForSlug(slug) ?? "Product";
   const related = relatedFeatures(slug);
   const steps = featureSteps[slug];
+  const stepPoints = steps ? distribute(feature.capabilities, steps.length) : [];
   const faqs = [
     { q: `What is ${feature.name}?`, a: feature.value },
     { q: `Who is ${feature.name} for?`, a: feature.whoFor },
@@ -129,6 +143,18 @@ export default async function FeaturePage({ params }: Params) {
                     <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Step {i + 1}</span>
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
                     <p className="mt-3 text-[16px] leading-7 text-slate-600">{step.desc}</p>
+                    {stepPoints[i]?.length ? (
+                      <ul className="mt-5 space-y-2.5">
+                        {stepPoints[i].map((point) => (
+                          <li key={point} className="flex items-start gap-2.5 text-[14.5px] leading-6 text-slate-700">
+                            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-white">
+                              <Check size={12} strokeWidth={3} />
+                            </span>
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                   <div className="w-full md:w-[58%]">
                     <div className="overflow-hidden rounded-[20px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2 shadow-[0_24px_60px_-22px_rgba(16,24,40,0.22)] ring-1 ring-black/[0.03]">
@@ -152,25 +178,6 @@ export default async function FeaturePage({ params }: Params) {
       ) : null}
 
       <section className="px-6 py-20 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">Capabilities</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
-            Everything {feature.name} gives your team
-          </h2>
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
-            {feature.capabilities.map((cap) => (
-              <div key={cap} className="flex items-start gap-3.5 rounded-2xl border border-slate-100 bg-[#f8faff] p-5 ring-1 ring-black/[0.02]">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-white">
-                  <Check size={15} strokeWidth={3} />
-                </span>
-                <p className="text-[16px] leading-7 text-slate-700">{cap}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f7faff] px-6 py-20 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-balance text-2xl font-medium leading-9 tracking-[-0.01em] text-slate-800 md:text-[26px] md:leading-10">
             {feature.value}
