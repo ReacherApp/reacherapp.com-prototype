@@ -406,11 +406,6 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
     { title: "Personalize the message", desc: "AI-tuned DMs and collab invites with product cards, bonuses & dynamic fields — previewed in the creator's inbox.", image: "/reacher-assets/features/automated-outreach-sequence.png" },
     { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
   ],
-  "halo-effect": [
-    { title: "Connect your channels", desc: "Link Amazon, Shopify, and retail sales." },
-    { title: "Set the lag window", desc: "Tune attribution for delayed conversions." },
-    { title: "See the lift", desc: "Measure incremental revenue from TikTok content." },
-  ],
   "creative-intelligence": [
     { title: "Scan top videos", desc: "Reacher analyzes your best-performing content." },
     { title: "Extract the formula", desc: "Get selling points, angles, and shot styles." },
@@ -475,6 +470,17 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
     { title: "Get your keys", desc: "Authenticate with the Reacher API." },
     { title: "Pull the data", desc: "Access creators, GMV, samples & automations." },
     { title: "Build & automate", desc: "Sync to your stack and trigger workflows." },
+  ],
+};
+
+export type FeatureCard = { title: string; desc: string; stat?: string; image?: string };
+
+/** 3-card grid (used instead of the alternating steps for some features). */
+export const featureCards: Record<string, FeatureCard[]> = {
+  "halo-effect": [
+    { title: "Amazon", desc: "See how TikTok views translate into Amazon orders, with a configurable attribution lag.", stat: "+14%" },
+    { title: "Shopify", desc: "Correlate TikTok content with Shopify revenue and measure incremental sales.", stat: "+9%" },
+    { title: "Retail & wholesale", desc: "Track the halo of TikTok content on in-store and retail sell-through.", stat: "+22%" },
   ],
 };
 

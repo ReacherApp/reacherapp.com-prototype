@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import { localizedAlternates } from "@/lib/seo";
-import { features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
+import { featureCards, features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -46,6 +46,8 @@ export default async function FeaturePage({ params }: Params) {
   const groupLabel = groupLabelForSlug(slug) ?? "Product";
   const related = relatedFeatures(slug);
   const steps = featureSteps[slug];
+  const cards = featureCards[slug];
+  const cardGradients = ["from-[#fff1df] to-[#ffe4c8]", "from-[#e6f7ec] to-[#d2efdc]", "from-[#e7efff] to-[#dbe7ff]"];
   const autoPoints = steps ? distribute(feature.capabilities, steps.length) : [];
   const stepPoints = steps ? steps.map((s, i) => s.points ?? autoPoints[i] ?? []) : [];
   const faqs = [
@@ -167,6 +169,40 @@ export default async function FeaturePage({ params }: Params) {
         </section>
       ) : null}
 
+      {cards ? (
+        <section className="bg-[#f7faff] px-6 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl">
+            <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
+            <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
+              Measure the halo across every channel
+            </h2>
+            <div className="mt-14 grid gap-8 md:grid-cols-3">
+              {cards.map((card, i) => (
+                <div key={card.title} className="flex flex-col">
+                  <div className="overflow-hidden rounded-2xl shadow-[0_18px_44px_-20px_rgba(16,24,40,0.2)] ring-1 ring-black/[0.04]">
+                    {card.image ? (
+                      <Image src={card.image} alt={card.title} width={800} height={600} className="h-auto w-full" />
+                    ) : (
+                      <div className={`flex aspect-[4/3] flex-col justify-between bg-gradient-to-br ${cardGradients[i % 3]} p-6`}>
+                        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/75 px-3 py-1 text-[12px] font-bold text-slate-700 ring-1 ring-black/5">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#0fae6e]" /> {card.title}
+                        </span>
+                        <div>
+                          <div className="text-[40px] font-extrabold leading-none tracking-[-0.02em] text-slate-900">{card.stat}</div>
+                          <div className="mt-1.5 text-[12px] font-medium text-slate-500">incremental sales from TikTok</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="mt-6 text-xl font-bold tracking-[-0.01em] text-slate-950">{card.title}</h3>
+                  <p className="mt-2 text-[15px] leading-7 text-slate-600">{card.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="px-6 py-20 md:py-24">
         <figure className="mx-auto max-w-4xl text-center">
           <span aria-hidden className="block font-serif text-[64px] leading-[0.5] text-[#3559e9]/25">&ldquo;</span>
@@ -227,63 +263,27 @@ export default async function FeaturePage({ params }: Params) {
         </div>
       </section>
 
-      <section className="px-6 pb-28 pt-12">
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0b55f4] via-[#3559e9] to-[#335CFF] px-6 py-20 text-center text-white md:py-24">
-          {/* ambient glow + dot texture */}
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="absolute -left-16 -top-20 h-72 w-72 rounded-full bg-[#04C8F9]/25 blur-3xl" />
-            <div className="absolute -bottom-24 -right-12 h-80 w-80 rounded-full bg-[#9bb8ff]/30 blur-3xl" />
-            <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1.5px)", backgroundSize: "22px 22px" }} />
-          </div>
-          {/* floating commerce collage (large screens only) */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
-            <div className="absolute left-3 top-10 w-[150px] -rotate-[7deg] rounded-2xl bg-white p-3 text-left shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
-              <div className="flex items-center gap-2">
-                <div className="h-9 w-9 rounded-full bg-gradient-to-br from-[#ff5e7e] to-[#ffc06b]" />
-                <div className="space-y-1"><div className="h-2 w-14 rounded bg-slate-200" /><div className="h-2 w-9 rounded bg-slate-100" /></div>
-              </div>
-              <div className="mt-2.5 text-[17px] font-extrabold leading-none text-slate-900">111K <span className="text-[11px] font-medium text-slate-400">followers</span></div>
-            </div>
-            <div className="absolute right-3 top-8 w-[140px] rotate-[7deg] rounded-2xl bg-white p-2.5 text-left shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
-              <div className="h-[64px] w-full rounded-xl bg-gradient-to-br from-[#dbe7ff] to-[#f3f6ff]" />
-              <div className="mt-2 flex items-center justify-between">
-                <span className="text-[13px] font-bold text-slate-900">$24 <span className="text-[10px] font-medium text-emerald-500">FREE</span></span>
-                <span className="rounded-full bg-[#eafff3] px-2 py-0.5 text-[10px] font-bold text-[#0fae6e]">GMV ↑</span>
-              </div>
-            </div>
-            <div className="absolute bottom-12 left-2 w-[120px] rotate-[5deg] rounded-2xl bg-white p-2 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
-              <div className="relative h-[90px] w-full overflow-hidden rounded-xl bg-gradient-to-br from-[#ffd2e0] to-[#cfe0ff]">
-                <span className="absolute inset-0 grid place-items-center"><span className="grid h-9 w-9 place-items-center rounded-full bg-white/90 shadow"><span className="ml-0.5 h-0 w-0 border-y-[6px] border-l-[10px] border-y-transparent border-l-[#3559e9]" /></span></span>
-                <span className="absolute bottom-1 right-1 rounded bg-black/55 px-1.5 py-0.5 text-[9px] font-semibold text-white">9.4M</span>
-              </div>
-            </div>
-            <div className="absolute bottom-16 right-4 w-[148px] -rotate-[6deg] rounded-2xl bg-white px-3 py-2.5 text-left shadow-[0_20px_40px_-12px_rgba(0,0,0,0.35)] ring-1 ring-black/5">
-              <div className="flex items-baseline gap-1.5"><span className="text-[16px] font-extrabold text-slate-900">$2.4M</span><span className="text-[11px] font-bold text-[#0fae6e]">+38%</span></div>
-              <div className="mt-0.5 text-[10px] font-medium text-slate-400">GMV this month</div>
-            </div>
-          </div>
-          {/* content */}
-          <div className="relative">
-            <h2 className="mx-auto max-w-2xl text-balance text-3xl font-bold tracking-[-0.03em] md:text-5xl">
-              Grow TikTok Shop revenue on autopilot
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-pretty text-lg text-white/85">
-              Join 1000+ brands using Reacher to manage every creator relationship.
-            </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
-                href="https://portal.reacherapp.com/login"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-7 text-[15px] font-semibold !text-white transition hover:bg-white/10"
-              >
-                Get 14 day free trial
-              </Link>
-              <Link
-                href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold !text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
-              >
-                Book a demo
-              </Link>
-            </div>
+      <section className="bg-[#07131f] px-6 py-28 text-center text-white md:py-36">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mx-auto max-w-2xl text-balance text-4xl font-bold tracking-[-0.03em] md:text-6xl">
+            Grow TikTok Shop revenue on autopilot
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-white/60 md:text-xl">
+            Join 1000+ brands using Reacher to manage every creator relationship.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="https://portal.reacherapp.com/login"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 px-7 text-[15px] font-semibold !text-white transition hover:bg-white/10"
+            >
+              Get 14 day free trial
+            </Link>
+            <Link
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold !text-white shadow-[0_12px_28px_rgba(53,89,233,0.35)] transition hover:bg-blue-600"
+            >
+              Book a demo
+            </Link>
           </div>
         </div>
       </section>
