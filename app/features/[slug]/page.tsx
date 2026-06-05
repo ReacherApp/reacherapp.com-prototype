@@ -119,6 +119,17 @@ export default async function FeaturePage({ params }: Params) {
         </section>
       ) : null}
 
+      {feature.showcase ? (
+        <section className="px-6 pb-8 pt-4">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-center text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[30px]">{feature.showcase.heading}</h2>
+            <div className="mt-9 overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
+              <Image src={feature.showcase.image} alt={`${feature.name} — ${feature.showcase.heading}`} width={2160} height={1400} className="h-auto w-full rounded-[16px]" />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {cards ? (
         <section className="bg-[#f7faff] px-6 py-20 md:py-28">
           <div className="mx-auto max-w-6xl">

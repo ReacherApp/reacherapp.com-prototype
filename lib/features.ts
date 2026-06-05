@@ -35,6 +35,8 @@ export type Feature = {
   capabilities: string[];
   /** product screenshot, e.g. /reacher-assets/features/<slug>.png */
   image?: string;
+  /** optional second showcase image with its own heading (no steps) */
+  showcase?: { heading: string; image: string };
 };
 
 export type NavGroup = { label: string; slugs: string[] };
@@ -333,6 +335,7 @@ export const features: Feature[] = [
     oneLiner: "Ask anything about your creators, competitors, and GMV.",
     primaryQuery: "reacher ai agent",
     image: "/reacher-assets/features/reacher-agent.png",
+    showcase: { heading: "From one prompt to a full report", image: "/reacher-assets/features/reacher-agent-report.png" },
     whoFor: "Teams that want answers and actions in natural language instead of clicking through dashboards.",
     value:
       "Ask performance questions in plain English, get tables you can save, and let the agent take action across your program. Your affiliate data, as a conversation.",
@@ -371,6 +374,7 @@ export const features: Feature[] = [
     positioning: "Reacher API for TikTok Shop Affiliate Data",
     oneLiner: "Build on Reacher's creator and GMV data via API.",
     primaryQuery: "reacher api",
+    image: "/reacher-assets/features/api.png",
     whoFor: "Engineering teams integrating Reacher into their own stack.",
     value:
       "Give your engineers programmatic access to creators, GMV, samples, and automations — so you can sync data and trigger workflows from your own systems.",
