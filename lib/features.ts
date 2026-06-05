@@ -332,6 +332,7 @@ export const features: Feature[] = [
     positioning: "Reacher AI Agent for Affiliate Operations",
     oneLiner: "Ask anything about your creators, competitors, and GMV.",
     primaryQuery: "reacher ai agent",
+    image: "/reacher-assets/features/reacher-agent.png",
     whoFor: "Teams that want answers and actions in natural language instead of clicking through dashboards.",
     value:
       "Ask performance questions in plain English, get tables you can save, and let the agent take action across your program. Your affiliate data, as a conversation.",
