@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import { localizedAlternates } from "@/lib/seo";
 import { features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
@@ -33,6 +33,27 @@ export default async function FeaturePage({ params }: Params) {
   const groupLabel = groupLabelForSlug(slug) ?? "Product";
   const related = relatedFeatures(slug);
   const steps = featureSteps[slug];
+  const faqs = [
+    { q: `What is ${feature.name}?`, a: feature.value },
+    { q: `Who is ${feature.name} for?`, a: feature.whoFor },
+    {
+      q: "Is Reacher safe for my TikTok Shop?",
+      a: "Yes. Reacher is an official TikTok Shop Partner and complies with TikTok Shop's terms — all outreach is auto-throttled to platform limits.",
+    },
+    {
+      q: "How quickly can I get started?",
+      a: "Most teams are up and running the same day. Book a demo or start a 14-day free trial to see it on your own shop.",
+    },
+  ];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-black">
@@ -190,6 +211,24 @@ export default async function FeaturePage({ params }: Params) {
           </div>
         </section>
       ) : null}
+
+      <section className="bg-[#f7faff] px-6 py-20 md:py-24">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <div className="mx-auto max-w-3xl">
+          <h2 className="text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">Everything you need to know</h2>
+          <div className="mt-10 divide-y divide-slate-200/70 overflow-hidden rounded-2xl border border-slate-200/70 bg-white ring-1 ring-black/[0.02]">
+            {faqs.map((f) => (
+              <details key={f.q} className="group px-6 py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[16px] font-semibold text-slate-950 [&::-webkit-details-marker]:hidden">
+                  {f.q}
+                  <ChevronDown size={18} className="shrink-0 text-slate-400 transition group-open:rotate-180" />
+                </summary>
+                <p className="mt-3 text-[15px] leading-7 text-slate-600">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0b55f4] via-[#3559e9] to-[#335CFF] px-6 py-16 text-center text-white">
