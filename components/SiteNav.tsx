@@ -193,7 +193,7 @@ function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: 
             <Link
               key={label}
               href={localizeHref(href, locale)}
-              className={`shrink-0 rounded-full px-3 py-2 text-[13.5px] font-medium transition hover:bg-[#f2f4f7] hover:text-[#101828] ${active === label ? "bg-[#f2f4f7] text-[#101828]" : "text-[#475467]"}`}
+              className={`shrink-0 rounded-full px-3 py-2 text-[13.5px] font-medium transition hover:bg-[#f2f4f7] hover:!text-[#101828] ${active === label ? "bg-[#f2f4f7] !text-[#101828]" : "!text-[#475467]"}`}
             >
               {label}
             </Link>
