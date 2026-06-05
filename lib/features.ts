@@ -303,6 +303,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Affiliate Analytics Dashboard",
     oneLiner: "Every affiliate metric, GMV, and top creator on one screen.",
     primaryQuery: "tiktok shop affiliate analytics",
+    image: "/reacher-assets/features/dashboard.png",
     whoFor: "Brand leaders and analysts who need a single source of truth for affiliate performance.",
     value:
       "Roll up affiliate GMV, views, per-video and per-sample efficiency, active creators, and top content on one screen — with goals and scheduled reports.",
