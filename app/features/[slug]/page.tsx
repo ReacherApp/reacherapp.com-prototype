@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import { localizedAlternates } from "@/lib/seo";
 import { featureCards, features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
@@ -115,6 +115,19 @@ export default async function FeaturePage({ params }: Params) {
                 priority
               />
             </div>
+            {feature.heroCta ? (
+              <div className="mt-7 flex justify-center">
+                <a
+                  href={feature.heroCta.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#3559e9] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(53,89,233,0.6)] transition hover:bg-[#2c4cd6]"
+                >
+                  {feature.heroCta.label}
+                  <ArrowUpRight size={17} strokeWidth={2.2} />
+                </a>
+              </div>
+            ) : null}
           </div>
         </section>
       ) : null}

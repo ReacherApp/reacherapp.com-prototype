@@ -37,6 +37,8 @@ export type Feature = {
   image?: string;
   /** optional second showcase image with its own heading (no steps) */
   showcase?: { heading: string; image: string };
+  /** optional CTA shown under the hero image (e.g. open a connector) */
+  heroCta?: { label: string; href: string };
 };
 
 export type NavGroup = { label: string; slugs: string[] };
@@ -361,6 +363,7 @@ export const features: Feature[] = [
     oneLiner: "Connect Reacher to Claude, Cursor, and any MCP client.",
     primaryQuery: "reacher mcp server",
     image: "/reacher-assets/features/mcp.png",
+    heroCta: { label: "Open Claude.ai Connectors", href: "https://claude.ai/settings/connectors" },
     whoFor: "Technical teams that want their AI tools to read and act on Reacher data.",
     value:
       "Expose your creators, GMV, and automations to any MCP client, so AI tools like Claude and Cursor can query and act on your program directly — with scoped access.",
