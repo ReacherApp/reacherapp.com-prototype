@@ -126,10 +126,7 @@ export default async function FeaturePage({ params }: Params) {
                   className={`flex flex-col items-center gap-8 md:flex-row md:gap-14 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                 >
                   <div className="w-full md:w-[42%]">
-                    <div className="flex items-center gap-2.5">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef3ff] text-[14px] font-bold text-[#3559e9]">{i + 1}</span>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#98a2b3]">Step {i + 1}</span>
-                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Step {i + 1}</span>
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
                     <p className="mt-3 text-[16px] leading-7 text-slate-600">{step.desc}</p>
                   </div>
