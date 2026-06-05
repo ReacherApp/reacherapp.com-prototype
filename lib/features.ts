@@ -421,7 +421,7 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "Turn it into a brief", desc: "Generate polished image briefs — hooks, selling points, and content ideas — ready to share with creators.", image: "/reacher-assets/features/creative-intelligence-brief.png" },
   ],
   "brand-intelligence": [
-    { label: "Dashboard", title: "Explore it yourself", desc: "A self-serve dashboard: audience demographics by GMV, plus your lookalike and competitor brands — who buys and where revenue concentrates.", image: "/reacher-assets/features/brand-intelligence-dashboard.png", points: [] },
+    { label: "Dashboard", title: "Explore it yourself", desc: "A self-serve dashboard: how your roster is sourced across AI Creator Search and Social Intelligence, commission-rate distribution, and pre-scoped recommended lists.", image: "/reacher-assets/features/brand-intelligence-sourcing.png", points: [] },
     { label: "AI Agent", title: "Or ask the AI agent", desc: "An agent profiles competitors, finds the creators driving their GMV, and drafts outreach — automatically.", image: "/reacher-assets/features/brand-intelligence-agent.png", points: [] },
   ],
   "creator-crm": [
