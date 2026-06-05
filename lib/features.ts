@@ -152,6 +152,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Brand Intelligence & Competitor Tracking",
     oneLiner: "Profile any brand's GMV, top products, and creators.",
     primaryQuery: "tiktok shop brand intelligence",
+    image: "/reacher-assets/features/brand-intelligence-dashboard.png",
     whoFor: "Brands that want to track competitors and recruit their best-performing creators.",
     value:
       "Build a full profile of any brand on TikTok Shop — GMV trends, top products, and the creators behind their growth — then one-click target those creators.",
@@ -376,7 +377,7 @@ export const features: Feature[] = [
   },
 ];
 
-export type Step = { title: string; desc: string; image?: string; points?: string[] };
+export type Step = { title: string; desc: string; image?: string; points?: string[]; label?: string };
 
 export const featureSteps: Record<string, Step[]> = {
   "creator-discovery": [
@@ -415,16 +416,16 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "Turn it into a brief", desc: "Generate polished image briefs — hooks, selling points, and content ideas — ready to share with creators.", image: "/reacher-assets/features/creative-intelligence-brief.png" },
   ],
   "brand-intelligence": [
-    { title: "Know who's actually buying", desc: "Audience demographics by GMV, plus your lookalike and competitor brands — who buys, where revenue concentrates, and how creators retain.", image: "/reacher-assets/features/brand-intelligence-dashboard.png", points: [] },
-    { title: "Let the AI agent analyze competitors", desc: "An agent profiles competitors, finds the creators driving their GMV, and drafts outreach — automatically.", image: "/reacher-assets/features/brand-intelligence-agent.png", points: [] },
+    { label: "Dashboard", title: "Explore it yourself", desc: "A self-serve dashboard: audience demographics by GMV, plus your lookalike and competitor brands — who buys and where revenue concentrates.", image: "/reacher-assets/features/brand-intelligence-dashboard.png", points: [] },
+    { label: "AI Agent", title: "Or ask the AI agent", desc: "An agent profiles competitors, finds the creators driving their GMV, and drafts outreach — automatically.", image: "/reacher-assets/features/brand-intelligence-agent.png", points: [] },
   ],
   "creator-crm": [
     { title: "Sync your roster", desc: "Every creator, status, sample, and GMV in one place." },
     { title: "Segment & tag", desc: "Filter by activity, products, and performance." },
-    { title: "Act from the inbox", desc: "Message, send briefs, and pull Spark Codes inline." },
+    { title: "Act from the inbox", desc: "Reply to every creator's DMs in one inbox — unread, unreplied, filtered by tag, product, and GMV — without leaving Reacher.", image: "/reacher-assets/features/creator-crm-inbox.png" },
   ],
   "sample-management": [
-    { title: "Requests come in", desc: "Every sample request lands in one queue." },
+    { title: "Set quotas & ideal profiles", desc: "Cap monthly samples per product and save reusable Ideal Creator Profiles to filter the queue.", image: "/reacher-assets/features/sample-management-config.png" },
     { title: "Auto-approve or deny by rule", desc: "Set min GMV, engagement, followers, and post rate — or always approve from your lists and CSVs.", image: "/reacher-assets/features/sample-management-autoapprove.png" },
     { title: "Track to content", desc: "Follow each sample from shipped to posted." },
   ],

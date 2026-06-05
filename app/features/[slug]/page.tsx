@@ -124,7 +124,7 @@ export default async function FeaturePage({ params }: Params) {
           <div className="mx-auto max-w-6xl">
             <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
             <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
-              {steps.length === 3 ? "From setup to results in 3 steps" : `What ${feature.name} does`}
+              {steps[0]?.label ? `Two ways to use ${feature.name}` : steps.length === 3 ? "From setup to results in 3 steps" : `What ${feature.name} does`}
             </h2>
             <div className="mt-16 flex flex-col gap-16 md:mt-20 md:gap-24">
               {steps.map((step, i) => (
@@ -133,7 +133,7 @@ export default async function FeaturePage({ params }: Params) {
                   className={`flex flex-col items-center gap-8 md:flex-row md:gap-14 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                 >
                   <div className="w-full md:w-[42%]">
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Step {i + 1}</span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">{step.label ?? `Step ${i + 1}`}</span>
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
                     <p className="mt-4 text-[16px] leading-7 text-slate-600">
                       {[step.desc, ...(stepPoints[i] ?? []).map((p) => (/[.!?]$/.test(p) ? p : `${p}.`))].join(" ")}
