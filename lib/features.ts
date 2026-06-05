@@ -93,6 +93,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Affiliate Outreach Automation",
     oneLiner: "Recruit thousands of creators a day across DM, collab, and email.",
     primaryQuery: "tiktok shop affiliate outreach",
+    image: "/reacher-assets/features/automated-outreach.png",
     whoFor: "Brands running affiliate recruitment at scale.",
     value:
       "Outreach Automation handles recruitment across DM, Target Collab, and email, with follow-ups that only chase non-responders and live status on every run. Sequences personalize names, images, and bonus structures automatically.",
