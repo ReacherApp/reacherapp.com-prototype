@@ -4,31 +4,28 @@ import { useEffect, useRef } from "react";
 
 type Particle = { x: number; y: number; vx: number; vy: number; life: number; size: number; hue: number };
 
-/**
- * Replaces the cursor with a 🚀 over the hero and emits a fading particle trail.
- */
-export default function RocketCursor() {
+/** Site-wide 🚀 cursor with a particle trail. Rendered once in the root layout. */
+export default function GlobalCursor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rocketRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const rocket = rocketRef.current;
-    const parent = canvas?.parentElement;
     const ctx = canvas?.getContext("2d");
-    if (!canvas || !rocket || !parent || !ctx) return;
+    if (!canvas || !rocket || !ctx) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (window.matchMedia("(hover: none)").matches) return; // skip touch devices
 
-    parent.style.cursor = "none";
+    const html = document.documentElement;
+    html.classList.add("rocket-cursor");
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
     let h = 0;
     const resize = () => {
-      const r = parent.getBoundingClientRect();
-      w = r.width;
-      h = r.height;
+      w = window.innerWidth;
+      h = window.innerHeight;
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       canvas.style.width = `${w}px`;
@@ -36,8 +33,7 @@ export default function RocketCursor() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(parent);
+    window.addEventListener("resize", resize);
 
     let mx = w / 2;
     let my = h / 2;
@@ -46,21 +42,20 @@ export default function RocketCursor() {
     let prevRx = rx;
     let prevRy = ry;
     let angle = -Math.PI / 2;
-    let inside = false;
+    let active = false;
 
     const onMove = (event: MouseEvent) => {
-      const r = parent.getBoundingClientRect();
-      mx = event.clientX - r.left;
-      my = event.clientY - r.top;
-      inside = true;
+      mx = event.clientX;
+      my = event.clientY;
+      active = true;
       rocket.style.opacity = "1";
     };
     const onLeave = () => {
-      inside = false;
+      active = false;
       rocket.style.opacity = "0";
     };
-    parent.addEventListener("mousemove", onMove);
-    parent.addEventListener("mouseleave", onLeave);
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
 
     const particles: Particle[] = [];
     let raf = 0;
@@ -71,10 +66,9 @@ export default function RocketCursor() {
       const dy = ry - prevRy;
       const speed = Math.hypot(dx, dy);
       if (speed > 0.4) angle = Math.atan2(dy, dx);
-      // 🚀 nose points up-right (-45°); rotate so it faces travel direction
       rocket.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) rotate(${angle + Math.PI / 4}rad)`;
 
-      const emit = inside ? Math.min(5, Math.floor(speed / 1.5) + 1) : 0;
+      const emit = active ? Math.min(5, Math.floor(speed / 1.5) + 1) : 0;
       for (let i = 0; i < emit; i++) {
         particles.push({
           x: rx - Math.cos(angle) * 11 + (Math.random() - 0.5) * 7,
@@ -112,20 +106,20 @@ export default function RocketCursor() {
 
     return () => {
       cancelAnimationFrame(raf);
-      parent.removeEventListener("mousemove", onMove);
-      parent.removeEventListener("mouseleave", onLeave);
-      ro.disconnect();
-      parent.style.cursor = "";
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      html.classList.remove("rocket-cursor");
     };
   }, []);
 
   return (
     <>
-      <canvas ref={canvasRef} aria-hidden className="pointer-events-none absolute inset-0 z-[2]" />
+      <canvas ref={canvasRef} aria-hidden className="pointer-events-none fixed inset-0 z-[9998]" />
       <div
         ref={rocketRef}
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 z-[45] select-none text-[26px] leading-none opacity-0 will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] select-none text-[26px] leading-none opacity-0 will-change-transform"
         style={{ filter: "drop-shadow(0 2px 5px rgba(16,24,40,0.28))" }}
       >
         🚀

@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Fragment_Mono, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { localizedAlternates, metadataBase } from "@/lib/seo";
+import GlobalCursor from "@/components/GlobalCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-reacher-bg text-white">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }} />
         {children}
+        <GlobalCursor />
         <Analytics />
         <Script src="//cdn.trackdesk.com/tracking.js" strategy="afterInteractive" />
         <Script src="https://cdn.firstpromoter.com/fpr.js" strategy="afterInteractive" />

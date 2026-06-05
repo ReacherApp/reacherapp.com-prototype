@@ -7,7 +7,6 @@ import type { Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteNav } from "@/components/SiteNav";
-import RocketCursor from "@/components/RocketCursor";
 import MouseAmbient from "@/components/MouseAmbient";
 
 type HeroSectionProps = {
@@ -230,7 +229,6 @@ export default function HeroSection({ logo, ycIcon, heroShots, brandLogos, local
     <section className="relative overflow-hidden bg-white text-black">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#a9ccff_0%,#c3dbff_20%,#dceaff_40%,#eef5ff_62%,#ffffff_85%)]" />
       <MouseAmbient />
-      <RocketCursor />
       <SiteNav locale={locale} />
 
       <Image

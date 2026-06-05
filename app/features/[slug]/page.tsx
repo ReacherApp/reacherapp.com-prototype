@@ -61,11 +61,12 @@ export default async function FeaturePage({ params }: Params) {
               Get 14 day free trial
             </Link>
           </div>
+          <p className="mt-7 text-[13px] font-medium text-slate-400">Trusted by 1000+ brands · Backed by Y Combinator</p>
         </div>
       </section>
 
       <section className="px-6">
-        <div className="mx-auto -mt-6 max-w-5xl md:-mt-8">
+        <div className="mx-auto max-w-5xl">
           <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
             {feature.image ? (
               <Image
@@ -99,10 +100,13 @@ export default async function FeaturePage({ params }: Params) {
             </h2>
             <div className="mt-12 grid gap-5 md:grid-cols-3">
               {steps.map((step, i) => (
-                <div key={step.title} className="rounded-2xl border border-slate-100 bg-white p-6 ring-1 ring-black/[0.02]">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-bold text-white">{i + 1}</span>
-                  <h3 className="mt-4 text-[17px] font-semibold text-slate-950">{step.title}</h3>
-                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500">{step.desc}</p>
+                <div key={step.title} className="rounded-2xl border border-slate-100 bg-white p-7 ring-1 ring-black/[0.02]">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef3ff] text-[14px] font-bold text-[#3559e9]">{i + 1}</span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#98a2b3]">Step {i + 1}</span>
+                  </div>
+                  <h3 className="mt-4 text-[18px] font-semibold tracking-[-0.01em] text-slate-950">{step.title}</h3>
+                  <p className="mt-2 text-[14.5px] leading-6 text-slate-500">{step.desc}</p>
                 </div>
               ))}
             </div>
