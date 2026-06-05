@@ -55,6 +55,7 @@ export const features: Feature[] = [
     positioning: "AI Creator Search for TikTok Shop Brands",
     oneLiner: "Describe your ideal creator and let AI rank the database.",
     primaryQuery: "tiktok shop creator discovery",
+    image: "/reacher-assets/features/creator-discovery.png",
     whoFor: "Brand and agency teams who need to source the right TikTok Shop creators fast.",
     value:
       "Reacher's AI Creator Search lets you describe the creator you want in plain English and ranks the database against GMV, engagement, and post-rate signals. Results save to lists that pipe straight into outreach automations.",
