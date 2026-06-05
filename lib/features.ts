@@ -191,6 +191,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Sample Management for Creator Outreach",
     oneLiner: "Run sample requests as one queue, from pending to posted.",
     primaryQuery: "tiktok shop sample tracking",
+    image: "/reacher-assets/features/sample-management.png",
     whoFor: "Ops teams processing high volumes of creator sample requests.",
     value:
       "Run every sample request as one queue, with completion and expiring-soon flags, and auto-approval agents that clear low-risk requests by profile, post rate, and GMV.",
