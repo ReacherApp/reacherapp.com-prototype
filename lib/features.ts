@@ -323,6 +323,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Affiliate P&L and Profitability",
     oneLiner: "See true affiliate profit — GMV against every cost.",
     primaryQuery: "tiktok shop affiliate profitability",
+    image: "/reacher-assets/features/pnl.png",
     whoFor: "Finance and growth leads who need program-level P&L, not just GMV.",
     value:
       "Net affiliate GMV against commissions, sample costs, and ad spend to see real margin, not just top-line — broken down by creator, campaign, and product.",
