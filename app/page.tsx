@@ -634,7 +634,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#2547d0] px-6 pt-[52px] text-white">
+      <footer className="bg-[#07131f] px-6 pt-[52px] text-white">
         <div className="mx-auto grid max-w-[1150px] gap-12 pb-11 md:grid-cols-[2.05fr_0.65fr_0.65fr_0.75fr]">
           <div>
             <div className="flex items-center gap-2.5">

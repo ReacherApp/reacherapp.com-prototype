@@ -198,7 +198,7 @@ export function ReacherFooter({ locale = "en" }: { locale?: Locale }) {
   const { footerColumns, footerTagline, copyright } = chromeCopy[locale];
 
   return (
-    <footer className="relative bg-[#2547d0] px-6 pt-[72px] text-white">
+    <footer className="relative bg-[#07131f] px-6 pt-[72px] text-white">
       <div className="mx-auto grid max-w-[1320px] gap-14 pb-11 md:grid-cols-[2.2fr_0.65fr_0.65fr_0.75fr]">
         <div>
           <div className="flex items-center gap-2.5">
