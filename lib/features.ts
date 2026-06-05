@@ -410,7 +410,7 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
   "creative-intelligence": [
     { title: "Scan top videos", desc: "Reacher analyzes every video from your creator collabs, ranked by GMV and engagement.", image: "/reacher-assets/features/creative-intelligence-content.png" },
     { title: "Extract the formula", desc: "Get the hook type, selling points, shot styles, and lighting behind each winner.", image: "/reacher-assets/features/creative-intelligence-video.png" },
-    { title: "Brief your creators", desc: "Push ready-to-share briefs via Discord." },
+    { title: "Turn it into a brief", desc: "Generate polished image briefs — hooks, selling points, and content ideas — ready to share with creators.", image: "/reacher-assets/features/creative-intelligence-brief.png" },
   ],
   "brand-intelligence": [
     { title: "Pick a brand", desc: "Search any competitor on TikTok Shop." },
