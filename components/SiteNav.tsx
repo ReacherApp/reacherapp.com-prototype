@@ -15,31 +15,37 @@ const navCopy = {
   en: {
     login: "Log In",
     product: "Product",
+    resources: "Resources",
     trial: "Get 14 day free trial",
     links: [
       ["Testimonials", "/#testimonials-new"],
       ["Pricing", "/pricing"],
-      ["Affiliate", "/affiliate"],
-      ["Blog", "/blog"],
-      ["Contact", "/contact"],
       ["What's New", "/changelog"],
-      ["Careers", "https://jobs.ashbyhq.com/reacher"],
-      ["Masterclass", "/masterclass"],
+    ],
+    resourceLinks: [
+      ["Blog", "/blog", "Practical guides for creator marketing & affiliate ops."],
+      ["Masterclass", "/masterclass", "Free TikTok Shop affiliate training."],
+      ["Affiliate", "/affiliate", "Earn by referring brands to Reacher."],
+      ["Contact", "/contact", "Talk to our team."],
+      ["Careers", "https://jobs.ashbyhq.com/reacher", "Join the team building Reacher."],
     ],
   },
   pt: {
     login: "Entrar",
     product: "Produto",
+    resources: "Recursos",
     trial: "Teste grátis de 14 dias",
     links: [
       ["Depoimentos", "/#testimonials-new"],
       ["Preços", "/pricing"],
-      ["Afiliados", "/affiliate"],
-      ["Blog", "/blog"],
-      ["Contato", "/contact"],
       ["Novidades", "/changelog"],
-      ["Carreiras", "https://jobs.ashbyhq.com/reacher"],
-      ["Masterclass", "/masterclass"],
+    ],
+    resourceLinks: [
+      ["Blog", "/blog", "Guias práticos de marketing de criadores."],
+      ["Masterclass", "/masterclass", "Treinamento gratuito de afiliados."],
+      ["Afiliados", "/affiliate", "Ganhe indicando marcas para a Reacher."],
+      ["Contato", "/contact", "Fale com nosso time."],
+      ["Carreiras", "https://jobs.ashbyhq.com/reacher", "Junte-se ao time da Reacher."],
     ],
   },
 } as const;
@@ -134,6 +140,35 @@ function FeaturesMenu({ label, locale }: { label: string; locale: Locale }) {
   );
 }
 
+function ResourcesMenu({ label, links, locale }: { label: string; links: readonly (readonly [string, string, string])[]; locale: Locale }) {
+  const { open, setOpen, openNow, closeSoon } = useMenu();
+  return (
+    <div className="relative inline-flex shrink-0 items-center" onMouseEnter={openNow} onMouseLeave={closeSoon}>
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={openNow}
+        onFocus={openNow}
+        className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13.5px] font-medium transition ${open ? "bg-[#f2f4f7] text-[#101828]" : "text-[#475467] hover:bg-[#f2f4f7] hover:text-[#101828]"}`}
+      >
+        {label}
+        <ChevronDown size={13} strokeWidth={2.2} className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div className={`absolute left-0 top-full pt-3 transition duration-150 ${open ? "visible opacity-100" : "pointer-events-none invisible -translate-y-1 opacity-0"}`}>
+        <div className="w-[360px] whitespace-normal rounded-[20px] border border-black/5 bg-white p-2.5 text-left shadow-[0_24px_60px_-12px_rgba(16,24,40,0.22)] ring-1 ring-black/5">
+          {links.map(([itemLabel, href, desc]) => (
+            <Link key={itemLabel} href={localizeHref(href, locale)} onClick={() => setOpen(false)} className="block rounded-[14px] px-3.5 py-3 transition hover:bg-[#f3f6ff]">
+              <span className="block text-[14px] font-semibold text-slate-900">{itemLabel}</span>
+              <span className="mt-0.5 block text-[12.5px] leading-snug text-slate-500">{desc}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: string; partnerBadge?: string }) {
   const copy = navCopy[locale];
   const scrolled = useScrolled();
@@ -153,6 +188,7 @@ function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: 
             <span className="text-[15px] font-semibold tracking-[-0.02em] text-[#101828]">Reacher</span>
           </Link>
           <FeaturesMenu label={copy.product} locale={locale} />
+          <ResourcesMenu label={copy.resources} links={copy.resourceLinks} locale={locale} />
           {copy.links.map(([label, href]) => (
             <Link
               key={label}
@@ -232,6 +268,11 @@ function MobileNav({ locale, active }: { locale: Locale; active: string }) {
             <div className="mt-6 flex flex-col items-center gap-[clamp(10px,2.4vh,22px)] text-[18px] font-medium text-[#475467]">
               {copy.links.map(([label, href]) => (
                 <Link key={label} href={localizeHref(href, locale)} onClick={close} className={`shrink-0 leading-tight transition hover:text-[#101828] ${active === label ? "text-[#101828]" : ""}`}>
+                  {label}
+                </Link>
+              ))}
+              {copy.resourceLinks.map(([label, href]) => (
+                <Link key={label} href={localizeHref(href, locale)} onClick={close} className="shrink-0 leading-tight transition hover:text-[#101828]">
                   {label}
                 </Link>
               ))}
