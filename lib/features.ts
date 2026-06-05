@@ -30,6 +30,8 @@ export type Feature = {
   whoFor: string;
   value: string;
   capabilities: string[];
+  /** product screenshot, e.g. /reacher-assets/features/<slug>.png */
+  image?: string;
 };
 
 export type NavGroup = { label: string; slugs: string[] };

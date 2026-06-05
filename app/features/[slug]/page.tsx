@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
@@ -58,6 +59,32 @@ export default async function FeaturePage({ params }: Params) {
             >
               Get 14 day free trial
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6">
+        <div className="mx-auto -mt-6 max-w-5xl md:-mt-8">
+          <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
+            {feature.image ? (
+              <Image
+                src={feature.image}
+                alt={`${feature.name} in Reacher`}
+                width={2160}
+                height={1200}
+                className="h-auto w-full rounded-[16px]"
+                priority
+              />
+            ) : (
+              <div className="flex aspect-[16/9] items-center justify-center rounded-[16px] bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
+                <div className="flex flex-col items-center gap-3 text-[#9bb0e6]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/70 ring-1 ring-[#d7e2fb]">
+                    <Icon size={26} strokeWidth={1.6} />
+                  </span>
+                  <span className="text-sm font-medium tracking-wide">Product preview</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
