@@ -58,6 +58,21 @@ const siteSchema = {
   ],
 };
 
+const rb2bVisitorTrackingScript = `
+!function(key) {
+  if (window.reb2b) return;
+  window.reb2b = {loaded: true};
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+  document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);
+}("DNXY8HDGL2O0");
+`;
+
+const monacoVisitorTrackingScript = `
+!function(e){"use strict";var a=e&&e.namespace;if(a&&e.profileId&&e.cdn){var r=window[a];if(r&&Array.isArray(r)||(r=window[a]=[]),!r.initialized&&!r._loaded)if(r._loaded)console&&console.warn("[Radar] Duplicate initialization attempted");else{r._loaded=!0;["track","page","identify","group","alias","ready","debug","on","off","once","trackClick","trackSubmit","trackLink","trackForm","pageview","screen","reset","register","setAnonymousId","addSourceMiddleware","addIntegrationMiddleware","addDestinationMiddleware"].forEach((function(e){var i;r[e]=(i=e,function(){var e=window[a];if(e.initialized)return e[i].apply(e,arguments);var r=[].slice.call(arguments);return r.unshift(i),e.push(r),e})})),r.bootstrap=function(){var a=document.createElement("script");a.async=!0,a.type="text/javascript",a.id="__radar__",a.dataset.settings=JSON.stringify(e),a.src="https://"+e.cdn+"/releases/latest/radar.min.js";var r=document.scripts[0];r.parentNode.insertBefore(a,r)},r.bootstrap()}}else"undefined"!=typeof console&&console.error("[Radar] Configuration incomplete")}({"cdn":"cdn.snitcher.com","apiEndpoint":"radar.snitcher.com","profileId":"rodwb8DRUJf","namespace":"Monaco","waitForConsent":true});
+`;
+
 export const metadata: Metadata = {
   metadataBase,
   title: "Reacher | Grow TikTok Shop Revenue on Autopilot",
@@ -81,6 +96,16 @@ export default function RootLayout({
         data-tolt="pk_PzPT13f4bWaD17rvQvJWzF6i"
         strategy="beforeInteractive"
       />
+      <head>
+        <script
+          id="rb2b-visitor-tracking"
+          dangerouslySetInnerHTML={{ __html: rb2bVisitorTrackingScript }}
+        />
+        <script
+          id="monaco-visitor-tracking"
+          dangerouslySetInnerHTML={{ __html: monacoVisitorTrackingScript }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-reacher-bg text-white">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }} />
         {children}

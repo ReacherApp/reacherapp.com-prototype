@@ -42,7 +42,7 @@ const heroCopy = {
     navLinks: [
       ["Testimonials", "#testimonials-new"],
       ["Pricing", "/pricing"],
-      ["Affiliate", "/affiliate"],
+      ["Affiliate", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],
       ["Contact", "/contact"],
       ["What's New", "/changelog"],
@@ -70,7 +70,7 @@ const heroCopy = {
     navLinks: [
       ["Depoimentos", "#testimonials-new"],
       ["Preços", "/pricing"],
-      ["Afiliados", "/affiliate"],
+      ["Afiliados", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],
       ["Contato", "/contact"],
       ["Novidades", "/changelog"],

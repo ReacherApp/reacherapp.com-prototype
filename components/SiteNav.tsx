@@ -27,7 +27,7 @@ const navCopy = {
     resourceLinks: [
       ["Blog", "/blog", "Practical guides for creator marketing & affiliate ops."],
       ["Masterclass", "/masterclass", "Free TikTok Shop affiliate training."],
-      ["Affiliate", "/affiliate", "Earn by referring brands to Reacher."],
+      ["Affiliate", "https://reacher.tolt.io/", "Earn by referring brands to Reacher."],
       ["Contact", "/contact", "Talk to our team."],
       ["Careers", "https://jobs.ashbyhq.com/reacher", "Join the team building Reacher."],
     ],
@@ -46,7 +46,7 @@ const navCopy = {
     resourceLinks: [
       ["Blog", "/blog", "Guias práticos de marketing de criadores."],
       ["Masterclass", "/masterclass", "Treinamento gratuito de afiliados."],
-      ["Afiliados", "/affiliate", "Ganhe indicando marcas para a Reacher."],
+      ["Afiliados", "https://reacher.tolt.io/", "Ganhe indicando marcas para a Reacher."],
       ["Contato", "/contact", "Fale com nosso time."],
       ["Carreiras", "https://jobs.ashbyhq.com/reacher", "Junte-se ao time da Reacher."],
     ],
