@@ -235,6 +235,7 @@ export const features: Feature[] = [
     positioning: "AI Chatbot for TikTok Shop Affiliate Messages",
     oneLiner: "Auto-reply to inbound creator messages in your brand voice.",
     primaryQuery: "tiktok shop ai chatbot",
+    image: "/reacher-assets/features/ai-chatbot.png",
     whoFor: "Brands whose inbound creator volume is too high to answer by hand.",
     value:
       "Answer inbound creator messages — sample requests, questions, negotiations — in a voice you configure to your brand, around the clock, so creators never wait.",
@@ -438,11 +439,6 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "Spot the drop-off", desc: "Find lapsed posters and non-responders." },
     { title: "Set the trigger", desc: "Choose funnel stage and inactivity rules." },
     { title: "Win them back", desc: "Automated nudges move them back into action." },
-  ],
-  "ai-chatbot": [
-    { title: "Set your voice", desc: "Configure tone and rules for your brand." },
-    { title: "Creators message you", desc: "Sample requests and questions roll in." },
-    { title: "AI replies instantly", desc: "24/7 answers, with human handoff when needed." },
   ],
   "creator-community": [
     { label: "Tracking", title: "Track every campaign in real time", desc: "ROCS, GMV generated, payouts, and a live creator leaderboard — approve payouts and ping creators on Discord without leaving Reacher.", image: "/reacher-assets/features/creator-community-tracking.png", points: [] },
