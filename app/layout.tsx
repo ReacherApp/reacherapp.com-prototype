@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
-import { Fragment_Mono, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Fragment_Mono, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { localizedAlternates, metadataBase } from "@/lib/seo";
 import GlobalCursor from "@/components/GlobalCursor";
 
-const inter = Inter({
+// Nuckle is a commercial typeface; Hanken Grotesk is the closest free, self-hostable match.
+const inter = Hanken_Grotesk({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",

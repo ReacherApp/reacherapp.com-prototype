@@ -85,23 +85,22 @@ export default async function FeaturePage({ params }: Params) {
           <p className="mx-auto mt-5 max-w-[92vw] text-pretty text-lg leading-8 text-slate-600 md:max-w-none md:whitespace-nowrap">{feature.oneLiner}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold !text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
-            >
-              Book a demo
-            </Link>
-            <Link
               href="https://portal.reacherapp.com/login"
               className="inline-flex h-12 items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-7 text-[15px] font-semibold !text-slate-900 transition hover:bg-slate-50"
             >
               Get 14 day free trial
             </Link>
+            <Link
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold !text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
+            >
+              Book a demo
+            </Link>
           </div>
-          <p className="mt-7 text-[13px] font-medium text-slate-400">Trusted by 1000+ brands · Backed by Y Combinator</p>
         </div>
       </section>
 
-      <section className="px-6">
+      <section className="px-6 pb-10">
         <div className="mx-auto max-w-5xl">
           <div className="overflow-hidden rounded-[24px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] ring-1 ring-black/[0.03] md:p-3">
             {feature.image ? (
@@ -143,16 +142,9 @@ export default async function FeaturePage({ params }: Params) {
                   <div className="w-full md:w-[42%]">
                     <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Step {i + 1}</span>
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
-                    <p className="mt-3 text-[16px] leading-7 text-slate-600">{step.desc}</p>
-                    {stepPoints[i]?.length ? (
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {stepPoints[i].map((point) => (
-                          <span key={point} className="rounded-full border border-[#e3e9f5] bg-[#f4f7ff] px-3.5 py-1.5 text-[13px] font-medium text-[#3f4a63]">
-                            {point}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
+                    <p className="mt-3 text-[16px] leading-7 text-slate-600">
+                      {[step.desc, ...(stepPoints[i] ?? []).map((p) => (/[.!?]$/.test(p) ? p : `${p}.`))].join(" ")}
+                    </p>
                   </div>
                   <div className="w-full md:w-[58%]">
                     <div className="overflow-hidden rounded-[20px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2 shadow-[0_24px_60px_-22px_rgba(16,24,40,0.22)] ring-1 ring-black/[0.03]">
@@ -242,16 +234,16 @@ export default async function FeaturePage({ params }: Params) {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold !text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
-            >
-              Book a demo
-            </Link>
-            <Link
               href="https://portal.reacherapp.com/login"
               className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-7 text-[15px] font-semibold !text-white transition hover:bg-white/10"
             >
               Get 14 day free trial
+            </Link>
+            <Link
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold !text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
+            >
+              Book a demo
             </Link>
           </div>
         </div>
