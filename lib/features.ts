@@ -38,7 +38,7 @@ export type NavGroup = { label: string; slugs: string[] };
 export const featureNavGroups: NavGroup[] = [
   { label: "Find & Reach", slugs: ["creator-discovery", "social-intelligence", "automated-outreach"] },
   { label: "Intelligence & Content", slugs: ["halo-effect", "creative-intelligence", "brand-intelligence"] },
-  { label: "Manage & Grow", slugs: ["creator-crm", "sample-management", "re-engage", "ai-chatbot"] },
+  { label: "Manage & Grow", slugs: ["creator-crm", "sample-management", "re-engage"] },
   { label: "Scale & Activation", slugs: ["creator-community", "gmv-max", "ai-chatbot"] },
   { label: "Analysis & Reporting", slugs: ["dashboard", "pnl"] },
   { label: "AI & Automation", slugs: ["reacher-agent", "mcp", "api"] },
