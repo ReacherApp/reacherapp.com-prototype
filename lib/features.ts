@@ -448,31 +448,6 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "Pull Spark Codes", desc: "Reacher retrieves codes automatically." },
     { title: "Scale with budget", desc: "Automate ad spend to amplify what works." },
   ],
-  dashboard: [
-    { title: "Connect your shop", desc: "Reacher syncs affiliate performance." },
-    { title: "See it on one screen", desc: "GMV, views, top creators, videos & products." },
-    { title: "Set goals & report", desc: "Track targets with daily, weekly & monthly reports." },
-  ],
-  pnl: [
-    { title: "Pull in the costs", desc: "Commissions, samples, and ad spend." },
-    { title: "Net against GMV", desc: "See real margin, not just top-line." },
-    { title: "Find what's profitable", desc: "Break P&L down by creator, campaign & product." },
-  ],
-  "reacher-agent": [
-    { title: "Ask in plain English", desc: "Question your creators, competitors, and GMV." },
-    { title: "Get answers & tables", desc: "The agent builds and saves data views." },
-    { title: "Take action", desc: "Let it run tasks across your program." },
-  ],
-  mcp: [
-    { title: "Connect your client", desc: "Point Claude, Cursor, or any MCP tool at Reacher." },
-    { title: "Query your data", desc: "Read creators, GMV, and automations." },
-    { title: "Let AI act", desc: "Trigger workflows with scoped, secure access." },
-  ],
-  api: [
-    { title: "Get your keys", desc: "Authenticate with the Reacher API." },
-    { title: "Pull the data", desc: "Access creators, GMV, samples & automations." },
-    { title: "Build & automate", desc: "Sync to your stack and trigger workflows." },
-  ],
 };
 
 export type FeatureCard = { title: string; desc: string; stat?: string; image?: string; icon?: LucideIcon; example?: string };
