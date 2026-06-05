@@ -218,6 +218,10 @@ export const features: Feature[] = [
     oneLiner: "Automatically win back creators who stalled or never replied.",
     primaryQuery: "tiktok shop re-engage creators",
     image: "/reacher-assets/features/re-engage.png",
+    showcase: {
+      heading: "Build re-engagement groups by funnel stage",
+      image: "/reacher-assets/features/re-engage-group.png",
+    },
     whoFor: "Brands that want to recover dormant creators without manual chasing.",
     value:
       "Automatically win back creators who stalled — non-responders, lapsed posters, and unaccepted invites. Set the triggers and Reacher handles the follow-up nudges.",
