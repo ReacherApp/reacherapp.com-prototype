@@ -387,7 +387,7 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
   ],
   "automated-outreach": [
     { title: "Build your list", desc: "Pull creators from search or your CRM." },
-    { title: "Set the sequence", desc: "Personalize DMs, collab invites, email & bonuses." },
+    { title: "Personalize the message", desc: "AI-tuned DMs and collab invites with product cards, bonuses & dynamic fields — previewed in the creator's inbox.", image: "/reacher-assets/features/automated-outreach-sequence.png" },
     { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
   ],
   "halo-effect": [
