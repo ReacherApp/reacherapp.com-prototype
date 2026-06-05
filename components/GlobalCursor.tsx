@@ -120,7 +120,7 @@ export default function GlobalCursor() {
         ref={rocketRef}
         aria-hidden
         className="pointer-events-none fixed left-0 top-0 z-[9999] select-none text-[26px] leading-none opacity-0 will-change-transform"
-        style={{ filter: "drop-shadow(0 2px 5px rgba(16,24,40,0.28))" }}
+        style={{ filter: "hue-rotate(200deg) saturate(1.25) drop-shadow(0 2px 5px rgba(53,89,233,0.4))" }}
       >
         🚀
       </div>

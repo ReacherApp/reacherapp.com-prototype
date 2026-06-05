@@ -372,13 +372,28 @@ export const features: Feature[] = [
   },
 ];
 
-export type Step = { title: string; desc: string; image?: string };
+export type Step = { title: string; desc: string; image?: string; points?: string[] };
 
 export const featureSteps: Record<string, [Step, Step, Step]> = {
   "creator-discovery": [
-    { title: "Search any way you want", desc: "By profile, transcript, video, or lookalike — describe creators however you think.", image: "/reacher-assets/features/creator-discovery-lookalike.png" },
-    { title: "Filter on what matters", desc: "Narrow by GMV, category, performance, audience, and more.", image: "/reacher-assets/features/creator-discovery-filters.png" },
-    { title: "Browse ranked results", desc: "Every creator scored by GMV, engagement, and post rate.", image: "/reacher-assets/features/creator-discovery-list.png" },
+    {
+      title: "Search any way you want",
+      desc: "By profile, transcript, video, or lookalike — describe creators however you think.",
+      image: "/reacher-assets/features/creator-discovery-lookalike.png",
+      points: ["Natural-language search across a multi-million creator database"],
+    },
+    {
+      title: "Filter on what matters",
+      desc: "Narrow by GMV, category, performance, audience, and more.",
+      image: "/reacher-assets/features/creator-discovery-filters.png",
+      points: ["Filter by category, GMV, post rate, and demographics"],
+    },
+    {
+      title: "Browse ranked results",
+      desc: "Every creator scored by GMV, engagement, and post rate.",
+      image: "/reacher-assets/features/creator-discovery-list.png",
+      points: ["Ranks creators by GMV, engagement, and post rate", "Save results to lists that feed outreach automations"],
+    },
   ],
   "social-intelligence": [
     { title: "Benchmark by GMV", desc: "Rank every brand and product by all-time and 28-day GMV.", image: "/reacher-assets/features/social-intelligence-products.png" },

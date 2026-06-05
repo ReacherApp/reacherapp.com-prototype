@@ -46,7 +46,8 @@ export default async function FeaturePage({ params }: Params) {
   const groupLabel = groupLabelForSlug(slug) ?? "Product";
   const related = relatedFeatures(slug);
   const steps = featureSteps[slug];
-  const stepPoints = steps ? distribute(feature.capabilities, steps.length) : [];
+  const autoPoints = steps ? distribute(feature.capabilities, steps.length) : [];
+  const stepPoints = steps ? steps.map((s, i) => s.points ?? autoPoints[i] ?? []) : [];
   const faqs = [
     { q: `What is ${feature.name}?`, a: feature.value },
     { q: `Who is ${feature.name} for?`, a: feature.whoFor },
@@ -144,16 +145,13 @@ export default async function FeaturePage({ params }: Params) {
                     <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
                     <p className="mt-3 text-[16px] leading-7 text-slate-600">{step.desc}</p>
                     {stepPoints[i]?.length ? (
-                      <ul className="mt-5 space-y-2.5">
+                      <div className="mt-5 flex flex-wrap gap-2">
                         {stepPoints[i].map((point) => (
-                          <li key={point} className="flex items-start gap-2.5 text-[14.5px] leading-6 text-slate-700">
-                            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-white">
-                              <Check size={12} strokeWidth={3} />
-                            </span>
+                          <span key={point} className="rounded-full border border-[#e3e9f5] bg-[#f4f7ff] px-3.5 py-1.5 text-[13px] font-medium text-[#3f4a63]">
                             {point}
-                          </li>
+                          </span>
                         ))}
-                      </ul>
+                      </div>
                     ) : null}
                   </div>
                   <div className="w-full md:w-[58%]">
