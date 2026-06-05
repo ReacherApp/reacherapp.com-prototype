@@ -72,8 +72,8 @@ function PricingCard({ plan, billingPeriod }: { plan: (typeof plans)[number]; bi
         ) : null}
       </div>
       <h2 className="text-[25px] font-semibold tracking-[-0.03em] text-[#111827]">{plan.name}</h2>
-      <div className="mt-7 flex min-h-[68px] items-end gap-2">
-        {"oldPrice" in currentPrice && currentPrice.oldPrice ? <span className="pb-2 text-[24px] font-semibold text-slate-400 line-through">{currentPrice.oldPrice}</span> : null}
+      <div className="mt-7 flex min-h-[68px] items-end gap-3">
+        {"oldPrice" in currentPrice && currentPrice.oldPrice ? <span className="pb-2 pr-1 text-[24px] font-semibold text-slate-400 line-through">{currentPrice.oldPrice}</span> : null}
         <span className="text-[58px] font-semibold leading-none tracking-[-0.06em] text-[#111827]">{currentPrice.price}</span>
         {plan.name !== "Enterprise" ? <span className="pb-2 text-[20px] font-medium text-black/55">/m</span> : null}
       </div>

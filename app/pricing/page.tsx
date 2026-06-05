@@ -113,7 +113,7 @@ function FaqAndNewsletter() {
       <section className="bg-[#f1f5ff] px-6 py-[104px] text-center">
         <PageBadge>Subscribe to our newsletter</PageBadge>
         <h2 className="mt-7 text-[42px] font-semibold tracking-[-0.045em] md:text-[60px]">Start using Reacher today.</h2>
-        <p className="mx-auto mt-5 max-w-[700px] text-[19px] leading-8 text-black/58">Manage affiliate campaigns, view shop analytics, send samples, and start generating GMV today!</p>
+        <p className="mx-auto mt-5 max-w-[700px] text-[19px] leading-8 text-black/58 md:max-w-none md:whitespace-nowrap">Manage affiliate campaigns, view shop analytics, send samples, and start generating GMV today!</p>
         <div className="mx-auto mt-10 flex max-w-[850px] flex-col gap-4 sm:flex-row"><input placeholder="name@email.com" className="h-[60px] min-h-[60px] w-full flex-none rounded-[14px] border border-slate-200 bg-white px-5 text-[17px] sm:flex-1" /><button className="h-[60px] rounded-[14px] bg-[#3559e9] px-7 text-[17px] font-semibold text-white">Sign up for Reacher Newsletter</button></div>
       </section>
     </>
