@@ -41,10 +41,10 @@ export default async function FeaturePage({ params }: Params) {
           <span className="inline-flex items-center gap-2 rounded-full border border-[#cdddff] bg-white/70 px-4 py-1.5 text-[13px] font-semibold text-[#3559e9]">
             <Icon size={15} strokeWidth={2.2} /> {groupLabel}
           </span>
-          <h1 className="mx-auto mt-6 max-w-[18ch] text-balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-slate-950 md:text-[58px]">
+          <h1 className="mx-auto mt-6 max-w-4xl text-balance text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-slate-950 md:text-[46px]">
             {feature.positioning}
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-8 text-slate-600">{feature.oneLiner}</p>
+          <p className="mx-auto mt-5 max-w-[92vw] text-pretty text-lg leading-8 text-slate-600 md:max-w-none md:whitespace-nowrap">{feature.oneLiner}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="https://meetings.hubspot.com/yoji2/sales-team-meetings"

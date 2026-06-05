@@ -124,8 +124,8 @@ function FeaturesMenu({ label, locale }: { label: string; locale: Locale }) {
                 <div className="mt-2 flex flex-col gap-1">
                   {group.items.map(({ name, blurb, href, Icon }) => (
                     <Link key={href} href={localizeHref(href, locale)} onClick={() => setOpen(false)} className="group flex items-center gap-3.5 rounded-[14px] px-3 py-2.5 transition hover:bg-[#f3f6ff]">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-[#eef3ff] text-[#3559e9] ring-1 ring-[#dbe5ff] transition group-hover:bg-[#3559e9] group-hover:text-white group-hover:ring-[#3559e9]">
-                        <Icon size={19} strokeWidth={2} />
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-[#f4f7ff] text-[#8aa0f5] ring-1 ring-[#eaf0fd] transition group-hover:bg-[#3559e9] group-hover:text-white group-hover:ring-[#3559e9]">
+                        <Icon size={16} strokeWidth={1.75} />
                       </span>
                       <span className="min-w-0">
                         <span className="block text-[14.5px] font-semibold leading-tight text-slate-900">{name}</span>

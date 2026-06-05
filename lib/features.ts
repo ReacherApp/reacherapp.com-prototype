@@ -51,7 +51,7 @@ export const features: Feature[] = [
     Icon: Search,
     navBlurb: "Describe a creator; AI ranks the database.",
     positioning: "AI Creator Search for TikTok Shop Brands",
-    oneLiner: "Describe the creator you want in plain English and let AI rank every creator by GMV, engagement, and post rate.",
+    oneLiner: "Describe your ideal creator and let AI rank the database.",
     primaryQuery: "tiktok shop creator discovery",
     whoFor: "Brand and agency teams who need to source the right TikTok Shop creators fast.",
     value:
@@ -69,7 +69,7 @@ export const features: Feature[] = [
     Icon: TrendingUp,
     navBlurb: "Benchmark brands, creators & videos by GMV.",
     positioning: "TikTok Shop Social Intelligence for Affiliate Growth",
-    oneLiner: "Benchmark every brand, creator, and video on TikTok Shop by GMV — then target them in one click.",
+    oneLiner: "Benchmark every brand, creator, and video on TikTok Shop by GMV.",
     primaryQuery: "tiktok shop competitor intelligence",
     whoFor: "Brands that want to benchmark competitors and find high-GMV creators and content.",
     value:
@@ -87,7 +87,7 @@ export const features: Feature[] = [
     Icon: Send,
     navBlurb: "DMs, Target Collab, email & follow-ups.",
     positioning: "TikTok Shop Affiliate Outreach Automation",
-    oneLiner: "Recruit and re-engage thousands of creators a day across DM, Target Collab, and email — with intelligent follow-ups.",
+    oneLiner: "Recruit thousands of creators a day across DM, collab, and email.",
     primaryQuery: "tiktok shop affiliate outreach",
     whoFor: "Brands running affiliate recruitment at scale.",
     value:
@@ -106,7 +106,7 @@ export const features: Feature[] = [
     Icon: Radar,
     navBlurb: "Measure organic sales lift from creators.",
     positioning: "TikTok Shop Halo Effect & Cross-Channel Attribution",
-    oneLiner: "Measure how TikTok Shop content lifts your sales on Amazon, Shopify, and retail.",
+    oneLiner: "Measure how TikTok content lifts Amazon, Shopify & retail sales.",
     primaryQuery: "tiktok shop halo effect",
     whoFor: "Brand leaders who need to prove the full impact of TikTok content beyond in-app GMV.",
     value:
@@ -125,7 +125,7 @@ export const features: Feature[] = [
     Icon: Sparkles,
     navBlurb: "AI creative briefs from top videos.",
     positioning: "AI Creative Intelligence for TikTok Shop Creators",
-    oneLiner: "Turn your top-performing affiliate videos into ready-to-share creative briefs, automatically.",
+    oneLiner: "Turn your top videos into ready-to-share creative briefs.",
     primaryQuery: "tiktok shop creative briefs",
     whoFor: "Brand teams who want to turn winning content into repeatable creator briefs.",
     value:
@@ -143,7 +143,7 @@ export const features: Feature[] = [
     Icon: Building2,
     navBlurb: "Profile competitor brands & their creators.",
     positioning: "TikTok Shop Brand Intelligence & Competitor Tracking",
-    oneLiner: "Profile any brand on TikTok Shop — their GMV, top products, and the creators driving it.",
+    oneLiner: "Profile any brand's GMV, top products, and creators.",
     primaryQuery: "tiktok shop brand intelligence",
     whoFor: "Brands that want to track competitors and recruit their best-performing creators.",
     value:
@@ -162,7 +162,7 @@ export const features: Feature[] = [
     Icon: Users,
     navBlurb: "Statuses, messages, samples & GMV in one place.",
     positioning: "Creator CRM for TikTok Shop Affiliate Teams",
-    oneLiner: "Track every creator's status, messages, samples, and GMV — a CRM built for affiliate ops teams.",
+    oneLiner: "Track every creator's status, samples, and GMV in one CRM.",
     primaryQuery: "tiktok shop creator crm",
     whoFor: "Affiliate operations teams managing large creator rosters.",
     value:
@@ -181,7 +181,7 @@ export const features: Feature[] = [
     Icon: Package,
     navBlurb: "One queue for sample approvals & shipping.",
     positioning: "TikTok Shop Sample Management for Creator Outreach",
-    oneLiner: "Run sample requests as a single queue — pending, ready-to-ship, shipped, posted, completed.",
+    oneLiner: "Run sample requests as one queue, from pending to posted.",
     primaryQuery: "tiktok shop sample tracking",
     whoFor: "Ops teams processing high volumes of creator sample requests.",
     value:
@@ -200,7 +200,7 @@ export const features: Feature[] = [
     Icon: RefreshCw,
     navBlurb: "Win back creators who stalled.",
     positioning: "TikTok Shop Creator Re-engagement Automation",
-    oneLiner: "Automatically win back creators who stopped posting or never accepted your invite.",
+    oneLiner: "Automatically win back creators who stalled or never replied.",
     primaryQuery: "tiktok shop re-engage creators",
     whoFor: "Brands that want to recover dormant creators without manual chasing.",
     value:
@@ -219,7 +219,7 @@ export const features: Feature[] = [
     Icon: MessageCircle,
     navBlurb: "Auto-reply to creators in your brand voice.",
     positioning: "AI Chatbot for TikTok Shop Affiliate Messages",
-    oneLiner: "Auto-respond to inbound creator messages — sample requests, questions, and more — in your brand voice.",
+    oneLiner: "Auto-reply to inbound creator messages in your brand voice.",
     primaryQuery: "tiktok shop ai chatbot",
     whoFor: "Brands whose inbound creator volume is too high to answer by hand.",
     value:
@@ -238,7 +238,7 @@ export const features: Feature[] = [
     Icon: HeartHandshake,
     navBlurb: "Run your community via Discord.",
     positioning: "Creator Community for TikTok Shop Affiliate Programs",
-    oneLiner: "Run your creator community natively through Discord — message, invite, and reward from one place.",
+    oneLiner: "Run your creator community natively through Discord.",
     primaryQuery: "tiktok shop creator community",
     whoFor: "Brands that manage their creator community and want to operate it from one place.",
     value:
@@ -257,7 +257,7 @@ export const features: Feature[] = [
     Icon: Rocket,
     navBlurb: "Automate spark codes & ad budget.",
     positioning: "GMV Max for TikTok Shop Affiliate Ads",
-    oneLiner: "Automate Spark Code collection and ad budget to push your best affiliate content further.",
+    oneLiner: "Automate Spark Codes and ad budget for your best content.",
     primaryQuery: "tiktok shop gmv max",
     whoFor: "Brands that want to amplify winning creator content with paid budget.",
     value:
@@ -276,7 +276,7 @@ export const features: Feature[] = [
     Icon: LayoutDashboard,
     navBlurb: "All affiliate metrics & GMV in one view.",
     positioning: "TikTok Shop Affiliate Analytics Dashboard",
-    oneLiner: "Total affiliate GMV, views, per-sample efficiency, and top creators, videos, and products — on one screen.",
+    oneLiner: "Every affiliate metric, GMV, and top creator on one screen.",
     primaryQuery: "tiktok shop affiliate analytics",
     whoFor: "Brand leaders and analysts who need a single source of truth for affiliate performance.",
     value:
@@ -295,7 +295,7 @@ export const features: Feature[] = [
     Icon: Receipt,
     navBlurb: "See true affiliate program profitability.",
     positioning: "TikTok Shop Affiliate P&L and Profitability",
-    oneLiner: "See the true profitability of your affiliate program — GMV against commissions, samples, and ad spend.",
+    oneLiner: "See true affiliate profit — GMV against every cost.",
     primaryQuery: "tiktok shop affiliate profitability",
     whoFor: "Finance and growth leads who need program-level P&L, not just GMV.",
     value:
@@ -314,7 +314,7 @@ export const features: Feature[] = [
     Icon: Bot,
     navBlurb: "Ask anything about your program.",
     positioning: "Reacher AI Agent for Affiliate Operations",
-    oneLiner: "Ask anything about your creators, competitors, and GMV — and let the agent take action.",
+    oneLiner: "Ask anything about your creators, competitors, and GMV.",
     primaryQuery: "reacher ai agent",
     whoFor: "Teams that want answers and actions in natural language instead of clicking through dashboards.",
     value:
@@ -333,7 +333,7 @@ export const features: Feature[] = [
     Icon: Plug,
     navBlurb: "Connect Reacher to your AI tools.",
     positioning: "Reacher MCP Server for AI Workflows",
-    oneLiner: "Connect Reacher to Claude, Cursor, and any MCP client to query and act on your affiliate data.",
+    oneLiner: "Connect Reacher to Claude, Cursor, and any MCP client.",
     primaryQuery: "reacher mcp server",
     whoFor: "Technical teams that want their AI tools to read and act on Reacher data.",
     value:
@@ -352,7 +352,7 @@ export const features: Feature[] = [
     Icon: Code,
     navBlurb: "Build on Reacher's affiliate data.",
     positioning: "Reacher API for TikTok Shop Affiliate Data",
-    oneLiner: "Build on Reacher's creator, GMV, and automation data with a developer-friendly API.",
+    oneLiner: "Build on Reacher's creator and GMV data via API.",
     primaryQuery: "reacher api",
     whoFor: "Engineering teams integrating Reacher into their own stack.",
     value:
