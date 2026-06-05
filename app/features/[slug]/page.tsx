@@ -92,21 +92,40 @@ export default async function FeaturePage({ params }: Params) {
       </section>
 
       {steps ? (
-        <section className="bg-[#f7faff] px-6 py-20 md:py-24">
-          <div className="mx-auto max-w-5xl">
+        <section className="bg-[#f7faff] px-6 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl">
             <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
             <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
               From setup to results in 3 steps
             </h2>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className="mt-16 flex flex-col gap-16 md:mt-20 md:gap-24">
               {steps.map((step, i) => (
-                <div key={step.title} className="rounded-2xl border border-slate-100 bg-white p-7 ring-1 ring-black/[0.02]">
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef3ff] text-[14px] font-bold text-[#3559e9]">{i + 1}</span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#98a2b3]">Step {i + 1}</span>
+                <div
+                  key={step.title}
+                  className={`flex flex-col items-center gap-8 md:flex-row md:gap-14 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+                >
+                  <div className="w-full md:w-[42%]">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#eef3ff] text-[14px] font-bold text-[#3559e9]">{i + 1}</span>
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#98a2b3]">Step {i + 1}</span>
+                    </div>
+                    <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[28px]">{step.title}</h3>
+                    <p className="mt-3 text-[16px] leading-7 text-slate-600">{step.desc}</p>
                   </div>
-                  <h3 className="mt-4 text-[18px] font-semibold tracking-[-0.01em] text-slate-950">{step.title}</h3>
-                  <p className="mt-2 text-[14.5px] leading-6 text-slate-500">{step.desc}</p>
+                  <div className="w-full md:w-[58%]">
+                    <div className="overflow-hidden rounded-[20px] border border-slate-200/70 bg-gradient-to-b from-[#eef5ff] to-white p-2 shadow-[0_24px_60px_-22px_rgba(16,24,40,0.22)] ring-1 ring-black/[0.03]">
+                      {step.image ? (
+                        <Image src={step.image} alt={`${step.title} — ${feature.name}`} width={1600} height={1000} className="h-auto w-full rounded-[14px]" />
+                      ) : (
+                        <div className="flex aspect-[16/10] items-center justify-center rounded-[14px] bg-[radial-gradient(120%_120%_at_50%_0%,#dbe7ff_0%,#eef4ff_45%,#ffffff_100%)]">
+                          <div className="flex flex-col items-center gap-2 text-[#9bb0e6]">
+                            <Icon size={26} strokeWidth={1.6} />
+                            <span className="text-xs font-medium tracking-wide">Step {i + 1} preview</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

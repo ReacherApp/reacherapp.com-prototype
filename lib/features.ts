@@ -74,6 +74,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Social Intelligence for Affiliate Growth",
     oneLiner: "Benchmark every brand, creator, and video on TikTok Shop by GMV.",
     primaryQuery: "tiktok shop competitor intelligence",
+    image: "/reacher-assets/features/social-intelligence.png",
     whoFor: "Brands that want to benchmark competitors and find high-GMV creators and content.",
     value:
       "Social Intelligence lets you search, filter, and benchmark every brand on TikTok Shop by all-time and 28-day GMV, then save targets and launch automations directly from results. It also breaks down the techniques behind top-performing videos.",
@@ -370,18 +371,18 @@ export const features: Feature[] = [
   },
 ];
 
-export type Step = { title: string; desc: string };
+export type Step = { title: string; desc: string; image?: string };
 
 export const featureSteps: Record<string, [Step, Step, Step]> = {
   "creator-discovery": [
-    { title: "Describe your ideal creator", desc: "Type the creator you want in plain English." },
-    { title: "AI ranks the database", desc: "Reacher scores everyone by GMV, engagement & post rate." },
-    { title: "Save & launch outreach", desc: "Send your shortlist straight into automations." },
+    { title: "Search any way you want", desc: "By profile, transcript, video, or lookalike — describe creators however you think.", image: "/reacher-assets/features/creator-discovery-lookalike.png" },
+    { title: "Filter on what matters", desc: "Narrow by GMV, category, performance, audience, and more.", image: "/reacher-assets/features/creator-discovery-filters.png" },
+    { title: "Browse ranked results", desc: "Every creator scored by GMV, engagement, and post rate.", image: "/reacher-assets/features/creator-discovery-list.png" },
   ],
   "social-intelligence": [
-    { title: "Search the market", desc: "Look up any brand, creator, or video on TikTok Shop." },
-    { title: "Benchmark by GMV", desc: "Compare all-time and 28-day GMV side by side." },
-    { title: "Target the winners", desc: "Save top performers and automate outreach." },
+    { title: "Benchmark by GMV", desc: "Rank every brand and product by all-time and 28-day GMV.", image: "/reacher-assets/features/social-intelligence-products.png" },
+    { title: "Find a brand's creators", desc: "Open any brand to see the creators driving its GMV.", image: "/reacher-assets/features/social-intelligence-brand-creators.png" },
+    { title: "Decode viral videos", desc: "See the hooks, selling points, and content angle behind top videos.", image: "/reacher-assets/features/social-intelligence-trending.png" },
   ],
   "automated-outreach": [
     { title: "Build your list", desc: "Pull creators from search or your CRM." },
