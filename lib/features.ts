@@ -277,6 +277,7 @@ export const features: Feature[] = [
     positioning: "GMV Max for TikTok Shop Affiliate Ads",
     oneLiner: "Automate Spark Codes and ad budget for your best content.",
     primaryQuery: "tiktok shop gmv max",
+    image: "/reacher-assets/features/gmv-max.png",
     whoFor: "Brands that want to amplify winning creator content with paid budget.",
     value:
       "Automatically retrieve Spark Codes and allocate ad budget so your highest-performing affiliate videos get amplified. Set the rules and scale what's working.",
@@ -355,6 +356,7 @@ export const features: Feature[] = [
     positioning: "Reacher MCP Server for AI Workflows",
     oneLiner: "Connect Reacher to Claude, Cursor, and any MCP client.",
     primaryQuery: "reacher mcp server",
+    image: "/reacher-assets/features/mcp.png",
     whoFor: "Technical teams that want their AI tools to read and act on Reacher data.",
     value:
       "Expose your creators, GMV, and automations to any MCP client, so AI tools like Claude and Cursor can query and act on your program directly — with scoped access.",
