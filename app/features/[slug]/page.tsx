@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import { localizedAlternates } from "@/lib/seo";
-import { features, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
+import { features, featureSteps, getFeature, groupLabelForSlug, relatedFeatures } from "@/lib/features";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -32,6 +32,7 @@ export default async function FeaturePage({ params }: Params) {
   const Icon = feature.Icon;
   const groupLabel = groupLabelForSlug(slug) ?? "Product";
   const related = relatedFeatures(slug);
+  const steps = featureSteps[slug];
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-black">
@@ -88,6 +89,26 @@ export default async function FeaturePage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      {steps ? (
+        <section className="bg-[#f7faff] px-6 py-20 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <p className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">How it works</p>
+            <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
+              From setup to results in 3 steps
+            </h2>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {steps.map((step, i) => (
+                <div key={step.title} className="rounded-2xl border border-slate-100 bg-white p-6 ring-1 ring-black/[0.02]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-bold text-white">{i + 1}</span>
+                  <h3 className="mt-4 text-[17px] font-semibold text-slate-950">{step.title}</h3>
+                  <p className="mt-1.5 text-[14px] leading-6 text-slate-500">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="px-6 py-20 md:py-24">
         <div className="mx-auto max-w-5xl">

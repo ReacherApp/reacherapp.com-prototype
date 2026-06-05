@@ -369,6 +369,96 @@ export const features: Feature[] = [
   },
 ];
 
+export type Step = { title: string; desc: string };
+
+export const featureSteps: Record<string, [Step, Step, Step]> = {
+  "creator-discovery": [
+    { title: "Describe your ideal creator", desc: "Type the creator you want in plain English." },
+    { title: "AI ranks the database", desc: "Reacher scores everyone by GMV, engagement & post rate." },
+    { title: "Save & launch outreach", desc: "Send your shortlist straight into automations." },
+  ],
+  "social-intelligence": [
+    { title: "Search the market", desc: "Look up any brand, creator, or video on TikTok Shop." },
+    { title: "Benchmark by GMV", desc: "Compare all-time and 28-day GMV side by side." },
+    { title: "Target the winners", desc: "Save top performers and automate outreach." },
+  ],
+  "automated-outreach": [
+    { title: "Build your list", desc: "Pull creators from search or your CRM." },
+    { title: "Set the sequence", desc: "Personalize DMs, collab invites, email & bonuses." },
+    { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
+  ],
+  "halo-effect": [
+    { title: "Connect your channels", desc: "Link Amazon, Shopify, and retail sales." },
+    { title: "Set the lag window", desc: "Tune attribution for delayed conversions." },
+    { title: "See the lift", desc: "Measure incremental revenue from TikTok content." },
+  ],
+  "creative-intelligence": [
+    { title: "Scan top videos", desc: "Reacher analyzes your best-performing content." },
+    { title: "Extract the formula", desc: "Get selling points, angles, and shot styles." },
+    { title: "Brief your creators", desc: "Push ready-to-share briefs via Discord." },
+  ],
+  "brand-intelligence": [
+    { title: "Pick a brand", desc: "Search any competitor on TikTok Shop." },
+    { title: "See their engine", desc: "GMV trends, top products, and key creators." },
+    { title: "Recruit their creators", desc: "One-click target them with outreach." },
+  ],
+  "creator-crm": [
+    { title: "Sync your roster", desc: "Every creator, status, sample, and GMV in one place." },
+    { title: "Segment & tag", desc: "Filter by activity, products, and performance." },
+    { title: "Act from the inbox", desc: "Message, send briefs, and pull Spark Codes inline." },
+  ],
+  "sample-management": [
+    { title: "Requests come in", desc: "Every sample request lands in one queue." },
+    { title: "Auto-approve the rest", desc: "Agents clear low-risk requests by profile & GMV." },
+    { title: "Track to content", desc: "Follow each sample from shipped to posted." },
+  ],
+  "re-engage": [
+    { title: "Spot the drop-off", desc: "Find lapsed posters and non-responders." },
+    { title: "Set the trigger", desc: "Choose funnel stage and inactivity rules." },
+    { title: "Win them back", desc: "Automated nudges move them back into action." },
+  ],
+  "ai-chatbot": [
+    { title: "Set your voice", desc: "Configure tone and rules for your brand." },
+    { title: "Creators message you", desc: "Sample requests and questions roll in." },
+    { title: "AI replies instantly", desc: "24/7 answers, with human handoff when needed." },
+  ],
+  "creator-community": [
+    { title: "Link your Discord", desc: "Connect your server and channels." },
+    { title: "Invite top creators", desc: "Auto-add your best performers." },
+    { title: "Reward & retain", desc: "Run campaigns with automated payouts." },
+  ],
+  "gmv-max": [
+    { title: "Spot winning content", desc: "Find your highest-GMV affiliate videos." },
+    { title: "Pull Spark Codes", desc: "Reacher retrieves codes automatically." },
+    { title: "Scale with budget", desc: "Automate ad spend to amplify what works." },
+  ],
+  dashboard: [
+    { title: "Connect your shop", desc: "Reacher syncs affiliate performance." },
+    { title: "See it on one screen", desc: "GMV, views, top creators, videos & products." },
+    { title: "Set goals & report", desc: "Track targets with daily, weekly & monthly reports." },
+  ],
+  pnl: [
+    { title: "Pull in the costs", desc: "Commissions, samples, and ad spend." },
+    { title: "Net against GMV", desc: "See real margin, not just top-line." },
+    { title: "Find what's profitable", desc: "Break P&L down by creator, campaign & product." },
+  ],
+  "reacher-agent": [
+    { title: "Ask in plain English", desc: "Question your creators, competitors, and GMV." },
+    { title: "Get answers & tables", desc: "The agent builds and saves data views." },
+    { title: "Take action", desc: "Let it run tasks across your program." },
+  ],
+  mcp: [
+    { title: "Connect your client", desc: "Point Claude, Cursor, or any MCP tool at Reacher." },
+    { title: "Query your data", desc: "Read creators, GMV, and automations." },
+    { title: "Let AI act", desc: "Trigger workflows with scoped, secure access." },
+  ],
+  api: [
+    { title: "Get your keys", desc: "Authenticate with the Reacher API." },
+    { title: "Pull the data", desc: "Access creators, GMV, samples & automations." },
+    { title: "Build & automate", desc: "Sync to your stack and trigger workflows." },
+  ],
+};
+
 export function getFeature(slug: string): Feature | undefined {
   return features.find((f) => f.slug === slug);
 }
