@@ -47,16 +47,16 @@ export default async function FeaturePage({ params }: Params) {
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-8 text-slate-600">{feature.oneLiner}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="https://portal.reacherapp.com/login"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold !text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
             >
-              Get 14 day free trial
+              Get a demo
             </Link>
             <Link
-              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-7 text-[15px] font-semibold text-slate-900 transition hover:bg-slate-50"
+              href="https://portal.reacherapp.com/login"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-7 text-[15px] font-semibold !text-slate-900 transition hover:bg-slate-50"
             >
-              Book a demo
+              Get 14 day free trial
             </Link>
           </div>
         </div>
@@ -130,16 +130,16 @@ export default async function FeaturePage({ params }: Params) {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="https://portal.reacherapp.com/login"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
+              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold !text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
             >
-              Get 14 day free trial
+              Get a demo
             </Link>
             <Link
-              href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-7 text-[15px] font-semibold text-white transition hover:bg-white/10"
+              href="https://portal.reacherapp.com/login"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 px-7 text-[15px] font-semibold !text-white transition hover:bg-white/10"
             >
-              Book a demo
+              Get 14 day free trial
             </Link>
           </div>
         </div>

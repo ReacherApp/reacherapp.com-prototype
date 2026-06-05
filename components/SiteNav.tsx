@@ -10,6 +10,7 @@ export type Locale = "en" | "pt";
 
 const appIcon = "/reacher-icon.svg";
 const LOGIN_URL = "https://portal.reacherapp.com/login";
+const DEMO_URL = "https://meetings.hubspot.com/yoji2/sales-team-meetings";
 
 const navCopy = {
   en: {
@@ -17,6 +18,7 @@ const navCopy = {
     product: "Product",
     resources: "Resources",
     trial: "Get 14 day free trial",
+    demo: "Get a demo",
     links: [
       ["Testimonials", "/#testimonials-new"],
       ["Pricing", "/pricing"],
@@ -35,6 +37,7 @@ const navCopy = {
     product: "Produto",
     resources: "Recursos",
     trial: "Teste grátis de 14 dias",
+    demo: "Agende uma demo",
     links: [
       ["Depoimentos", "/#testimonials-new"],
       ["Preços", "/pricing"],
@@ -200,11 +203,14 @@ function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: 
           ))}
         </div>
         <div className="flex shrink-0 items-center gap-1">
-          <Link href={LOGIN_URL} className="rounded-full px-3.5 py-2 text-[13.5px] font-medium text-[#475467] transition hover:text-[#101828]">
+          <Link href={LOGIN_URL} className="rounded-full px-3 py-2 text-[13.5px] font-medium !text-[#475467] transition hover:!text-[#101828]">
             {copy.login}
           </Link>
-          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full bg-[#3559e9] px-[18px] py-2.5 text-[13px] font-semibold !text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28)] transition hover:bg-blue-600">
+          <Link href={LOGIN_URL} className="inline-flex items-center rounded-full border border-[#d4d9e5] bg-white px-[16px] py-2 text-[13px] font-semibold !text-[#1d2939] transition hover:bg-[#f8fafc]">
             {copy.trial}
+          </Link>
+          <Link href={DEMO_URL} className="inline-flex items-center rounded-full bg-[#3559e9] px-[18px] py-2.5 text-[13px] font-semibold !text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28)] transition hover:bg-blue-600">
+            {copy.demo}
           </Link>
           {partnerBadge ? (
             <Image src={partnerBadge} alt="TikTok Shop Partner" width={150} height={42} className="ml-[60px] h-[38px] w-auto shrink-0 object-contain" unoptimized />
@@ -229,8 +235,8 @@ function MobileNav({ locale, active }: { locale: Locale; active: string }) {
             <span className="text-[15px] font-semibold text-[#101828]">Reacher</span>
           </Link>
           <div className="flex items-center gap-1.5">
-            <Link href={LOGIN_URL} className="rounded-full bg-[#3559e9] px-4 py-2 text-[12.5px] font-semibold !text-white">
-              {copy.login}
+            <Link href={DEMO_URL} className="rounded-full bg-[#3559e9] px-4 py-2 text-[12.5px] font-semibold !text-white">
+              {copy.demo}
             </Link>
             <button type="button" onClick={() => setOpen(true)} aria-label="Open menu" className="flex h-9 w-9 items-center justify-center text-[#101828]">
               <Menu size={22} strokeWidth={1.9} />
@@ -276,8 +282,11 @@ function MobileNav({ locale, active }: { locale: Locale; active: string }) {
                   {label}
                 </Link>
               ))}
-              <Link href={LOGIN_URL} onClick={close} className="mt-2 flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold !text-white">
+              <Link href={LOGIN_URL} onClick={close} className="mt-2 flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full border border-[#d4d9e5] text-[15px] font-semibold !text-[#1d2939]">
                 {copy.login}
+              </Link>
+              <Link href={DEMO_URL} onClick={close} className="flex h-12 w-full max-w-[320px] shrink-0 items-center justify-center rounded-full bg-[#3559e9] text-[15px] font-semibold !text-white">
+                {copy.demo}
               </Link>
             </div>
           </div>

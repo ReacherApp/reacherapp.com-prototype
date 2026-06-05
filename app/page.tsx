@@ -37,6 +37,8 @@ const brandLogos = [
   "https://framerusercontent.com/images/bovkJ5fG9SjaaYrxJMrc1qL365I.svg?scale-down-to=1024&width=2500&height=338",
   "https://framerusercontent.com/images/qzqdTQjBDe9AtWxuy5AAteqIik.svg?scale-down-to=512&width=830&height=195",
   "https://framerusercontent.com/images/uOL5sIFXSHiOOg2z6FsgDyT6EKg.webp?scale-down-to=512&width=660&height=120",
+  "/reacher-assets/brands/brxl.png",
+  "/reacher-assets/brands/shapellx.png",
 ];
 
 const features = [

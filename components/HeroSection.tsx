@@ -28,7 +28,7 @@ const heroCopy = {
     titleBottom: "on Autopilot",
     mobileLines: ["Grow TikTok Shop", "Revenue on Autopilot"],
     subtitle: "Grow your TikTok Shop with AI-powered tools to manage all your creator relationships.",
-    bookCall: "Book a demo",
+    bookCall: "Get a demo",
     trial: "Get 14 day free trial",
     trusted: "Trusted by over",
     brands: "brands",
@@ -118,14 +118,14 @@ function HeroCtas({ locale = "en" }: { locale?: Locale }) {
     >
       <Link
         href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
-        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-6 text-[15px] font-medium leading-none text-black shadow-[0_2px_6px_rgba(10,20,40,0.08)] transition hover:bg-gray-50 sm:w-auto"
+        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full bg-[#3559e9] px-6 text-[15px] font-medium leading-none !text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.25)] transition hover:bg-blue-700 sm:w-auto"
+        style={{ color: "#fff" }}
       >
         {copy.bookCall}
       </Link>
       <Link
         href="https://portal.reacherapp.com/login"
-        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full bg-[#3559e9] px-6 text-[15px] font-medium leading-none !text-white shadow-[inset_0_2px_4px_rgba(255,255,255,0.25)] transition hover:bg-blue-700 sm:w-auto"
-        style={{ color: "#fff" }}
+        className="inline-flex h-10 w-[260px] items-center justify-center rounded-full border border-[#d4d9e5] bg-white px-6 text-[15px] font-medium leading-none text-black shadow-[0_2px_6px_rgba(10,20,40,0.08)] transition hover:bg-gray-50 sm:w-auto"
       >
         {copy.trial}
       </Link>
