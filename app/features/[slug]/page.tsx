@@ -50,7 +50,7 @@ export default async function FeaturePage({ params }: Params) {
               href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
               className="inline-flex h-12 items-center justify-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold !text-white shadow-[0_12px_28px_rgba(53,89,233,0.24)] transition hover:bg-blue-600"
             >
-              Get a demo
+              Book a demo
             </Link>
             <Link
               href="https://portal.reacherapp.com/login"
@@ -133,7 +133,7 @@ export default async function FeaturePage({ params }: Params) {
               href="https://meetings.hubspot.com/yoji2/sales-team-meetings"
               className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-[15px] font-semibold !text-[#1d2b4f] shadow-[0_2px_10px_rgba(0,0,0,0.18)] transition hover:bg-white/90"
             >
-              Get a demo
+              Book a demo
             </Link>
             <Link
               href="https://portal.reacherapp.com/login"

@@ -18,7 +18,7 @@ const navCopy = {
     product: "Product",
     resources: "Resources",
     trial: "Get 14 day free trial",
-    demo: "Get a demo",
+    demo: "Book a demo",
     links: [
       ["Testimonials", "/#testimonials-new"],
       ["Pricing", "/pricing"],

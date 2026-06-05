@@ -28,7 +28,7 @@ const heroCopy = {
     titleBottom: "on Autopilot",
     mobileLines: ["Grow TikTok Shop", "Revenue on Autopilot"],
     subtitle: "Grow your TikTok Shop with AI-powered tools to manage all your creator relationships.",
-    bookCall: "Get a demo",
+    bookCall: "Book a demo",
     trial: "Get 14 day free trial",
     trusted: "Trusted by over",
     brands: "brands",
