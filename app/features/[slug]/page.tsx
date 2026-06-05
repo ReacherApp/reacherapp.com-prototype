@@ -176,22 +176,17 @@ export default async function FeaturePage({ params }: Params) {
             <h2 className="mx-auto mt-3 max-w-2xl text-balance text-center text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-4xl">
               Measure the halo across every channel
             </h2>
-            <div className="mt-14 grid gap-8 md:grid-cols-3">
+            <div className={`mx-auto mt-14 grid gap-8 ${cards.length >= 3 ? "max-w-6xl md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
               {cards.map((card, i) => (
                 <div key={card.title} className="flex flex-col">
-                  <div className="overflow-hidden rounded-2xl shadow-[0_18px_44px_-20px_rgba(16,24,40,0.2)] ring-1 ring-black/[0.04]">
+                  <div className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${cardGradients[i % 3]} p-12 shadow-[0_18px_44px_-20px_rgba(16,24,40,0.2)] ring-1 ring-black/[0.04]`}>
+                    {card.stat ? (
+                      <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-bold text-[#0fae6e] ring-1 ring-black/5">↗ {card.stat}</span>
+                    ) : null}
                     {card.image ? (
-                      <Image src={card.image} alt={card.title} width={800} height={600} className="h-auto w-full" />
+                      <Image src={card.image} alt={card.title} width={420} height={150} className="max-h-[54px] w-auto max-w-[72%] object-contain" />
                     ) : (
-                      <div className={`flex aspect-[4/3] flex-col justify-between bg-gradient-to-br ${cardGradients[i % 3]} p-6`}>
-                        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/75 px-3 py-1 text-[12px] font-bold text-slate-700 ring-1 ring-black/5">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#0fae6e]" /> {card.title}
-                        </span>
-                        <div>
-                          <div className="text-[40px] font-extrabold leading-none tracking-[-0.02em] text-slate-900">{card.stat}</div>
-                          <div className="mt-1.5 text-[12px] font-medium text-slate-500">incremental sales from TikTok</div>
-                        </div>
-                      </div>
+                      <span className="text-2xl font-bold text-slate-700">{card.title}</span>
                     )}
                   </div>
                   <h3 className="mt-6 text-xl font-bold tracking-[-0.01em] text-slate-950">{card.title}</h3>

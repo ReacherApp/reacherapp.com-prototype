@@ -113,6 +113,7 @@ export const features: Feature[] = [
     positioning: "TikTok Shop Halo Effect & Cross-Channel Attribution",
     oneLiner: "Measure how TikTok content lifts Amazon, Shopify & retail sales.",
     primaryQuery: "tiktok shop halo effect",
+    image: "/reacher-assets/features/halo-effect.png",
     whoFor: "Brand leaders who need to prove the full impact of TikTok content beyond in-app GMV.",
     value:
       "Correlate TikTok views with sales on Amazon, Shopify, and retail, with a configurable lag for delayed conversions — so cross-channel ROI is finally provable.",
@@ -407,8 +408,8 @@ export const featureSteps: Record<string, [Step, Step, Step]> = {
     { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
   ],
   "creative-intelligence": [
-    { title: "Scan top videos", desc: "Reacher analyzes your best-performing content." },
-    { title: "Extract the formula", desc: "Get selling points, angles, and shot styles." },
+    { title: "Scan top videos", desc: "Reacher analyzes every video from your creator collabs, ranked by GMV and engagement.", image: "/reacher-assets/features/creative-intelligence-content.png" },
+    { title: "Extract the formula", desc: "Get the hook type, selling points, shot styles, and lighting behind each winner.", image: "/reacher-assets/features/creative-intelligence-video.png" },
     { title: "Brief your creators", desc: "Push ready-to-share briefs via Discord." },
   ],
   "brand-intelligence": [
@@ -478,9 +479,8 @@ export type FeatureCard = { title: string; desc: string; stat?: string; image?: 
 /** 3-card grid (used instead of the alternating steps for some features). */
 export const featureCards: Record<string, FeatureCard[]> = {
   "halo-effect": [
-    { title: "Amazon", desc: "See how TikTok views translate into Amazon orders, with a configurable attribution lag.", stat: "+14%" },
-    { title: "Shopify", desc: "Correlate TikTok content with Shopify revenue and measure incremental sales.", stat: "+9%" },
-    { title: "Retail & wholesale", desc: "Track the halo of TikTok content on in-store and retail sell-through.", stat: "+22%" },
+    { title: "Amazon", desc: "See how TikTok views translate into Amazon orders, with a configurable attribution lag.", stat: "+14%", image: "/reacher-assets/features/logos/amazon.png" },
+    { title: "Shopify", desc: "Correlate TikTok content with Shopify revenue and measure incremental sales.", stat: "+9%", image: "/reacher-assets/features/logos/shopify.png" },
   ],
 };
 
