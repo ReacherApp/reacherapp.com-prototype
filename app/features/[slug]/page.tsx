@@ -121,6 +121,7 @@ export default async function FeaturePage({ params }: Params) {
                   href={feature.heroCta.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ color: "#ffffff" }}
                   className="inline-flex items-center gap-2 rounded-full bg-[#3559e9] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_14px_30px_-12px_rgba(53,89,233,0.6)] transition hover:bg-[#2c4cd6]"
                 >
                   {feature.heroCta.label}
