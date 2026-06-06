@@ -450,7 +450,7 @@ export const featureSteps: Record<string, Step[]> = {
   "re-engage": [
     { title: "Spot the drop-off", desc: "Find lapsed posters and non-responders." },
     { title: "Build groups by funnel stage", desc: "Group creators by status — sample requested, content pending, posted — with templates and conditions, so each segment gets the right nudge.", image: "/reacher-assets/features/re-engage-group.png" },
-    { title: "Win them back", desc: "Automated nudges move them back into action." },
+    { title: "Remind them to post", desc: "Reacher auto-builds the CRM group, pulls in every creator who hasn't posted, and sends a personalized nudge to move them back into action.", image: "/reacher-assets/features/re-engage-remind.png" },
   ],
   "creator-community": [
     { label: "Tracking", title: "Track every campaign in real time", desc: "ROCS, GMV generated, payouts, and a live creator leaderboard — approve payouts and ping creators on Discord without leaving Reacher.", image: "/reacher-assets/features/creator-community-tracking.png", points: [] },
