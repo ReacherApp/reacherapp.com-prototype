@@ -437,7 +437,7 @@ export const featureSteps: Record<string, Step[]> = {
     { label: "AI Agent", title: "Or ask the AI agent", desc: "An agent profiles competitors, finds the creators driving their GMV, and drafts outreach — automatically.", image: "/reacher-assets/features/brand-intelligence-agent.png", points: [] },
   ],
   "creator-crm": [
-    { title: "Sync your roster", desc: "Every creator, status, sample, and GMV in one place." },
+    { title: "See every creator's full profile", desc: "One record per creator — shop and affiliate performance, sales, samples, content, messages, and every group they belong to, all in one place.", image: "/reacher-assets/features/creator-crm-detail.png" },
     { title: "Segment & tag", desc: "Filter by activity, products, and performance." },
     { title: "Act from the inbox", desc: "Reply to every creator's DMs in one inbox — unread, unreplied, filtered by tag, product, and GMV — without leaving Reacher.", image: "/reacher-assets/features/creator-crm-inbox.png" },
     { title: "Request usage rights", desc: "Find your top-performing creator videos by GMV and views, then request and manage usage rights to run them as ads — all from one queue.", image: "/reacher-assets/features/creator-crm-usage-rights.png" },
