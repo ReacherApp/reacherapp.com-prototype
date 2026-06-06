@@ -456,7 +456,7 @@ export const featureSteps: Record<string, Step[]> = {
     { label: "Tracking", title: "Track every campaign in real time", desc: "ROCS, GMV generated, payouts, and a live creator leaderboard — approve payouts and ping creators on Discord without leaving Reacher.", image: "/reacher-assets/features/creator-community-tracking.png", points: [] },
   ],
   "gmv-max": [
-    { title: "Spot winning content", desc: "Find your highest-GMV affiliate videos." },
+    { title: "Set your automation rules", desc: "Pick a campaign, set the timeframe and conditions, then choose an action — like auto-boosting top creatives — from the Action Library, with built-in budget caps and stop rules.", image: "/reacher-assets/features/gmv-max-step1.png" },
     { title: "Pull Spark Codes", desc: "Reacher retrieves codes automatically." },
     { title: "Scale with budget", desc: "Automate ad spend to amplify what works." },
   ],
