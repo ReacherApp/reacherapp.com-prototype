@@ -430,7 +430,7 @@ export const featureSteps: Record<string, Step[]> = {
   "automated-outreach": [
     { title: "Build your list", desc: "Add creators three ways — filter the database, pick a CRM group, or upload a saved list.", image: "/reacher-assets/features/automated-outreach-list.png" },
     { title: "Personalize the message", desc: "AI-tuned DMs and collab invites with product cards, bonuses & dynamic fields — previewed in the creator's inbox.", image: "/reacher-assets/features/automated-outreach-sequence.png" },
-    { title: "Let it run", desc: "Reacher sends at scale and follows up automatically." },
+    { title: "Track every send", desc: "Reacher sends at scale and follows up automatically — watch status, GMV, and post rate per creator in the live tracker.", image: "/reacher-assets/features/automated-outreach-step3.png" },
   ],
   "creative-intelligence": [
     { title: "Scan top videos", desc: "Reacher analyzes every video from your creator collabs, ranked by GMV and engagement.", image: "/reacher-assets/features/creative-intelligence-content.png" },
