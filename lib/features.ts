@@ -279,7 +279,6 @@ export const features: Feature[] = [
     positioning: "GMV Max for TikTok Shop Affiliate Ads",
     oneLiner: "Automate Spark Codes and ad budget for your best content.",
     primaryQuery: "tiktok shop gmv max",
-    image: "/reacher-assets/features/gmv-max.png",
     whoFor: "Brands that want to amplify winning creator content with paid budget.",
     value:
       "Automatically retrieve Spark Codes and allocate ad budget so your highest-performing affiliate videos get amplified. Set the rules and scale what's working.",
@@ -457,7 +456,7 @@ export const featureSteps: Record<string, Step[]> = {
   ],
   "gmv-max": [
     { title: "Set your automation rules", desc: "Pick a campaign, set the timeframe and conditions, then choose an action — like auto-boosting top creatives — from the Action Library, with built-in budget caps and stop rules.", image: "/reacher-assets/features/gmv-max-step1.png" },
-    { title: "Pull Spark Codes", desc: "Reacher retrieves codes automatically." },
+    { title: "Review predicted boosts", desc: "Before it goes live, preview every creative that matches your rules — boosted count, estimated daily spend, and the criteria each one met — then confirm to activate.", image: "/reacher-assets/features/gmv-max-step2.png" },
     { title: "Scale with budget", desc: "Automate ad spend to amplify what works." },
   ],
 };
