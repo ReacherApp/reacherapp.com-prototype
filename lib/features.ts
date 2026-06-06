@@ -440,6 +440,7 @@ export const featureSteps: Record<string, Step[]> = {
     { title: "Sync your roster", desc: "Every creator, status, sample, and GMV in one place." },
     { title: "Segment & tag", desc: "Filter by activity, products, and performance." },
     { title: "Act from the inbox", desc: "Reply to every creator's DMs in one inbox — unread, unreplied, filtered by tag, product, and GMV — without leaving Reacher.", image: "/reacher-assets/features/creator-crm-inbox.png" },
+    { title: "Request usage rights", desc: "Find your top-performing creator videos by GMV and views, then request and manage usage rights to run them as ads — all from one queue.", image: "/reacher-assets/features/creator-crm-usage-rights.png" },
   ],
   "sample-management": [
     { title: "Set quotas & ideal profiles", desc: "Cap monthly samples per product and save reusable Ideal Creator Profiles to filter the queue.", image: "/reacher-assets/features/sample-management-config.png" },
