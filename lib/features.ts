@@ -457,7 +457,7 @@ export const featureSteps: Record<string, Step[]> = {
   "gmv-max": [
     { title: "Set your automation rules", desc: "Pick a campaign, set the timeframe and conditions, then choose an action — like auto-boosting top creatives — from the Action Library, with built-in budget caps and stop rules.", image: "/reacher-assets/features/gmv-max-step1.png" },
     { title: "Review predicted boosts", desc: "Before it goes live, preview every creative that matches your rules — boosted count, estimated daily spend, and the criteria each one met — then confirm to activate.", image: "/reacher-assets/features/gmv-max-step2.png" },
-    { title: "Scale with budget", desc: "Automate ad spend to amplify what works." },
+    { title: "Track boosts and ROI", desc: "Watch every boosted creative live — boost cost, revenue impact, base-to-boosted ROI, and post status — and Reacher auto-stops when campaign ROI dips below your floor.", image: "/reacher-assets/features/gmv-max-step3.png" },
   ],
 };
 
