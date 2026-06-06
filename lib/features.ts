@@ -444,6 +444,7 @@ export const featureSteps: Record<string, Step[]> = {
   ],
   "sample-management": [
     { title: "Set quotas & ideal profiles", desc: "Cap monthly samples per product and save reusable Ideal Creator Profiles to filter the queue.", image: "/reacher-assets/features/sample-management-config.png" },
+    { title: "Check collaboration history", desc: "Before you send, see your full history with each creator — total requests, approvals, posts, and GMV — plus every past sample and the content it produced.", image: "/reacher-assets/features/sample-management-history.png" },
     { title: "Auto-approve or deny by rule", desc: "Set min GMV, engagement, followers, and post rate — or always approve from your lists and CSVs.", image: "/reacher-assets/features/sample-management-autoapprove.png" },
     { title: "Track to content", desc: "Follow every request from pending review to posted video — with approval counts, content completion rate, and GMV per automation.", image: "/reacher-assets/features/sample-management-track.png" },
   ],
