@@ -220,10 +220,6 @@ export const features: Feature[] = [
     oneLiner: "Automatically win back creators who stalled or never replied.",
     primaryQuery: "tiktok shop re-engage creators",
     image: "/reacher-assets/features/re-engage.png",
-    showcase: {
-      heading: "Build re-engagement groups by funnel stage",
-      image: "/reacher-assets/features/re-engage-group.png",
-    },
     whoFor: "Brands that want to recover dormant creators without manual chasing.",
     value:
       "Automatically win back creators who stalled — non-responders, lapsed posters, and unaccepted invites. Set the triggers and Reacher handles the follow-up nudges.",
@@ -453,7 +449,7 @@ export const featureSteps: Record<string, Step[]> = {
   ],
   "re-engage": [
     { title: "Spot the drop-off", desc: "Find lapsed posters and non-responders." },
-    { title: "Set the trigger", desc: "Choose funnel stage and inactivity rules." },
+    { title: "Build groups by funnel stage", desc: "Group creators by status — sample requested, content pending, posted — with templates and conditions, so each segment gets the right nudge.", image: "/reacher-assets/features/re-engage-group.png" },
     { title: "Win them back", desc: "Automated nudges move them back into action." },
   ],
   "creator-community": [
