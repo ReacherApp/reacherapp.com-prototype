@@ -17,9 +17,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!customer) return {};
   return {
     title: `${customer.brand} — Customer Story | Reacher`,
-    description: customer.story.summary,
+    description: customer.story.subtitle,
     alternates: localizedAlternates(`/customers/${customer.slug}`),
   };
+}
+
+const DEMO_URL = "https://calendly.com/bora-reacherapp/15min";
+
+function BrandAvatar({ brand, accent, size = 40 }: { brand: string; accent?: string; size?: number }) {
+  const initials = brand
+    .split(" ")
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+  return (
+    <span
+      className="flex shrink-0 items-center justify-center rounded-full font-bold text-white"
+      style={{ width: size, height: size, backgroundColor: accent ?? "#3559e9", fontSize: size * 0.34 }}
+    >
+      {initials}
+    </span>
+  );
 }
 
 export default async function CustomerStoryPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -35,41 +54,60 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       <ReacherHeader active="" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#eef4ff] px-6 pb-12 pt-[112px] md:pt-[132px]">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(219,229,255,0.7)_0%,rgba(239,244,255,0.9)_60%,#ffffff_100%)]" />
-        <div className="relative z-10 mx-auto max-w-[920px] text-center">
-          <Link href="/customers" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#3559e9] hover:underline">
-            <ArrowLeft size={16} strokeWidth={2.2} /> Customers
-          </Link>
-          <p className="mt-7 text-[14px] font-bold uppercase tracking-[0.14em] text-[#3559e9]">{customer.brand}</p>
-          <h1 className="mx-auto mt-4 max-w-[820px] text-[32px] font-semibold leading-[1.14] tracking-[-0.04em] text-[#05070d] md:text-[48px]">
-            {customer.headline}
-          </h1>
-          <p className="mx-auto mt-6 max-w-[680px] text-[18px] leading-[1.5] text-slate-600 md:text-[20px]">{story.summary}</p>
-          <p className="mt-4 text-[14px] font-medium text-slate-500">{story.joined}</p>
-        </div>
-      </section>
+      <section className="relative overflow-hidden bg-[#eef4ff] px-6 pb-14 pt-[110px] md:pt-[130px]">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(219,229,255,0.7)_0%,rgba(239,244,255,0.92)_62%,#ffffff_100%)]" />
+        <div className="relative z-10 mx-auto max-w-[1080px]">
+          <div className="text-center">
+            <Link href="/customers" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#3559e9] hover:underline">
+              <ArrowLeft size={16} strokeWidth={2.2} /> Customers
+            </Link>
+            <h1 className="mx-auto mt-6 max-w-[900px] text-[34px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#05070d] md:text-[56px]">
+              {customer.headline}
+            </h1>
+            <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.5] text-slate-600 md:text-[20px]">{story.subtitle}</p>
+          </div>
 
-      {/* Hero image */}
-      <section className="px-6 pb-2 pt-10">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-gradient-to-b from-[#eef5ff] to-white p-2.5 shadow-[0_34px_90px_-26px_rgba(16,24,40,0.28)] md:p-3">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-[16px] bg-slate-100">
-              <Image src={customer.image} alt={customer.brand} fill sizes="1040px" className="object-cover" priority />
+          {/* Hero card: image + company info */}
+          <div className="mt-12 grid overflow-hidden rounded-[28px] bg-white shadow-[0_30px_80px_-30px_rgba(16,24,40,0.4)] md:grid-cols-[1.1fr_1fr]">
+            <div className="relative min-h-[300px] bg-slate-100 md:min-h-[460px]">
+              <Image src={customer.image} alt={customer.brand} fill sizes="(min-width:768px) 560px, 100vw" className="object-cover" priority />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-11">
+              <div className="flex items-center gap-3">
+                <BrandAvatar brand={customer.brand} accent={customer.accent} size={44} />
+                <span className="text-[15px] font-semibold text-slate-400">×</span>
+                <Image src="/reacher-assets/contact/nav-logo.png" alt="Reacher" width={44} height={44} className="h-11 w-11 rounded-full object-contain" />
+              </div>
+              <p className="mt-5 text-[22px] font-bold tracking-[-0.01em] text-slate-950">{customer.brand} × Reacher Plus</p>
+              <p className="mt-4 text-[15px] text-slate-700">
+                <span className="font-semibold text-slate-900">Industry:</span> {story.industry}
+              </p>
+              <p className="mt-1.5 text-[15px] text-slate-700">
+                <span className="font-semibold text-slate-900">Product Category:</span> {story.productCategory}
+              </p>
+              <div className="mt-5 flex flex-col gap-2">
+                {customer.tags.map((tag) => (
+                  <span key={tag} className="w-fit rounded-full border border-slate-200 px-4 py-1.5 text-[14px] font-medium text-slate-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <Link href={DEMO_URL} className="mt-7 inline-flex h-[52px] w-fit items-center rounded-full bg-[#07131f] px-8 text-[15px] font-semibold text-white transition hover:bg-black">
+                Book a Demo
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Results at a glance */}
-      <section className="px-6 py-10">
-        <div className="mx-auto max-w-[1040px] rounded-[24px] border border-slate-200 bg-[#f7faff] p-7 md:p-9">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">Results at a glance</p>
-          <div className={`mt-6 grid gap-5 ${story.results.length >= 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3"}`}>
+      <section className="px-6 pt-14">
+        <div className="mx-auto max-w-[1040px] border-b border-slate-200 pb-12">
+          <div className={`grid gap-8 text-center ${story.results.length >= 4 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-1 sm:grid-cols-3"}`}>
             {story.results.map((r) => (
-              <div key={r.label} className="rounded-2xl border border-slate-200 bg-white p-5 text-center">
-                <strong className="block text-[28px] font-bold tracking-[-0.03em] text-[#2465f6] md:text-[36px]">{r.value}</strong>
-                <span className="mt-2 block text-[13px] leading-[1.3] text-slate-500">{r.label}</span>
+              <div key={r.label}>
+                <div className="text-[44px] font-bold leading-none tracking-[-0.04em] text-slate-950 md:text-[56px]">{r.value}</div>
+                <div className="mt-3 text-[15px] text-slate-500">{r.label}</div>
               </div>
             ))}
           </div>
@@ -77,70 +115,120 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       </section>
 
       {/* About */}
-      <section className="px-6 pb-2 pt-6">
+      <section className="px-6 pt-16">
         <div className="mx-auto max-w-[760px]">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">About {customer.brand}</h2>
-          <p className="mt-4 text-[18px] leading-[1.65] text-slate-700">{story.about}</p>
-        </div>
-      </section>
-
-      {/* Challenge */}
-      <section className="px-6 py-10">
-        <div className="mx-auto max-w-[760px]">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">The challenge</h2>
-          <p className="mt-4 text-[24px] font-semibold leading-[1.3] tracking-[-0.02em] text-slate-950 md:text-[28px]">{story.challenge.title}</p>
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            {story.challenge.points.map((p) => (
-              <span key={p} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[14px] font-medium text-slate-700">
-                {p}
-              </span>
+          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">About {customer.brand}</span>
+          <h2 className="mt-6 text-[30px] font-bold tracking-[-0.03em] text-slate-950 md:text-[38px]">{story.aboutTitle}</h2>
+          <div className="mt-5 flex flex-col gap-4">
+            {story.about.map((p, i) => (
+              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Solutions */}
-      <section className="px-6 py-6">
-        <div className="mx-auto flex max-w-[760px] flex-col gap-10">
-          {story.solutions.map((s) => (
-            <div key={s.label} className="border-l-[3px] border-[#3559e9] pl-6">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">{s.label}</p>
-              <h3 className="mt-2 text-[22px] font-semibold tracking-[-0.02em] text-slate-950 md:text-[24px]">{s.title}</h3>
-              <p className="mt-3 text-[18px] leading-[1.6] text-slate-700">{s.body}</p>
-            </div>
-          ))}
+      {/* Challenge */}
+      <section className="px-6 pt-16">
+        <div className="mx-auto max-w-[760px]">
+          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Challenge</span>
+          <h2 className="mt-6 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">{story.challengeTitle}</h2>
+          <div className="mt-5 flex flex-col gap-4">
+            {story.challengeParagraphs.map((p, i) => (
+              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
+            ))}
+          </div>
+          {story.challengeQuote ? (
+            <blockquote className="mt-8 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+              {story.challengeQuote}
+            </blockquote>
+          ) : null}
         </div>
       </section>
 
-      {/* The numbers */}
-      {story.numbers && story.numbers.length > 0 ? (
-        <section className="px-6 py-10">
-          <div className="mx-auto max-w-[760px]">
-            <h2 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#3559e9]">The numbers</h2>
-            <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
-              <div className="grid grid-cols-[1.4fr_1fr_1fr] bg-slate-50 px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-slate-500">
-                <span>Metric</span>
-                <span>Before</span>
-                <span className="text-[#2465f6]">With Reacher</span>
+      {/* Solution */}
+      <section className="px-6 pt-16">
+        <div className="mx-auto max-w-[760px]">
+          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Solution</span>
+          <h2 className="mt-6 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">What Reacher Plus Did</h2>
+          <p className="mt-5 text-[18px] leading-[1.65] text-slate-700">{story.solutionIntro}</p>
+          <div className="mt-8 flex flex-col gap-4">
+            {story.solutions.map((s) => (
+              <div key={s.title} className="rounded-2xl bg-[#f1f5ff] p-6 md:p-7">
+                <h3 className="text-[19px] font-bold text-[#3559e9]">{s.title}</h3>
+                <p className="mt-2.5 text-[17px] leading-[1.6] text-slate-700">{s.body}</p>
               </div>
-              {story.numbers.map((n, i) => (
-                <div key={n.label} className={`grid grid-cols-[1.4fr_1fr_1fr] items-center px-5 py-4 text-[15px] ${i > 0 ? "border-t border-slate-100" : ""}`}>
-                  <span className="font-medium text-slate-800">{n.label}</span>
-                  <span className="text-slate-500">{n.before}</span>
-                  <span className="font-bold text-[#2465f6]">{n.after}</span>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
-        </section>
-      ) : null}
+          {story.solutionQuote ? (
+            <blockquote className="mt-6 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+              {story.solutionQuote}
+            </blockquote>
+          ) : null}
+        </div>
+      </section>
 
-      {/* Related */}
+      {/* Result */}
+      <section className="px-6 pt-16">
+        <div className="mx-auto max-w-[760px]">
+          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Result</span>
+          <div className="mt-6 flex flex-col gap-4">
+            {story.resultParagraphs.map((p, i) => (
+              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl bg-[#f1f5ff] p-7 md:p-8">
+            <p className="text-[18px] font-bold text-[#3559e9]">Wins {story.joined.includes("month") ? "" : "(in one month)"}:</p>
+            <ul className="mt-5 flex flex-col gap-3">
+              {story.wins.map((w) => (
+                <li key={w.stat} className="flex gap-2 text-[17px] leading-[1.5] text-slate-800">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
+                  <span>
+                    <strong className="font-bold text-slate-950">{w.stat}</strong> <span className="text-slate-600">({w.note})</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Numbers — horizontal bars */}
+          {story.numbers && story.numbers.length > 0 ? (
+            <div className="mt-6 rounded-2xl border border-slate-200 p-7 md:p-8">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-slate-400">Before → With Reacher</p>
+              <div className="mt-6 flex flex-col gap-6">
+                {story.numbers.map((n, i) => {
+                  const width = `${30 + ((story.numbers!.length - i) / story.numbers!.length) * 65}%`;
+                  return (
+                    <div key={n.label}>
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[14px] font-semibold text-slate-800">{n.label}</span>
+                        <span className="text-[14px] font-bold text-emerald-600">{n.multiplier}</span>
+                      </div>
+                      <div className="mt-1 text-[12px] text-slate-400">From {n.before} to {n.after}</div>
+                      <div className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
+                        <div className="h-full rounded-full bg-gradient-to-r from-[#6aa8ff] to-[#2465f6]" style={{ width }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          {story.closingQuote ? (
+            <blockquote className="mt-6 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+              {story.closingQuote}
+            </blockquote>
+          ) : null}
+        </div>
+      </section>
+
+      {/* Other case studies */}
       {related.length > 0 ? (
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-[1040px]">
-            <h2 className="text-center text-2xl font-bold tracking-[-0.02em] text-slate-950 md:text-[30px]">More customer stories</h2>
-            <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="px-6 pt-20">
+          <div className="mx-auto max-w-[1180px]">
+            <h2 className="text-[26px] font-bold tracking-[-0.02em] text-slate-950 md:text-[30px]">Other Case Studies</h2>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((c) => (
                 <Link
                   key={c.slug}
@@ -148,17 +236,20 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
                   className="group flex flex-col overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_50px_-24px_rgba(16,24,40,0.28)]"
                 >
                   <div className="relative aspect-[16/11] overflow-hidden bg-slate-100">
-                    <Image src={c.image} alt={c.brand} fill sizes="(min-width:1024px) 320px, 50vw" className="object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
-                    <span className="absolute left-4 top-4 inline-flex max-w-[80%] truncate rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-[#3559e9] backdrop-blur">{c.category}</span>
+                    <Image src={c.image} alt={c.brand} fill sizes="(min-width:1024px) 360px, 50vw" className="object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    <span className="absolute right-4 top-4 inline-flex rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-slate-600 backdrop-blur">{c.group}</span>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-[15px] font-bold text-slate-900">{c.brand}</p>
-                    <p className="mt-2 text-[15px] font-semibold leading-[1.4] text-slate-700">{c.headline}</p>
-                    <span className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3559e9]">
-                      Read the story
-                      <ArrowUpRight size={16} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
+                    <div className="flex items-center gap-2.5">
+                      <BrandAvatar brand={c.brand} accent={c.accent} size={28} />
+                      <span className="text-[14px] font-bold text-slate-900">{c.brand}</span>
+                    </div>
+                    <p className="mt-3 text-[17px] font-bold leading-[1.3] text-slate-950">{c.headline}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {c.tags.slice(0, 3).map((t) => (
+                        <span key={t} className="rounded-full border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600">{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -168,7 +259,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       ) : null}
 
       {/* Dark CTA */}
-      <section className="bg-[#07131f] px-6 py-24 text-center text-white md:py-32">
+      <section className="mt-20 bg-[#07131f] px-6 py-24 text-center text-white md:py-32">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-3xl font-bold tracking-[-0.03em] md:text-[42px]">Want results like this?</h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-white/60">Automate creator outreach and grow TikTok Shop revenue on autopilot.</p>
@@ -176,8 +267,8 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
             <Link href="https://portal.reacherapp.com/login" className="inline-flex h-[52px] items-center rounded-full border border-white/25 px-7 text-[15px] font-semibold text-white transition hover:bg-white/10">
               Get 14 day free trial
             </Link>
-            <Link href="https://calendly.com/bora-reacherapp/15min" className="inline-flex h-[52px] items-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white transition hover:bg-blue-600">
-              Book a demo
+            <Link href={DEMO_URL} className="inline-flex h-[52px] items-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white transition hover:bg-blue-600">
+              Book a Demo
             </Link>
           </div>
         </div>
