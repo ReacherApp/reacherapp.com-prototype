@@ -48,11 +48,6 @@ a {
   text-decoration: none;
 }
 
-.rocket-cursor,
-.rocket-cursor * {
-  cursor: none !important;
-}
-
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

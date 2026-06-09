@@ -66,16 +66,17 @@ export default function GlobalCursor() {
       const dy = ry - prevRy;
       const speed = Math.hypot(dx, dy);
       if (speed > 0.4) angle = Math.atan2(dy, dx);
-      // Anchor the rocket's nose to the real pointer (hotspot at the tip),
-      // by pulling the centered emoji back along its flight direction.
-      const nose = 6;
-      rocket.style.transform = `translate(${rx - Math.cos(angle) * nose}px, ${ry - Math.sin(angle) * nose}px) translate(-50%, -50%) rotate(${angle + Math.PI / 4}rad)`;
+      // The native cursor stays visible; the rocket trails beside it.
+      // Offset down-right so it sits clear of the OS arrow at rest.
+      const offX = 16;
+      const offY = 20;
+      rocket.style.transform = `translate(${rx + offX}px, ${ry + offY}px) translate(-50%, -50%) rotate(${angle + Math.PI / 4}rad)`;
 
       const emit = active ? Math.min(4, Math.floor(speed / 1.8) + 1) : 0;
       for (let i = 0; i < emit; i++) {
         particles.push({
-          x: rx - Math.cos(angle) * 9 + (Math.random() - 0.5) * 5,
-          y: ry - Math.sin(angle) * 9 + (Math.random() - 0.5) * 5,
+          x: rx + offX - Math.cos(angle) * 9 + (Math.random() - 0.5) * 5,
+          y: ry + offY - Math.sin(angle) * 9 + (Math.random() - 0.5) * 5,
           vx: -dx * 0.12 + (Math.random() - 0.5) * 0.8,
           vy: -dy * 0.12 + (Math.random() - 0.5) * 0.8 + 0.22,
           life: 1,
