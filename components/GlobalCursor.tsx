@@ -66,20 +66,23 @@ export default function GlobalCursor() {
       const dy = ry - prevRy;
       const speed = Math.hypot(dx, dy);
       if (speed > 0.4) angle = Math.atan2(dy, dx);
-      rocket.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%) rotate(${angle + Math.PI / 4}rad)`;
+      // Anchor the rocket's nose to the real pointer (hotspot at the tip),
+      // by pulling the centered emoji back along its flight direction.
+      const nose = 6;
+      rocket.style.transform = `translate(${rx - Math.cos(angle) * nose}px, ${ry - Math.sin(angle) * nose}px) translate(-50%, -50%) rotate(${angle + Math.PI / 4}rad)`;
 
-      const emit = active ? Math.min(5, Math.floor(speed / 1.5) + 1) : 0;
+      const emit = active ? Math.min(4, Math.floor(speed / 1.8) + 1) : 0;
       for (let i = 0; i < emit; i++) {
         particles.push({
-          x: rx - Math.cos(angle) * 11 + (Math.random() - 0.5) * 7,
-          y: ry - Math.sin(angle) * 11 + (Math.random() - 0.5) * 7,
-          vx: -dx * 0.12 + (Math.random() - 0.5) * 0.9,
-          vy: -dy * 0.12 + (Math.random() - 0.5) * 0.9 + 0.25,
+          x: rx - Math.cos(angle) * 9 + (Math.random() - 0.5) * 5,
+          y: ry - Math.sin(angle) * 9 + (Math.random() - 0.5) * 5,
+          vx: -dx * 0.12 + (Math.random() - 0.5) * 0.8,
+          vy: -dy * 0.12 + (Math.random() - 0.5) * 0.8 + 0.22,
           life: 1,
-          size: 1.4 + Math.random() * 2.6,
+          size: 1 + Math.random() * 2,
           hue: 212 + Math.random() * 30,
         });
-        if (particles.length > 260) particles.shift();
+        if (particles.length > 220) particles.shift();
       }
       prevRx = rx;
       prevRy = ry;
@@ -119,8 +122,8 @@ export default function GlobalCursor() {
       <div
         ref={rocketRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9999] select-none text-[26px] leading-none opacity-0 will-change-transform"
-        style={{ filter: "hue-rotate(200deg) saturate(1.25) drop-shadow(0 2px 5px rgba(53,89,233,0.4))" }}
+        className="pointer-events-none fixed left-0 top-0 z-[9999] select-none text-[17px] leading-none opacity-0 will-change-transform"
+        style={{ filter: "hue-rotate(200deg) saturate(1.2) drop-shadow(0 1px 3px rgba(53,89,233,0.35))" }}
       >
         🚀
       </div>
