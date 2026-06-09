@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -14,6 +16,12 @@ export type CaseStudy = {
 };
 
 const ROTATION_MS = 4000;
+
+const slugify = (brand: string) =>
+  brand
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 export default function CaseStudyCarousel({ testimonials }: { testimonials: CaseStudy[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -52,7 +60,11 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
           </button>
         ))}
       </div>
-      <div className="mx-auto mt-8 max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20">
+      <Link
+        href={`/customers/${slugify(active.brand)}`}
+        aria-label={`Read the ${active.brand} customer story`}
+        className="group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20 transition hover:shadow-[0_40px_80px_-30px_rgba(11,32,90,0.5)]"
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active.brand}
@@ -91,11 +103,24 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
 
               <p className={active.stats.length > 0 ? "mt-7 font-semibold" : "mt-10 font-semibold"}>{active.name}</p>
               <p className="text-sm text-slate-500">{active.role} • Verified Customer</p>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#3559e9]">
+                Read the story
+                <ArrowUpRight size={16} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </Link>
 
+      <div className="mt-8 text-center">
+        <Link
+          href="/customers"
+          className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-5 py-2.5 text-[14px] font-semibold text-white ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/25"
+        >
+          View all customer stories
+          <ArrowUpRight size={16} strokeWidth={2.2} />
+        </Link>
+      </div>
     </>
   );
 }
