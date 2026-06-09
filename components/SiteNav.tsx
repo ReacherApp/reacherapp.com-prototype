@@ -203,7 +203,7 @@ function DesktopNav({ locale, active, partnerBadge }: { locale: Locale; active: 
           ))}
         </div>
         <div className="flex shrink-0 items-center gap-1">
-          <Link href={LOGIN_URL} className="rounded-full px-3 py-2 text-[13.5px] font-medium !text-[#475467] transition hover:!text-[#101828]">
+          <Link href={LOGIN_URL} className="rounded-full px-5 py-2.5 text-[13.5px] font-medium !text-[#475467] transition hover:bg-[#f2f4f7] hover:!text-[#101828]">
             {copy.login}
           </Link>
           <Link href={LOGIN_URL} className="inline-flex items-center rounded-full border border-[#d4d9e5] bg-white px-[16px] py-2 text-[13px] font-semibold !text-[#1d2939] transition hover:bg-[#f8fafc]">
