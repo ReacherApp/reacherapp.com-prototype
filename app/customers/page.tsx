@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import CustomersGrid from "@/components/CustomersGrid";
 import { customers } from "@/lib/customers";
@@ -11,6 +13,9 @@ export const metadata: Metadata = {
     "Brands winning with Reacher Plus — see how TikTok Shop sellers are scaling their affiliate programs.",
   alternates: localizedAlternates("/customers"),
 };
+
+const featured = customers[0];
+const rest = customers.slice(1);
 
 export default function CustomersPage() {
   return (
@@ -31,10 +36,45 @@ export default function CustomersPage() {
         </div>
       </section>
 
-      {/* Grid */}
+      {/* Featured story */}
+      <section className="px-6 pb-4 pt-12">
+        <div className="mx-auto max-w-[1180px]">
+          <Link
+            href={`/customers/${featured.slug}`}
+            className="group grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-30px_rgba(16,24,40,0.32)] transition hover:shadow-[0_30px_70px_-28px_rgba(16,24,40,0.4)] md:grid-cols-[1.05fr_1fr]"
+          >
+            <div className="relative min-h-[280px] overflow-hidden bg-slate-100 md:min-h-[440px]">
+              <Image src={featured.image} alt={featured.brand} fill sizes="(min-width:768px) 600px, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" priority />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/45 via-transparent to-transparent" />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:p-12">
+              <span className="inline-flex w-fit rounded-full bg-[#eef3ff] px-3 py-1 text-[12px] font-semibold text-[#3559e9]">
+                {featured.category} · Featured
+              </span>
+              <p className="mt-5 text-[18px] font-bold text-slate-900">{featured.brand}</p>
+              <p className="mt-3 text-[24px] font-semibold leading-[1.3] tracking-[-0.02em] text-slate-950 md:text-[30px]">
+                {featured.headline}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {featured.tags.map((tag) => (
+                  <span key={tag} className="rounded-full border border-slate-200 px-3 py-1.5 text-[13px] font-medium text-slate-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="mt-8 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[#3559e9]">
+                Read the story
+                <ArrowUpRight size={17} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* Grid + filter tabs */}
       <section className="px-6 pb-24 pt-12">
         <div className="mx-auto max-w-[1180px]">
-          <CustomersGrid customers={customers} />
+          <CustomersGrid customers={rest} />
         </div>
       </section>
 
@@ -46,16 +86,10 @@ export default function CustomersPage() {
             Automate creator outreach and grow TikTok Shop revenue on autopilot.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="https://portal.reacherapp.com/login"
-              className="inline-flex h-[52px] items-center rounded-full border border-white/25 px-7 text-[15px] font-semibold text-white transition hover:bg-white/10"
-            >
+            <Link href="https://portal.reacherapp.com/login" className="inline-flex h-[52px] items-center rounded-full border border-white/25 px-7 text-[15px] font-semibold text-white transition hover:bg-white/10">
               Get 14 day free trial
             </Link>
-            <Link
-              href="https://calendly.com/bora-reacherapp/15min"
-              className="inline-flex h-[52px] items-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white transition hover:bg-blue-600"
-            >
+            <Link href="https://calendly.com/bora-reacherapp/15min" className="inline-flex h-[52px] items-center rounded-full bg-[#3559e9] px-7 text-[15px] font-semibold text-white transition hover:bg-blue-600">
               Book a demo
             </Link>
           </div>
