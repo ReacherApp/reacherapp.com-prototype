@@ -17,12 +17,6 @@ export type CaseStudy = {
 
 const ROTATION_MS = 4000;
 
-const slugify = (brand: string) =>
-  brand
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
 export default function CaseStudyCarousel({ testimonials }: { testimonials: CaseStudy[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -61,7 +55,7 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
         ))}
       </div>
       <Link
-        href={`/customers/${slugify(active.brand)}`}
+        href="/customers"
         aria-label={`Read the ${active.brand} customer story`}
         className="group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20 transition hover:shadow-[0_40px_80px_-30px_rgba(11,32,90,0.5)]"
       >
