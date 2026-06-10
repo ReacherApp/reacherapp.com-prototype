@@ -8,19 +8,10 @@ import { customerGroups, type Customer } from "@/lib/customers";
 
 const TABS = ["All stories", ...customerGroups] as const;
 
-function BrandAvatar({ brand, accent }: { brand: string; accent?: string }) {
-  const initials = brand
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
+function BrandAvatar({ slug, brand }: { slug: string; brand: string }) {
   return (
-    <span
-      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
-      style={{ backgroundColor: accent ?? "#3559e9" }}
-    >
-      {initials}
+    <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200">
+      <Image src={`/reacher-assets/customers/logos/${slug}-avatar.png`} alt={brand} fill sizes="28px" className="object-cover" />
     </span>
   );
 }
@@ -78,7 +69,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
             </div>
             <div className="flex flex-1 flex-col p-6">
               <div className="flex items-center gap-2.5">
-                <BrandAvatar brand={c.brand} accent={c.accent} />
+                <BrandAvatar slug={c.slug} brand={c.brand} />
                 <span className="text-[14px] font-bold tracking-[-0.01em] text-slate-900">{c.brand}</span>
               </div>
               <p className="mt-4 text-[18px] font-bold leading-[1.3] tracking-[-0.015em] text-slate-950">{c.headline}</p>

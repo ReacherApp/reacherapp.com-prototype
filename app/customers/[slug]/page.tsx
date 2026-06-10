@@ -24,19 +24,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const DEMO_URL = "https://calendly.com/bora-reacherapp/15min";
 
-function BrandAvatar({ brand, accent, size = 40 }: { brand: string; accent?: string; size?: number }) {
-  const initials = brand
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
+function BrandAvatar({ slug, brand, size = 40 }: { slug: string; brand: string; size?: number }) {
   return (
-    <span
-      className="flex shrink-0 items-center justify-center rounded-full font-bold text-white"
-      style={{ width: size, height: size, backgroundColor: accent ?? "#3559e9", fontSize: size * 0.34 }}
-    >
-      {initials}
+    <span className="relative shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200" style={{ width: size, height: size }}>
+      <Image src={`/reacher-assets/customers/logos/${slug}-avatar.png`} alt={brand} fill sizes={`${size}px`} className="object-cover" />
     </span>
   );
 }
@@ -74,7 +65,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
             </div>
             <div className="flex flex-col justify-center p-8 md:p-11">
               <div className="flex items-center gap-3">
-                <BrandAvatar brand={customer.brand} accent={customer.accent} size={44} />
+                <BrandAvatar slug={customer.slug} brand={customer.brand} size={44} />
                 <span className="text-[15px] font-semibold text-slate-400">×</span>
                 <Image src="/reacher-assets/contact/nav-logo.png" alt="Reacher" width={44} height={44} className="h-11 w-11 rounded-full object-contain" />
               </div>
@@ -178,7 +169,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
           </div>
 
           <div className="mt-8 rounded-2xl bg-[#f1f5ff] p-7 md:p-8">
-            <p className="text-[18px] font-bold text-[#3559e9]">Wins {story.joined.includes("month") ? "" : "(in one month)"}:</p>
+            <p className="text-[18px] font-bold text-[#3559e9]">Wins:</p>
             <ul className="mt-5 flex flex-col gap-3">
               {story.wins.map((w) => (
                 <li key={w.stat} className="flex gap-2 text-[17px] leading-[1.5] text-slate-800">
@@ -241,7 +232,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="flex items-center gap-2.5">
-                      <BrandAvatar brand={c.brand} accent={c.accent} size={28} />
+                      <BrandAvatar slug={c.slug} brand={c.brand} size={28} />
                       <span className="text-[14px] font-bold text-slate-900">{c.brand}</span>
                     </div>
                     <p className="mt-3 text-[17px] font-bold leading-[1.3] text-slate-950">{c.headline}</p>
