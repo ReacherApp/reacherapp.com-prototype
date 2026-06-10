@@ -35,7 +35,7 @@ const chromeCopy: Record<Locale, ChromeCopy> = {
   en: {
     login: "Log In",
     navLinks: [
-      ["Testimonials", "/#testimonials-new"],
+      ["Testimonials", "/customers"],
       ["Pricing", "/pricing"],
       ["Affiliate", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],
@@ -48,7 +48,7 @@ const chromeCopy: Record<Locale, ChromeCopy> = {
       {
         title: "Company",
         links: [
-          ["Testimonials", "/#testimonials-new"],
+          ["Testimonials", "/customers"],
           ["Career", "https://jobs.ashbyhq.com/reacher"],
           ["Blog", "/blog"],
           ["Pricing", "/pricing"],
@@ -78,7 +78,7 @@ const chromeCopy: Record<Locale, ChromeCopy> = {
   pt: {
     login: "Entrar",
     navLinks: [
-      ["Depoimentos", "/#testimonials-new"],
+      ["Depoimentos", "/customers"],
       ["Preços", "/pricing"],
       ["Afiliados", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],
@@ -91,7 +91,7 @@ const chromeCopy: Record<Locale, ChromeCopy> = {
       {
         title: "Empresa",
         links: [
-          ["Depoimentos", "/#testimonials-new"],
+          ["Depoimentos", "/customers"],
           ["Carreiras", "https://jobs.ashbyhq.com/reacher"],
           ["Blog", "/blog"],
           ["Preços", "/pricing"],

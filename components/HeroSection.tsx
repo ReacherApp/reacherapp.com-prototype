@@ -40,7 +40,7 @@ const heroCopy = {
       "Manage campaigns from one CRM",
     ],
     navLinks: [
-      ["Testimonials", "#testimonials-new"],
+      ["Testimonials", "/customers"],
       ["Pricing", "/pricing"],
       ["Affiliate", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],
@@ -68,7 +68,7 @@ const heroCopy = {
       "Gerencie campanhas em um único CRM",
     ],
     navLinks: [
-      ["Depoimentos", "#testimonials-new"],
+      ["Depoimentos", "/customers"],
       ["Preços", "/pricing"],
       ["Afiliados", "https://reacher.tolt.io/"],
       ["Blog", "/blog"],

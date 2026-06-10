@@ -20,7 +20,7 @@ const navCopy = {
     trial: "Get 14 day free trial",
     demo: "Book a demo",
     links: [
-      ["Testimonials", "/#testimonials-new"],
+      ["Testimonials", "/customers"],
       ["Pricing", "/pricing"],
       ["What's New", "/changelog"],
     ],
@@ -39,7 +39,7 @@ const navCopy = {
     trial: "Teste grátis de 14 dias",
     demo: "Agende uma demo",
     links: [
-      ["Depoimentos", "/#testimonials-new"],
+      ["Depoimentos", "/customers"],
       ["Preços", "/pricing"],
       ["Novidades", "/changelog"],
     ],

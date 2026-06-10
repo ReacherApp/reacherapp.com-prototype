@@ -148,7 +148,7 @@ const footerColumns = [
   {
     title: "Company",
     links: [
-      ["Testimonials", "/#testimonials-new"],
+      ["Testimonials", "/customers"],
       ["Career", "https://jobs.ashbyhq.com/reacher"],
       ["Blog", "/blog"],
       ["Pricing", "/pricing"],
