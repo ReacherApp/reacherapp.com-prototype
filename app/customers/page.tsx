@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ReacherFooter, ReacherHeader } from "@/components/ReacherChrome";
 import CustomersGrid from "@/components/CustomersGrid";
 import CaseStudyCarousel from "@/components/CaseStudyCarousel";
+import BrandMarquee from "@/components/BrandMarquee";
 import { customers } from "@/lib/customers";
 import { testimonials } from "@/lib/testimonials";
 import { localizedAlternates } from "@/lib/seo";
@@ -29,8 +30,8 @@ export default function CustomersPage() {
         <div className="absolute left-1/2 top-[-150px] h-[620px] w-[94%] max-w-[1180px] -translate-x-1/2 rounded-[100%] bg-[#335CFF]/20 blur-[112px]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(219,229,255,0.72)_0%,rgba(239,244,255,0.88)_52%,#ffffff_100%)]" />
         <div className="relative z-10 mx-auto max-w-[1080px]">
-          <h1 className="mx-auto max-w-[920px] text-[44px] font-semibold leading-[1.04] tracking-[-0.05em] text-[#05070d] md:text-[68px]">
-            Brands Winning with Reacher Plus
+          <h1 className="mx-auto max-w-[960px] text-[44px] font-semibold leading-[1.04] tracking-[-0.05em] text-[#05070d] md:text-[64px]">
+            Brands and Agencies Winning with Reacher
           </h1>
           <p className="mx-auto mt-6 max-w-[680px] text-[18px] leading-[1.55] text-black/58 md:text-[20px]">
             See how TikTok Shop sellers are scaling their affiliate programs with Reacher Plus.
@@ -38,19 +39,15 @@ export default function CustomersPage() {
         </div>
       </section>
 
-      {/* Logo wall */}
-      <section className="border-b border-slate-100 px-6 py-12">
-        <div className="mx-auto max-w-[1080px]">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-            Trusted by leading TikTok Shop brands
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12">
-            {customers.map((c) => (
-              <span key={c.slug} className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200 transition hover:scale-105 md:h-14 md:w-14" title={c.brand}>
-                <Image src={`/reacher-assets/customers/logos/${c.slug}-avatar.png`} alt={c.brand} fill sizes="56px" className="object-cover" />
-              </span>
-            ))}
-          </div>
+      {/* Brand marquee */}
+      <BrandMarquee />
+
+      {/* Testimonials (moved up) */}
+      <section className="bg-gradient-to-br from-[#0b55f4] via-[#4b8cff] to-[#bed8ff] px-6 py-24 text-white md:py-28">
+        <div className="mx-auto max-w-[1180px] text-center">
+          <span className="rounded-full bg-white/20 px-5 py-2 text-sm font-semibold ring-1 ring-white/30">Case Studies &amp; Testimonial</span>
+          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-bold tracking-[-0.03em] md:text-[42px]">In their words</h2>
+          <CaseStudyCarousel testimonials={testimonials} embedded />
         </div>
       </section>
 
@@ -62,7 +59,7 @@ export default function CustomersPage() {
             href={`/customers/${featured.slug}`}
             className="group grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-30px_rgba(16,24,40,0.32)] transition hover:shadow-[0_30px_70px_-28px_rgba(16,24,40,0.4)] md:grid-cols-[1.05fr_1fr]"
           >
-            <div className="relative min-h-[280px] overflow-hidden bg-slate-100 md:min-h-[440px]">
+            <div className="relative min-h-[260px] overflow-hidden bg-slate-100">
               <Image src={featured.image} alt={featured.brand} fill sizes="(min-width:768px) 600px, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
               <span className="absolute bottom-5 left-5 flex items-center gap-2.5">
@@ -102,15 +99,6 @@ export default function CustomersPage() {
       <section className="px-6 pb-24 pt-12">
         <div className="mx-auto max-w-[1180px]">
           <CustomersGrid customers={rest} />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-gradient-to-br from-[#0b55f4] via-[#4b8cff] to-[#bed8ff] px-6 py-24 text-white md:py-28">
-        <div className="mx-auto max-w-[1180px] text-center">
-          <span className="rounded-full bg-white/20 px-5 py-2 text-sm font-semibold ring-1 ring-white/30">Case Studies &amp; Testimonial</span>
-          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-bold tracking-[-0.03em] md:text-[42px]">In their words</h2>
-          <CaseStudyCarousel testimonials={testimonials} embedded />
         </div>
       </section>
 

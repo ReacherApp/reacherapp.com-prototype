@@ -68,7 +68,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
                 <span className="text-[15px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{c.brand}</span>
               </span>
             </div>
-            <div className="flex flex-1 flex-col p-6">
+            <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
               <p className="text-[18px] font-bold leading-[1.3] tracking-[-0.015em] text-slate-950">{c.headline}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {c.tags.slice(0, 3).map((tag) => (
