@@ -92,7 +92,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
                   </span>
                 ))}
               </div>
-              <Link href={DEMO_URL} className="mt-7 inline-flex h-[52px] w-fit items-center rounded-full bg-[#07131f] px-8 text-[15px] font-semibold text-white transition hover:bg-black">
+              <Link href={DEMO_URL} style={{ color: "#ffffff" }} className="mt-7 inline-flex h-[52px] w-fit items-center rounded-full bg-[#07131f] px-8 text-[15px] font-semibold text-white transition hover:bg-black">
                 Book a Demo
               </Link>
             </div>
