@@ -43,10 +43,10 @@ export default function CustomersPage() {
       <BrandMarquee />
 
       {/* Testimonials (moved up) */}
-      <section className="bg-gradient-to-br from-[#0b55f4] via-[#4b8cff] to-[#bed8ff] px-6 py-24 text-white md:py-28">
+      <section className="bg-white px-6 py-20 md:py-24">
         <div className="mx-auto max-w-[1180px] text-center">
-          <span className="rounded-full bg-white/20 px-5 py-2 text-sm font-semibold ring-1 ring-white/30">Case Studies &amp; Testimonial</span>
-          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-bold tracking-[-0.03em] md:text-[42px]">In their words</h2>
+          <span className="rounded-full bg-[#eef3ff] px-5 py-2 text-sm font-semibold text-[#3559e9]">Case Studies &amp; Testimonial</span>
+          <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-bold tracking-[-0.03em] text-slate-950 md:text-[42px]">In their words</h2>
           <CaseStudyCarousel testimonials={testimonials} embedded />
         </div>
       </section>

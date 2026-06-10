@@ -45,7 +45,11 @@ export default function CaseStudyCarousel({
 
   return (
     <>
-      <div className="mx-auto mt-12 flex max-w-full flex-wrap items-center justify-center gap-1 rounded-[1.4rem] bg-white/12 p-1.5 ring-1 ring-white/25 backdrop-blur-sm sm:max-w-fit sm:rounded-full">
+      <div
+        className={`mx-auto mt-12 flex max-w-full flex-wrap items-center justify-center gap-1 rounded-[1.4rem] p-1.5 ring-1 backdrop-blur-sm sm:max-w-fit sm:rounded-full ${
+          embedded ? "bg-slate-100 ring-slate-200" : "bg-white/12 ring-white/25"
+        }`}
+      >
         {testimonials.map((testimonial, index) => (
           <button
             key={testimonial.brand}
@@ -54,7 +58,11 @@ export default function CaseStudyCarousel({
             aria-pressed={index === activeIndex}
             onClick={() => goTo(index)}
             className={`rounded-full px-4 py-2 text-[13px] font-semibold transition md:text-sm ${
-              index === activeIndex ? "bg-white text-[#0b3bdb] shadow-sm" : "text-white/75 hover:bg-white/10 hover:text-white"
+              index === activeIndex
+                ? "bg-white text-[#0b3bdb] shadow-sm"
+                : embedded
+                  ? "text-slate-600 hover:bg-white/70 hover:text-slate-900"
+                  : "text-white/75 hover:bg-white/10 hover:text-white"
             }`}
           >
             {testimonial.brand}

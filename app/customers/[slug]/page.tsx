@@ -56,7 +56,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
             <h1 className="mx-auto mt-6 max-w-[900px] text-[34px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#05070d] md:text-[56px]">
               {customer.headline}
             </h1>
-            <p className="mx-auto mt-6 max-w-[760px] text-[18px] leading-[1.5] text-slate-600 md:text-[20px]">{story.subtitle}</p>
+            <p className="mx-auto mt-6 max-w-[1040px] text-[18px] leading-[1.5] text-slate-600 md:text-[20px]">{story.subtitle}</p>
           </div>
 
           {/* Hero card: image + company info */}
@@ -108,7 +108,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
 
       {/* About */}
       <section className="px-6 pt-20 md:pt-24">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[1040px]">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">About {customer.brand}</p>
           <h2 className="mt-4 text-[30px] font-bold tracking-[-0.03em] text-slate-950 md:text-[38px]">{story.aboutTitle}</h2>
           <div className="mt-6 flex flex-col gap-5">
@@ -134,7 +134,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
 
       {/* Challenge */}
       <section className="px-6 pt-20 md:pt-24">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[1040px]">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Challenge</p>
           <h2 className="mt-4 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">{story.challengeTitle}</h2>
           <div className="mt-6 flex flex-col gap-5">
@@ -152,7 +152,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
 
       {/* Solution */}
       <section className="px-6 pt-20 md:pt-24">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[1040px]">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Solution</p>
           <h2 className="mt-4 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">What Reacher Plus Did</h2>
           <p className="mt-6 text-[18px] leading-[1.75] text-slate-700">{story.solutionIntro}</p>
@@ -174,7 +174,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
 
       {/* Result */}
       <section className="px-6 pt-20 md:pt-24">
-        <div className="mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[1040px]">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Result</p>
           <div className="mt-6 flex flex-col gap-5">
             {story.resultParagraphs.map((p, i) => (
