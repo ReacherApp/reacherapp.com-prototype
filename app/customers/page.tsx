@@ -58,7 +58,7 @@ export default function CustomersPage() {
             href={`/customers/${featured.slug}`}
             className="group grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-30px_rgba(16,24,40,0.32)] transition hover:shadow-[0_30px_70px_-28px_rgba(16,24,40,0.4)] md:grid-cols-[1.05fr_1fr]"
           >
-            <div className="relative h-full min-h-[260px] overflow-hidden bg-slate-100">
+            <div className="relative min-h-[260px] self-stretch overflow-hidden bg-slate-100">
               <Image src={featured.image} alt={featured.brand} fill sizes="(min-width:768px) 600px, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
               <span className="absolute bottom-5 left-5 flex items-center gap-2.5">

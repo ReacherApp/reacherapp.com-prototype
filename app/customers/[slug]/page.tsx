@@ -61,7 +61,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
 
           {/* Hero card: image + company info */}
           <div className="mt-12 grid overflow-hidden rounded-[28px] bg-white shadow-[0_30px_80px_-30px_rgba(16,24,40,0.4)] md:grid-cols-[1.1fr_1fr]">
-            <div className="relative h-full min-h-[280px] bg-slate-100">
+            <div className="relative min-h-[280px] self-stretch bg-slate-100">
               <Image src={customer.image} alt={customer.brand} fill sizes="(min-width:768px) 560px, 100vw" className="object-cover" priority />
             </div>
             <div className="flex flex-col justify-center p-8 md:p-11">
