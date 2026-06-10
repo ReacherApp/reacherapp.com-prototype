@@ -8,14 +8,6 @@ import { customerGroups, type Customer } from "@/lib/customers";
 
 const TABS = ["All stories", ...customerGroups] as const;
 
-function BrandAvatar({ slug, brand }: { slug: string; brand: string }) {
-  return (
-    <span className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200">
-      <Image src={`/reacher-assets/customers/logos/${slug}-avatar.png`} alt={brand} fill sizes="28px" className="object-cover" />
-    </span>
-  );
-}
-
 export default function CustomersGrid({ customers }: { customers: Customer[] }) {
   const [active, setActive] = useState<(typeof TABS)[number]>("All stories");
 
@@ -62,17 +54,22 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
                 sizes="(min-width:1024px) 360px, (min-width:640px) 50vw, 100vw"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/65 via-[#0b1f3a]/5 to-transparent" />
               <span className="absolute left-4 top-4 inline-flex max-w-[80%] truncate rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-slate-900 backdrop-blur">
                 {c.category}
               </span>
+              {/* brand logo chip on image */}
+              <span className="absolute bottom-4 left-4 flex items-center gap-2.5">
+                <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-white p-0.5 ring-1 ring-black/5">
+                  <span className="relative block h-full w-full overflow-hidden rounded-full">
+                    <Image src={`/reacher-assets/customers/logos/${c.slug}-avatar.png`} alt={c.brand} fill sizes="40px" className="object-cover" />
+                  </span>
+                </span>
+                <span className="text-[15px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{c.brand}</span>
+              </span>
             </div>
             <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center gap-2.5">
-                <BrandAvatar slug={c.slug} brand={c.brand} />
-                <span className="text-[14px] font-bold tracking-[-0.01em] text-slate-900">{c.brand}</span>
-              </div>
-              <p className="mt-4 text-[18px] font-bold leading-[1.3] tracking-[-0.015em] text-slate-950">{c.headline}</p>
+              <p className="text-[18px] font-bold leading-[1.3] tracking-[-0.015em] text-slate-950">{c.headline}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {c.tags.slice(0, 3).map((tag) => (
                   <span key={tag} className="rounded-full border border-slate-200 px-2.5 py-1 text-[12px] font-medium text-slate-600">

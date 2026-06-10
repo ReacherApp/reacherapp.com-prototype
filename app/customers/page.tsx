@@ -38,16 +38,41 @@ export default function CustomersPage() {
         </div>
       </section>
 
+      {/* Logo wall */}
+      <section className="border-b border-slate-100 px-6 py-12">
+        <div className="mx-auto max-w-[1080px]">
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+            Trusted by leading TikTok Shop brands
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12">
+            {customers.map((c) => (
+              <span key={c.slug} className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200 transition hover:scale-105 md:h-14 md:w-14" title={c.brand}>
+                <Image src={`/reacher-assets/customers/logos/${c.slug}-avatar.png`} alt={c.brand} fill sizes="56px" className="object-cover" />
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured story */}
-      <section className="px-6 pb-4 pt-12">
+      <section className="px-6 pb-4 pt-14">
         <div className="mx-auto max-w-[1180px]">
+          <p className="mb-7 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">Featured story</p>
           <Link
             href={`/customers/${featured.slug}`}
             className="group grid overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_60px_-30px_rgba(16,24,40,0.32)] transition hover:shadow-[0_30px_70px_-28px_rgba(16,24,40,0.4)] md:grid-cols-[1.05fr_1fr]"
           >
             <div className="relative min-h-[280px] overflow-hidden bg-slate-100 md:min-h-[440px]">
               <Image src={featured.image} alt={featured.brand} fill sizes="(min-width:768px) 600px, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.02]" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/45 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
+              <span className="absolute bottom-5 left-5 flex items-center gap-2.5">
+                <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-white p-0.5 ring-1 ring-black/5">
+                  <span className="relative block h-full w-full overflow-hidden rounded-full">
+                    <Image src={`/reacher-assets/customers/logos/${featured.slug}-avatar.png`} alt={featured.brand} fill sizes="44px" className="object-cover" />
+                  </span>
+                </span>
+                <span className="text-[17px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{featured.brand}</span>
+              </span>
             </div>
             <div className="flex flex-col justify-center p-8 md:p-12">
               <span className="inline-flex w-fit rounded-full bg-[#eef3ff] px-3 py-1 text-[12px] font-semibold text-[#3559e9]">
