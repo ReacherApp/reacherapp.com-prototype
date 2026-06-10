@@ -115,30 +115,30 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       </section>
 
       {/* About */}
-      <section className="px-6 pt-16">
+      <section className="px-6 pt-20 md:pt-24">
         <div className="mx-auto max-w-[760px]">
-          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">About {customer.brand}</span>
-          <h2 className="mt-6 text-[30px] font-bold tracking-[-0.03em] text-slate-950 md:text-[38px]">{story.aboutTitle}</h2>
-          <div className="mt-5 flex flex-col gap-4">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">About {customer.brand}</p>
+          <h2 className="mt-4 text-[30px] font-bold tracking-[-0.03em] text-slate-950 md:text-[38px]">{story.aboutTitle}</h2>
+          <div className="mt-6 flex flex-col gap-5">
             {story.about.map((p, i) => (
-              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
+              <p key={i} className="text-[18px] leading-[1.75] text-slate-700">{p}</p>
             ))}
           </div>
         </div>
       </section>
 
       {/* Challenge */}
-      <section className="px-6 pt-16">
+      <section className="px-6 pt-20 md:pt-24">
         <div className="mx-auto max-w-[760px]">
-          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Challenge</span>
-          <h2 className="mt-6 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">{story.challengeTitle}</h2>
-          <div className="mt-5 flex flex-col gap-4">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Challenge</p>
+          <h2 className="mt-4 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">{story.challengeTitle}</h2>
+          <div className="mt-6 flex flex-col gap-5">
             {story.challengeParagraphs.map((p, i) => (
-              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
+              <p key={i} className="text-[18px] leading-[1.75] text-slate-700">{p}</p>
             ))}
           </div>
           {story.challengeQuote ? (
-            <blockquote className="mt-8 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+            <blockquote className="mt-9 border-l-[3px] border-[#3559e9] bg-slate-50 py-5 pl-6 pr-5 text-[19px] italic leading-[1.55] text-slate-700">
               {story.challengeQuote}
             </blockquote>
           ) : null}
@@ -146,11 +146,11 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Solution */}
-      <section className="px-6 pt-16">
+      <section className="px-6 pt-20 md:pt-24">
         <div className="mx-auto max-w-[760px]">
-          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Solution</span>
-          <h2 className="mt-6 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">What Reacher Plus Did</h2>
-          <p className="mt-5 text-[18px] leading-[1.65] text-slate-700">{story.solutionIntro}</p>
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Solution</p>
+          <h2 className="mt-4 text-[28px] font-bold tracking-[-0.03em] text-slate-950 md:text-[34px]">What Reacher Plus Did</h2>
+          <p className="mt-6 text-[18px] leading-[1.75] text-slate-700">{story.solutionIntro}</p>
           <div className="mt-8 flex flex-col gap-4">
             {story.solutions.map((s) => (
               <div key={s.title} className="rounded-2xl bg-[#f1f5ff] p-6 md:p-7">
@@ -160,7 +160,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
             ))}
           </div>
           {story.solutionQuote ? (
-            <blockquote className="mt-6 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+            <blockquote className="mt-9 border-l-[3px] border-[#3559e9] bg-slate-50 py-5 pl-6 pr-5 text-[19px] italic leading-[1.55] text-slate-700">
               {story.solutionQuote}
             </blockquote>
           ) : null}
@@ -168,12 +168,12 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Result */}
-      <section className="px-6 pt-16">
+      <section className="px-6 pt-20 md:pt-24">
         <div className="mx-auto max-w-[760px]">
-          <span className="inline-flex rounded-full border border-slate-200 px-4 py-1.5 text-[13px] font-semibold text-slate-600">The Result</span>
-          <div className="mt-6 flex flex-col gap-4">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#3559e9]">The Result</p>
+          <div className="mt-6 flex flex-col gap-5">
             {story.resultParagraphs.map((p, i) => (
-              <p key={i} className="text-[18px] leading-[1.65] text-slate-700">{p}</p>
+              <p key={i} className="text-[18px] leading-[1.75] text-slate-700">{p}</p>
             ))}
           </div>
 
@@ -216,7 +216,7 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
           ) : null}
 
           {story.closingQuote ? (
-            <blockquote className="mt-6 rounded-2xl bg-slate-100 p-7 text-[18px] italic leading-[1.55] text-slate-700">
+            <blockquote className="mt-9 border-l-[3px] border-[#3559e9] bg-slate-50 py-5 pl-6 pr-5 text-[19px] italic leading-[1.55] text-slate-700">
               {story.closingQuote}
             </blockquote>
           ) : null}
