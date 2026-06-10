@@ -7,7 +7,9 @@ export type Chart =
   | { type: "bar"; title: string; badge?: string; bars: { label: string; value: number; display: string; highlight?: boolean }[] }
   | { type: "line"; title: string; badge?: string; points: { x: string; y: number }[]; baseline?: number; baselineLabel?: string }
   | { type: "coverage"; title: string; badge?: string; note?: string; before: number; after: number; total: number }
-  | { type: "timeline"; title: string; badge?: string; steps: { day: string; label: string }[] };
+  | { type: "timeline"; title: string; badge?: string; steps: { day: string; label: string }[] }
+  | { type: "comparison"; title: string; badge?: string; gateLabel?: string; retiredLabel: string; retired: string[]; activeLabel: string; active: string[]; footer?: string }
+  | { type: "motions"; title: string; badge?: string; cards: { title: string; body: string; status: string; tag: string }[]; footer?: string };
 
 export type CustomerStory = {
   /** hero subtitle */
@@ -271,52 +273,78 @@ export const customers: Customer[] = [
     brand: "Earth Elixir",
     category: "Supplements",
     group: "Supplements",
-    headline: "How Earth Elixir scaled samples approved 6.4× in one quarter",
+    headline: "How Earth Elixir ditched volume-first sampling and rebuilt for profit",
     tags: ["Volume to Strategy", "ROI-First Approach", "Competitor Targeting"],
     image: "/reacher-assets/customers/earth-elixir.png",
     accent: "#d4a017",
     story: {
       subtitle:
-        "A multi-SKU men's-health brand traded volume for strategy — adding a targeting layer that scaled samples approved 6.4× in a quarter.",
-      joined: "Joined Reacher Plus February 2026",
+        "Their previous agency blasted samples at anyone. Reacher Plus turned sampling into a ROI-first operation.",
+      joined: "Joined Reacher Plus 2026",
       industry: "Supplements",
-      productCategory: "Men's health supplements",
+      productCategory: "US-made herbal supplements for performance, vitality, and recovery",
       results: [
-        { value: "6.4×", label: "Samples Approved" },
-        { value: "2×", label: "Active Creators" },
-        { value: "3×", label: "TC Acceptance Rate" },
+        { value: "15 SKUs", label: "Full catalog reach, every product now segmented" },
+        { value: "4×", label: "New playbooks deployed, none existed before" },
+        { value: "100%", label: "Deliberate sample approvals, every send calculated for ROI" },
       ],
-      aboutTitle: "Targeted men's health, built on fit",
+      aboutTitle: "Premium supplements, backed by science",
       about: [
-        "Earth Elixir is a men's-health supplement brand on TikTok Shop, scaling a multi-SKU creator program with Tongkat Ali as the hero.",
-        "The program had volume but no targeting layer, loose approvals, and no retention motion.",
+        "Earth Elixir is a US-made supplement brand selling science-backed workout and wellness formulas. GMP-certified, clean-ingredient, with premium sourcing across turkesterone, tongkat ali, shilajit, and more.",
+        "They came to Reacher Plus after a previous agency called Orca burned through sample inventory chasing volume with no return.",
       ],
-      challengeTitle: "The program needed a targeting layer",
+      challengeTitle: "Volume without vetting",
       challengeParagraphs: [
-        "Earth Elixir was reaching creators but without a targeting layer — approvals were loose and there was no retention motion to keep the best creators posting.",
-        "Scaling profitably meant filtering outreach by fit and tightening approvals, not just adding volume.",
+        "Earth Elixir's previous agency ran one strategy: blast as many samples as possible to as many creators as possible. There was no vetting, no fit check, no approval logic.",
+        "The result was product flowing out the door to creators who weren't right for the brand, content that didn't convert, and spend that didn't come back as GMV.",
       ],
+      challengeQuote:
+        "Sample blasts. No vetting. Product flowed out faster than GMV came in, and there was no playbook to change it.",
       solutionIntro:
-        "Reacher Plus added a fit-first targeting layer, tightened approvals, and tested retainers against explicit performance goals.",
+        "Given a blank check by the Earth Elixir founder, Reacher Plus rebuilt the entire sampling strategy around ROI, not volume.",
       solutions: [
-        { title: "Niche filtered outreach", body: "Weekly Target Collabs filtered by Health category, a $500 GMV floor, and a 75% post-rate threshold — reaching 38K creators in March." },
-        { title: "Competitor targeting", body: "Outreach to creators already promoting adjacent brands lifted acceptance 3× in three months." },
-        { title: "Picky sample approvals", body: "Requests grew 4× while approvals held flat, tightening the approval rate from 24% to 9%." },
-        { title: "Retainer and reactivation", body: "A TC + Retainer test approved at 30% — roughly 3× the broader Health Creator automation — with win-back motions for the strongest creators." },
+        { title: "Niche targeting", body: "Broad blasts swapped for tight, intentional outreach. Every creator is picked for fit, audience overlap, and conversion likelihood before a sample ever ships." },
+        { title: "Competitor targeting", body: "Reacher goes directly after creators already promoting adjacent supplement brands, so outreach lands with audiences primed to convert and creators already inside the category." },
+        { title: "Selective approvals", body: "Every sample approval is deliberate. Reacher is picky and choosy, so product only flows to creators with a credible shot at driving GMV. Spend shrinks, return climbs." },
+        { title: "Activation playbooks", body: "Retainers for top affiliates, extra earning opportunities per stage, and reactivation pushes to win back creators who drifted. Capital-friendly by design, ROI-first by default." },
       ],
+      solutionQuote:
+        "One lever to four. Orca ran volume. Reacher layered in targeting, approvals, activation, and reactivation.",
       resultParagraphs: [
-        "By trading raw volume for fit, Earth Elixir scaled samples approved 6.4× while tightening the approval bar — a more profitable, more durable program.",
+        "Earth Elixir's creator program is still evolving. Reacher is actively testing retainers, new earning opportunities, and reactivation tactics that Orca never tried. The foundation has shifted from volume-first to strategy-first, and every new test gets measured against GMV, not sample count.",
       ],
       wins: [
-        { stat: "6.4× samples approved", note: "in one quarter" },
-        { stat: "2× active creators", note: "42 to 83" },
-        { stat: "3× TC acceptance rate", note: "0.5% to 1.5%" },
+        { stat: "Every sample approval now deliberate", note: "calculated for ROI before product ships" },
+        { stat: "Competitor-first targeting", note: "pulling proven creators from adjacent supplement brands" },
+        { stat: "New activation playbooks running", note: "retainers, extra earning tiers, reactivation pushes" },
+        { stat: "Founder confirmed the approach is working", note: "with ongoing testing against GMV metrics" },
       ],
-      numbers: [
-        { label: "Samples approved", before: "7", after: "45", multiplier: "+6.4×" },
-        { label: "Active creators", before: "42", after: "83", multiplier: "+2×" },
-        { label: "TC acceptance rate", before: "0.5%", after: "1.5%", multiplier: "+3×" },
+      charts: [
+        {
+          type: "comparison",
+          title: "From volume hope to ROI math",
+          badge: "+4 new gates",
+          gateLabel: "ROI GATE",
+          retiredLabel: "Retired",
+          retired: ["Sample count", "Gross approvals", "Opportunistic outreach", "Volume milestones"],
+          activeLabel: "ROI-First",
+          active: ["GMV projection per sample", "Creator-to-product fit", "Competitor overlap score", "Playbook match"],
+          footer: "Intentional spend. Every approval scored against GMV — not sample count — before product ships.",
+        },
+        {
+          type: "motions",
+          title: "3 motions running",
+          badge: "Live · testing vs. GMV",
+          cards: [
+            { title: "Retainers", body: "Lock in top affiliates with guaranteed, recurring pay — stabilizing the creators driving consistent GMV.", status: "Running", tag: "Top-tier cohort" },
+            { title: "Per-stage earnings", body: "Bonuses at each funnel step — keeping creators active from post to purchase and beyond.", status: "Running", tag: "4 milestones" },
+            { title: "Reactivation", body: "Win-back pushes to pull drifted creators back into posting with reset incentives.", status: "Running", tag: "Cohort-based" },
+          ],
+          footer: "Profitable returns. All three motions measured against GMV, not sample count. Founder-confirmed working.",
+        },
       ],
+      closingQuote:
+        "Intentional spend. Profitable returns. Earth Elixir's creator program is now built on ROI math, not volume hope.",
       externalHref: "https://reacher-earth-elixir-internal.vercel.app",
     },
   },

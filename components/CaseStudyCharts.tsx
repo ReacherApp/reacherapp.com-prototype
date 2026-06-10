@@ -127,6 +127,77 @@ function TimelineChart({ chart }: { chart: Extract<Chart, { type: "timeline" }> 
   );
 }
 
+function ComparisonChart({ chart }: { chart: Extract<Chart, { type: "comparison" }> }) {
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      <div className="mt-6 grid items-center gap-4 sm:grid-cols-[1fr_auto_1fr]">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">{chart.retiredLabel}</p>
+          <ul className="mt-3 flex flex-col gap-2">
+            {chart.retired.map((r) => (
+              <li key={r} className="flex items-center gap-2 text-[14px] text-slate-400 line-through">
+                <span className="text-slate-300">✕</span> {r}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#2465f6] text-white">→</span>
+          {chart.gateLabel ? <span className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-slate-400">{chart.gateLabel}</span> : null}
+        </div>
+        <div className="rounded-2xl border border-[#cfe0ff] bg-[#f1f5ff] p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2465f6]">{chart.activeLabel}</p>
+          <ul className="mt-3 flex flex-col gap-2">
+            {chart.active.map((a) => (
+              <li key={a} className="flex items-center gap-2 text-[14px] font-medium text-slate-800">
+                <span className="text-[#2465f6]">✓</span> {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      {chart.footer ? (
+        <p className="mt-5 text-[13px] text-slate-500">
+          <strong className="font-bold text-[#2465f6]">{chart.footer.split(".")[0]}.</strong>{chart.footer.slice(chart.footer.indexOf(".") + 1)}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function MotionsChart({ chart }: { chart: Extract<Chart, { type: "motions" }> }) {
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        {chart.cards.map((c) => (
+          <div key={c.title} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-4">
+            <div className="mb-3 h-[3px] w-full rounded-full bg-gradient-to-r from-[#9cc0ff] to-[#2465f6]" />
+            <h4 className="text-[16px] font-bold text-slate-950">{c.title}</h4>
+            <p className="mt-2 flex-1 text-[13px] leading-[1.5] text-slate-600">{c.body}</p>
+            <div className="mt-4 flex items-center gap-2">
+              <Badge>● {c.status}</Badge>
+              <span className="text-[12px] text-slate-400">{c.tag}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      {chart.footer ? (
+        <p className="mt-5 text-[13px] text-slate-500">
+          <strong className="font-bold text-[#2465f6]">{chart.footer.split(".")[0]}.</strong>{chart.footer.slice(chart.footer.indexOf(".") + 1)}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
   return (
     <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -134,7 +205,18 @@ export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
         if (chart.type === "bar") return <BarChart key={i} chart={chart} />;
         if (chart.type === "line") return <LineChart key={i} chart={chart} />;
         if (chart.type === "coverage") return <CoverageChart key={i} chart={chart} />;
-        return <TimelineChart key={i} chart={chart} />;
+        if (chart.type === "timeline") return <TimelineChart key={i} chart={chart} />;
+        if (chart.type === "comparison")
+          return (
+            <div key={i} className="md:col-span-2">
+              <ComparisonChart chart={chart} />
+            </div>
+          );
+        return (
+          <div key={i} className="md:col-span-2">
+            <MotionsChart chart={chart} />
+          </div>
+        );
       })}
     </div>
   );
