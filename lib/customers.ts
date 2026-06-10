@@ -3,6 +3,12 @@ export type Solution = { title: string; body: string };
 export type StoryNumber = { label: string; before: string; after: string; multiplier?: string };
 export type Win = { stat: string; note: string };
 
+export type Chart =
+  | { type: "bar"; title: string; badge?: string; bars: { label: string; value: number; display: string; highlight?: boolean }[] }
+  | { type: "line"; title: string; badge?: string; points: { x: string; y: number }[]; baseline?: number; baselineLabel?: string }
+  | { type: "coverage"; title: string; badge?: string; note?: string; before: number; after: number; total: number }
+  | { type: "timeline"; title: string; badge?: string; steps: { day: string; label: string }[] };
+
 export type CustomerStory = {
   /** hero subtitle */
   subtitle: string;
@@ -22,6 +28,8 @@ export type CustomerStory = {
   resultParagraphs: string[];
   wins: Win[];
   numbers?: StoryNumber[];
+  /** chart cards rendered in the result section (replaces the simple bars when present) */
+  charts?: Chart[];
   closingQuote?: string;
   externalHref?: string;
 };
@@ -106,6 +114,18 @@ export const customers: Customer[] = [
         { label: "Sample Approvals", before: "1,886", after: "9,343", multiplier: "+5×" },
         { label: "Sample Requests", before: "15,000", after: "98,280", multiplier: "+6.5×" },
         { label: "Creators Reached", before: "1,880", after: "305,555", multiplier: "+162×" },
+      ],
+      charts: [
+        {
+          type: "line",
+          title: "From zero to 305K creators",
+          badge: "+163× in two months",
+          points: [
+            { x: "Jan", y: 2 },
+            { x: "Feb", y: 100 },
+            { x: "Mar", y: 305 },
+          ],
+        },
       ],
       closingQuote:
         "Reacher Plus operates as an offshoot of the brand's team — shooting ideas back and forth, strategizing new launches together, and adjusting direction in real time to keep hitting activation goals.",
@@ -219,9 +239,27 @@ export const customers: Customer[] = [
         { stat: "8 of 8 product lines covered", note: "by custom affiliate messaging, up from 2 of 8" },
         { stat: "Reusable Super Brand Day framework", note: "now deployed for every major campaign" },
       ],
-      numbers: [
-        { label: "Monthly GMV (Dec)", before: "$310K", after: "$1.08M", multiplier: "Super Brand Day" },
-        { label: "Product lines covered", before: "2 / 8", after: "8 / 8", multiplier: "+6 lines" },
+      charts: [
+        {
+          type: "bar",
+          title: "$1.08M — biggest month yet",
+          bars: [
+            { label: "Oct", value: 310, display: "$310K" },
+            { label: "Nov", value: 380, display: "$380K" },
+            { label: "Dec", value: 460, display: "$460K" },
+            { label: "Jan", value: 620, display: "$620K" },
+            { label: "Super Brand", value: 1080, display: "$1.08M", highlight: true },
+          ],
+        },
+        {
+          type: "coverage",
+          title: "+6 product lines",
+          badge: "↑ 4×",
+          note: "Every Free Soul product line now backed by custom affiliate messaging.",
+          before: 2,
+          after: 8,
+          total: 8,
+        },
       ],
       closingQuote:
         "$1.08M. Their biggest month. Free Soul's record GMV month, built on a fully rebuilt affiliate funnel.",
@@ -333,9 +371,36 @@ export const customers: Customer[] = [
         { stat: "Custom nurturing flows", note: "with a 3-week content fulfillment timestamp" },
         { stat: "Retainer restructure in test", note: "targeting better ROI from mid-tier creators" },
       ],
-      numbers: [
-        { label: "Sample requests (week 1)", before: "280", after: "520", multiplier: "+2×" },
-        { label: "Campaign outreach", before: "Manual", after: "Automated", multiplier: "100%" },
+      charts: [
+        {
+          type: "line",
+          title: "Doubled in one week",
+          badge: "+2× · +240 requests",
+          points: [
+            { x: "Day 1", y: 50 },
+            { x: "Day 2", y: 110 },
+            { x: "Day 3", y: 175 },
+            { x: "Day 4", y: 280 },
+            { x: "Day 5", y: 360 },
+            { x: "Day 6", y: 440 },
+            { x: "Day 7", y: 520 },
+          ],
+          baseline: 280,
+          baselineLabel: "Prior week · 280 total",
+        },
+        {
+          type: "timeline",
+          title: "Campaign runs itself",
+          badge: "6 touchpoints",
+          steps: [
+            { day: "D1", label: "Sample auto-ships" },
+            { day: "D3", label: "Arrival DM" },
+            { day: "D7", label: "Content draft reminder" },
+            { day: "D14", label: "Post checkpoint" },
+            { day: "D17", label: "GMV review pull" },
+            { day: "D21", label: "Fulfillment deadline" },
+          ],
+        },
       ],
       closingQuote:
         "Two weeks. One real funnel. Automated outreach, consistent messaging, and measurable sample-request growth from day one.",

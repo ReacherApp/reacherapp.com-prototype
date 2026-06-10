@@ -1,0 +1,141 @@
+import type { Chart } from "@/lib/customers";
+
+const CARD = "rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(16,24,40,0.05)]";
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[12px] font-bold text-emerald-600">
+      {children}
+    </span>
+  );
+}
+
+function BarChart({ chart }: { chart: Extract<Chart, { type: "bar" }> }) {
+  const max = Math.max(...chart.bars.map((b) => b.value));
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      <div className="mt-7 flex h-[180px] items-end justify-between gap-3">
+        {chart.bars.map((b) => (
+          <div key={b.label} className="flex flex-1 flex-col items-center justify-end gap-2">
+            <span className={`text-[12px] font-bold ${b.highlight ? "text-[#2465f6]" : "text-slate-500"}`}>{b.display}</span>
+            <div
+              className={`w-full rounded-t-md ${b.highlight ? "bg-[#2465f6]" : "bg-[#cfe0ff]"}`}
+              style={{ height: `${Math.max(8, (b.value / max) * 150)}px` }}
+            />
+            <span className="text-[11px] font-medium text-slate-400">{b.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LineChart({ chart }: { chart: Extract<Chart, { type: "line" }> }) {
+  const W = 320;
+  const H = 150;
+  const ys = chart.points.map((p) => p.y);
+  const maxY = Math.max(...ys) * 1.1;
+  const stepX = W / (chart.points.length - 1);
+  const coords = chart.points.map((p, i) => [i * stepX, H - (p.y / maxY) * H] as const);
+  const linePath = coords.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
+  const areaPath = `${linePath} L${W},${H} L0,${H} Z`;
+  const last = coords[coords.length - 1];
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      <svg viewBox={`0 0 ${W} ${H + 22}`} className="mt-6 w-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lc-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#3559e9" stopOpacity="0.22" />
+            <stop offset="100%" stopColor="#3559e9" stopOpacity="0.02" />
+          </linearGradient>
+        </defs>
+        {chart.baseline !== undefined ? (
+          <line x1="0" y1={H - (chart.baseline / maxY) * H} x2={W} y2={H - (chart.baseline / maxY) * H} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="4 4" />
+        ) : null}
+        <path d={areaPath} fill="url(#lc-fill)" />
+        <path d={linePath} fill="none" stroke="#2465f6" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+        <circle cx={last[0]} cy={last[1]} r="4.5" fill="#fff" stroke="#2465f6" strokeWidth="2.5" />
+        {chart.points.map((p, i) => (
+          <text key={p.x} x={i * stepX} y={H + 16} textAnchor={i === 0 ? "start" : i === chart.points.length - 1 ? "end" : "middle"} className="fill-slate-400 text-[9px] font-medium">
+            {p.x}
+          </text>
+        ))}
+      </svg>
+      {chart.baselineLabel ? <p className="mt-2 text-[12px] text-slate-400">{chart.baselineLabel}</p> : null}
+    </div>
+  );
+}
+
+function CoverageChart({ chart }: { chart: Extract<Chart, { type: "coverage" }> }) {
+  const Row = ({ label, n, strong }: { label: string; n: number; strong?: boolean }) => (
+    <div className="flex items-center gap-4">
+      <span className="w-[56px] text-[12px] font-semibold uppercase tracking-[0.06em] text-slate-400">{label}</span>
+      <div className="flex flex-1 gap-2">
+        {Array.from({ length: chart.total }).map((_, i) => (
+          <span key={i} className={`h-7 flex-1 rounded-md ${i < n ? "bg-[#3559e9]" : "border border-slate-200 bg-white"}`} />
+        ))}
+      </div>
+      <span className={`text-[15px] font-bold ${strong ? "text-[#2465f6]" : "text-slate-400"}`}>
+        {n}/{chart.total}
+      </span>
+    </div>
+  );
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      {chart.note ? <p className="mt-2 text-[14px] text-slate-600">{chart.note}</p> : null}
+      <div className="mt-6 flex flex-col gap-4">
+        <Row label="Before" n={chart.before} />
+        <Row label="After" n={chart.after} strong />
+      </div>
+    </div>
+  );
+}
+
+function TimelineChart({ chart }: { chart: Extract<Chart, { type: "timeline" }> }) {
+  return (
+    <div className={CARD}>
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        {chart.badge ? <Badge>{chart.badge}</Badge> : null}
+      </div>
+      <div className="relative mt-8">
+        <div className="absolute left-0 right-0 top-[14px] h-[2px] bg-gradient-to-r from-[#9cc0ff] to-[#2465f6]" />
+        <div className="relative flex justify-between">
+          {chart.steps.map((s, i) => (
+            <div key={s.day} className="flex flex-1 flex-col items-center text-center">
+              <span className={`flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold text-white ${i === chart.steps.length - 1 ? "bg-[#0b1f3a]" : "bg-[#2465f6]"}`}>
+                {s.day}
+              </span>
+              <span className="mt-2 max-w-[78px] text-[10px] font-medium leading-tight text-slate-500">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
+  return (
+    <div className="mt-8 grid gap-5 md:grid-cols-2">
+      {charts.map((chart, i) => {
+        if (chart.type === "bar") return <BarChart key={i} chart={chart} />;
+        if (chart.type === "line") return <LineChart key={i} chart={chart} />;
+        if (chart.type === "coverage") return <CoverageChart key={i} chart={chart} />;
+        return <TimelineChart key={i} chart={chart} />;
+      })}
+    </div>
+  );
+}
