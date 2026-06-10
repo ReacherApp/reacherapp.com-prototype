@@ -33,8 +33,8 @@ export default function CustomersPage() {
           <h1 className="mx-auto max-w-[960px] text-[44px] font-semibold leading-[1.04] tracking-[-0.05em] text-[#05070d] md:text-[64px]">
             Brands and Agencies Winning with Reacher
           </h1>
-          <p className="mx-auto mt-6 max-w-[680px] text-[18px] leading-[1.55] text-black/58 md:text-[20px]">
-            See how TikTok Shop sellers are scaling their affiliate programs with Reacher Plus.
+          <p className="mx-auto mt-6 max-w-[680px] text-[18px] leading-[1.55] text-black/58 md:max-w-none md:whitespace-nowrap md:text-[20px]">
+            See how TikTok Shop sellers scale their affiliate programs with Reacher and Reacher Plus.
           </p>
         </div>
       </section>
