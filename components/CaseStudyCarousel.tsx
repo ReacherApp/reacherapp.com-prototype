@@ -17,7 +17,14 @@ export type CaseStudy = {
 
 const ROTATION_MS = 4000;
 
-export default function CaseStudyCarousel({ testimonials }: { testimonials: CaseStudy[] }) {
+export default function CaseStudyCarousel({
+  testimonials,
+  embedded = false,
+}: {
+  testimonials: CaseStudy[];
+  /** when embedded on /customers, the card is not a link and the "view all" button is hidden */
+  embedded?: boolean;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const goTo = (index: number) => {
@@ -54,11 +61,8 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
           </button>
         ))}
       </div>
-      <Link
-        href="/customers"
-        aria-label={`Read the ${active.brand} customer story`}
-        className="group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left text-slate-950 shadow-2xl shadow-blue-950/20 transition hover:shadow-[0_40px_80px_-30px_rgba(11,32,90,0.5)]"
-      >
+      {(() => {
+        const cardChildren = (
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active.brand}
@@ -79,7 +83,7 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
             />
             <div className="p-8 md:p-12">
               <p className="text-lg font-semibold text-slate-600">{active.brand}</p>
-              <p className="mt-6 text-2xl font-semibold leading-9 tracking-[-0.025em] md:text-[28px] md:leading-10">“{active.quote}”</p>
+              <p className="mt-6 text-2xl font-semibold leading-9 tracking-[-0.025em] text-slate-950 md:text-[28px] md:leading-10">“{active.quote}”</p>
 
               {active.stats.length > 0 ? (
                 <div className="mt-10 grid grid-cols-3 gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-3 text-center md:gap-3 md:p-5 md:text-left">
@@ -95,26 +99,47 @@ export default function CaseStudyCarousel({ testimonials }: { testimonials: Case
                 </div>
               ) : null}
 
-              <p className={active.stats.length > 0 ? "mt-7 font-semibold" : "mt-10 font-semibold"}>{active.name}</p>
+              <p className={`text-slate-900 ${active.stats.length > 0 ? "mt-7 font-semibold" : "mt-10 font-semibold"}`}>{active.name}</p>
               <p className="text-sm text-slate-500">{active.role} • Verified Customer</p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#3559e9]">
-                Read the story
-                <ArrowUpRight size={16} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
+              {!embedded ? (
+                <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#3559e9]">
+                  Read the story
+                  <ArrowUpRight size={16} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              ) : null}
             </div>
           </motion.div>
         </AnimatePresence>
-      </Link>
+        );
+        const cardClass =
+          "group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left shadow-2xl shadow-blue-950/20 transition";
+        return embedded ? (
+          <div className={cardClass} style={{ color: "#0f172a" }}>
+            {cardChildren}
+          </div>
+        ) : (
+          <Link
+            href="/customers"
+            aria-label={`Read the ${active.brand} customer story`}
+            style={{ color: "#0f172a" }}
+            className={`${cardClass} hover:shadow-[0_40px_80px_-30px_rgba(11,32,90,0.5)]`}
+          >
+            {cardChildren}
+          </Link>
+        );
+      })()}
 
-      <div className="mt-8 text-center">
-        <Link
-          href="/customers"
-          className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-5 py-2.5 text-[14px] font-semibold text-white ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/25"
-        >
-          View all customer stories
-          <ArrowUpRight size={16} strokeWidth={2.2} />
-        </Link>
-      </div>
+      {!embedded ? (
+        <div className="mt-8 text-center">
+          <Link
+            href="/customers"
+            className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-5 py-2.5 text-[14px] font-semibold text-white ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/25"
+          >
+            View all customer stories
+            <ArrowUpRight size={16} strokeWidth={2.2} />
+          </Link>
+        </div>
+      ) : null}
     </>
   );
 }
