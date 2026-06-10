@@ -56,7 +56,7 @@ export const customers: Customer[] = [
     group: "Beauty",
     headline: "How ColourPop lifted sample requests 6.5x in 30 days",
     tags: ["163× Creators Reached", "6.5× Sample Requests", "5× Sample Approvals"],
-    image: "/reacher-assets/customers/colourpop.png",
+    image: "/reacher-assets/customers/colourpop.png?v=2",
     accent: "#c77dff",
     story: {
       subtitle:
@@ -141,7 +141,7 @@ export const customers: Customer[] = [
     group: "Beauty",
     headline: "How Watch & Sea lifted affiliate GMV 692% from zero",
     tags: ["692% GMV Lift", "189% Videos Posted", "Built From Zero"],
-    image: "/reacher-assets/customers/watch-and-sea.png",
+    image: "/reacher-assets/customers/watch-and-sea.png?v=2",
     accent: "#4cc9f0",
     story: {
       subtitle:
@@ -197,7 +197,7 @@ export const customers: Customer[] = [
     group: "Health & Wellness",
     headline: "How Free Soul achieved their biggest month ever with $1.08M in GMV",
     tags: ["$1.08M GMV", "Biggest Month Yet", "8/8 Product Lines"],
-    image: "/reacher-assets/customers/free-soul.png",
+    image: "/reacher-assets/customers/free-soul.png?v=2",
     accent: "#f4a3c1",
     story: {
       subtitle:
@@ -275,7 +275,7 @@ export const customers: Customer[] = [
     group: "Supplements",
     headline: "How Earth Elixir ditched volume-first sampling and rebuilt for profit",
     tags: ["Volume to Strategy", "ROI-First Approach", "Competitor Targeting"],
-    image: "/reacher-assets/customers/earth-elixir.png",
+    image: "/reacher-assets/customers/earth-elixir.png?v=2",
     accent: "#d4a017",
     story: {
       subtitle:
@@ -355,7 +355,7 @@ export const customers: Customer[] = [
     group: "Supplements",
     headline: "How Clean Nutra doubled sample requests in one week",
     tags: ["2× Sample Requests", "Fully Automated Flows", "BOGO Outreach"],
-    image: "/reacher-assets/customers/clean-nutra.png",
+    image: "/reacher-assets/customers/clean-nutra.png?v=2",
     accent: "#2a9d8f",
     story: {
       subtitle:
@@ -442,7 +442,7 @@ export const customers: Customer[] = [
     group: "Beauty",
     headline: "How Darl scaled Infuse's creator outreach 791× in one month",
     tags: ["12× Active Creators", "10× Videos Posted", "Built From Cold Start"],
-    image: "/reacher-assets/customers/infuse.png",
+    image: "/reacher-assets/customers/infuse.png?v=2",
     accent: "#9c6644",
     story: {
       subtitle:
@@ -499,7 +499,7 @@ export const customers: Customer[] = [
     group: "Food & Pantry",
     headline: "How Momofuku runs a creator program built around earned media, not just GMV",
     tags: ["2.4× Sample Requests", "2× Videos Posted", "EMV-First Strategy"],
-    image: "/reacher-assets/customers/momofuku.png",
+    image: "/reacher-assets/customers/momofuku.png?v=2",
     accent: "#e9b949",
     story: {
       subtitle:
