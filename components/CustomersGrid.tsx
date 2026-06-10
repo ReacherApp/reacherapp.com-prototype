@@ -72,7 +72,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/55 via-transparent to-transparent" />
-              <span className="absolute left-4 top-4 inline-flex max-w-[80%] truncate rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-[#3559e9] backdrop-blur">
+              <span className="absolute left-4 top-4 inline-flex max-w-[80%] truncate rounded-full bg-white/90 px-3 py-1 text-[12px] font-semibold text-slate-900 backdrop-blur">
                 {c.category}
               </span>
             </div>
