@@ -85,9 +85,9 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
               <p className="mt-1.5 text-[15px] text-slate-700">
                 <span className="font-semibold text-slate-900">Product Category:</span> {story.productCategory}
               </p>
-              <div className="mt-5 flex flex-col gap-2">
+              <div className="mt-5 flex w-fit flex-col gap-2">
                 {customer.tags.map((tag) => (
-                  <span key={tag} className="w-fit rounded-full border border-slate-200 px-4 py-1.5 text-[14px] font-medium text-slate-700">
+                  <span key={tag} className="w-full rounded-full border border-slate-200 px-4 py-1.5 text-center text-[14px] font-medium text-slate-700">
                     {tag}
                   </span>
                 ))}
