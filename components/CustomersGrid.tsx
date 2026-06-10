@@ -68,7 +68,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
                 <span className="text-[15px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{c.brand}</span>
               </span>
             </div>
-            <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
+            <div className="flex flex-1 flex-col px-6 pb-6 pt-4">
               <p className="text-[18px] font-bold leading-[1.3] tracking-[-0.015em] text-slate-950">{c.headline}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {c.tags.slice(0, 3).map((tag) => (
@@ -77,7 +77,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
                   </span>
                 ))}
               </div>
-              <span className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3559e9]">
+              <span className="mt-auto inline-flex items-center gap-1 pt-5 text-[14px] font-semibold text-[#3559e9]">
                 Read the story
                 <ArrowUpRight size={16} strokeWidth={2.2} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
