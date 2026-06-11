@@ -788,7 +788,7 @@ export const customers: Customer[] = [
             { name: "Phlur", gmv: "$14.53M GMV", image: "/reacher-assets/customers/portfolio/phlur.jpg" },
             { name: "Maybelline", gmv: "$12.49M GMV", image: "/reacher-assets/customers/portfolio/maybelline.jpg" },
             { name: "L'Oreal Paris USA", gmv: "$8.96M GMV", image: "/reacher-assets/customers/portfolio/loreal.jpg" },
-            { name: "GAP", gmv: "$8.44M GMV" },
+            { name: "GAP", gmv: "$8.44M GMV", image: "/reacher-assets/customers/portfolio/gap.jpg" },
             { name: "Elf", gmv: "$7.89M GMV" },
             { name: "NYX Cosmetics", gmv: "$6.52M GMV" },
             { name: "Bio Ionic", gmv: "$3.79M GMV" },
