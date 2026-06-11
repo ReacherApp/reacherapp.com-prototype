@@ -17,8 +17,16 @@ export const metadata: Metadata = {
   alternates: localizedAlternates("/customers"),
 };
 
-const featured = customers[0];
-const rest = customers.slice(1);
+// Favored leads as the featured story; the GTM case studies open the grid's first row.
+const FEATURED_SLUG = "favored";
+const FIRST_ROW = ["medicube", "social-commerce-club", "colourpop"];
+
+const bySlug = (slug: string) => customers.find((c) => c.slug === slug)!;
+const featured = bySlug(FEATURED_SLUG);
+const rest = [
+  ...FIRST_ROW.map(bySlug),
+  ...customers.filter((c) => c.slug !== FEATURED_SLUG && !FIRST_ROW.includes(c.slug)),
+];
 
 export default function CustomersPage() {
   return (
