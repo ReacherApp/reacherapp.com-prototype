@@ -28,7 +28,7 @@ const DEMO_URL = "https://calendly.com/bora-reacherapp/15min";
 function BrandAvatar({ slug, brand, size = 40 }: { slug: string; brand: string; size?: number }) {
   return (
     <span className="relative shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200" style={{ width: size, height: size }}>
-      <Image src={`/reacher-assets/customers/logos/${slug}-avatar.png`} alt={brand} fill sizes={`${size}px`} className="object-cover" />
+      <Image src={`/reacher-assets/customers/logos/${slug}-avatar.png?v=2`} alt={brand} fill sizes={`${size}px`} className="object-cover" />
     </span>
   );
 }

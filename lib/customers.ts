@@ -582,7 +582,7 @@ export const customers: Customer[] = [
     group: "Beauty",
     headline: "How Medicube ran a 4,436-video campaign in 28 days",
     tags: ["75.3% Shipped-to-Posted", "4,436 Videos / 28 Days", "$57.47M Program GMV"],
-    image: "/reacher-assets/customers/medicube.png?v=1",
+    image: "/reacher-assets/customers/medicube.png?v=2",
     accent: "#ff5a7a",
     story: {
       subtitle:
@@ -590,7 +590,6 @@ export const customers: Customer[] = [
       joined: "Joined Reacher 2025",
       industry: "Beauty (enterprise)",
       productCategory: "Skincare and beauty devices",
-      noProductStrip: true,
       results: [
         { value: "75.3%", label: "Shipped-to-posted rate" },
         { value: "4,436", label: "Videos posted in 28 days" },
