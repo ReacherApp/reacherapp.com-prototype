@@ -30,6 +30,8 @@ export type CustomerStory = {
   resultParagraphs: string[];
   wins: Win[];
   numbers?: StoryNumber[];
+  /** when true, hide the 3-up product photo strip in About (for data-driven stories without product shots) */
+  noProductStrip?: boolean;
   /** chart cards rendered in the result section (replaces the simple bars when present) */
   charts?: Chart[];
   closingQuote?: string;
@@ -40,7 +42,7 @@ export type Customer = {
   slug: string;
   brand: string;
   category: string;
-  group: "Beauty" | "Supplements" | "Health & Wellness" | "Food & Pantry";
+  group: "Beauty" | "Supplements" | "Health & Wellness" | "Food & Pantry" | "Agencies";
   headline: string;
   tags: string[];
   image: string;
@@ -573,6 +575,241 @@ export const customers: Customer[] = [
       externalHref: "https://reacher-momofuku-internal.vercel.app",
     },
   },
+  {
+    slug: "medicube",
+    brand: "Medicube",
+    category: "Enterprise Beauty",
+    group: "Beauty",
+    headline: "How Medicube ran a 4,436-video campaign in 28 days",
+    tags: ["75.3% Shipped-to-Posted", "4,436 Videos / 28 Days", "$57.47M Program GMV"],
+    image: "/reacher-assets/customers/medicube.png?v=1",
+    accent: "#ff5a7a",
+    story: {
+      subtitle:
+        "An enterprise beauty brand needed to process a campaign-scale surge of creator demand — and prove every sample shipped turned into posted content. Reacher became the operating layer from request to attribution.",
+      joined: "Joined Reacher 2025",
+      industry: "Beauty (enterprise)",
+      productCategory: "Skincare and beauty devices",
+      noProductStrip: true,
+      results: [
+        { value: "75.3%", label: "Shipped-to-posted rate" },
+        { value: "4,436", label: "Videos posted in 28 days" },
+        { value: "$57.47M", label: "Total program GMV" },
+      ],
+      aboutTitle: "A campaign moment at enterprise scale",
+      about: [
+        "Medicube is an enterprise beauty brand running one of the largest creator programs on TikTok Shop, spanning the US and UK. Its program has driven $57.47M in total GMV — $42.64M in the US and $14.83M in the UK — across 134,038 live sessions and 2.30M items sold.",
+        "When Medicube launched a campaign moment, it created a surge of creator demand that had to be processed fast — every approval, shipment, and posted video tracked end to end.",
+      ],
+      challengeTitle: "Massive demand, measured to the post",
+      challengeParagraphs: [
+        "A campaign surge generated 43,373 sample requests in a single window. Medicube needed to approve qualified creators, ship to them, and then prove that the samples actually converted into posted content — not just sit in inboxes.",
+        "At enterprise volume, the hard part isn't generating interest. It's operating the request-to-post pipeline cleanly enough that you can attribute content back to the samples that earned it.",
+      ],
+      challengeQuote:
+        "75.3% shipped-to-posted is the operational metric TikTok Shop teams actually watch — proof that supply turned into content, not waste.",
+      solutionIntro:
+        "Reacher became the operating layer for the campaign: approving creators, triggering shipments, and matching every posted video back to the sample that drove it.",
+      solutions: [
+        { title: "Sample request queue", body: "Qualified creators approved through Reacher's request queue at campaign speed, filtering 43,373 requests down to the 5,888 highest-intent creators worth shipping to." },
+        { title: "Shipment triggering", body: "Approved creators moved straight to fulfilment, so the gap between approval and product-in-hand stayed short during the 28-day surge." },
+        { title: "Posted-video matching", body: "Every posted video matched back to its shipped sample, producing a 75.3% shipped-to-posted rate — the operational signal that supply converted into content." },
+        { title: "GMV attribution", body: "Content connected to GMV across the US and UK programs, tying the campaign's 4,436 videos to revenue rather than leaving it as unattributed reach." },
+      ],
+      resultParagraphs: [
+        "In 28 days, Medicube turned a campaign surge into 4,436 posted videos at a 75.3% shipped-to-posted rate, generating $202K in campaign GMV on top of a $57.47M program. Reacher gave the team a single operating layer to process demand, ship at scale, and prove content was earned — the kind of operational visibility enterprise TikTok Shop programs are built on.",
+      ],
+      wins: [
+        { stat: "75.3% shipped-to-posted rate", note: "the metric enterprise TikTok Shop teams watch" },
+        { stat: "4,436 videos in 28 days", note: "from 5,888 shipped samples" },
+        { stat: "$57.47M total program GMV", note: "$42.64M US · $14.83M UK" },
+        { stat: "2.30M items sold", note: "across 134,038 live sessions" },
+      ],
+      charts: [
+        {
+          type: "bar",
+          title: "Request → ship → post",
+          badge: "75.3% shipped-to-posted",
+          bars: [
+            { label: "Requests", value: 43373, display: "43,373" },
+            { label: "Shipped", value: 5888, display: "5,888" },
+            { label: "Posted", value: 4436, display: "4,436", highlight: true },
+          ],
+        },
+        {
+          type: "bar",
+          title: "Program GMV by market",
+          badge: "$57.47M total",
+          bars: [
+            { label: "US", value: 42.64, display: "$42.64M", highlight: true },
+            { label: "UK", value: 14.83, display: "$14.83M" },
+          ],
+        },
+      ],
+      closingQuote:
+        "One operating layer took a campaign moment from 43,373 requests to 4,436 attributed videos in under a month.",
+      externalHref: "https://gtm46casestudiesvercel.vercel.app",
+    },
+  },
+  {
+    slug: "social-commerce-club",
+    brand: "Social Commerce Club",
+    category: "Agency · Featuring Portland Leather Goods",
+    group: "Agencies",
+    headline: "How Social Commerce Club found a small-to-scale story inside an 84-shop portfolio",
+    tags: ["$2.3K → $1.76M GMV", "84 Connected Shops", "$178 GMV / Sample"],
+    image: "/reacher-assets/customers/social-commerce-club.png?v=1",
+    accent: "#d98a3d",
+    story: {
+      subtitle:
+        "When you run 84 shops, the wins are real but hard to tell. Reacher let Social Commerce Club pull one brand's growth story out of the portfolio and make it portable proof for every prospect.",
+      joined: "Joined Reacher 2025",
+      industry: "Agency · multi-brand (apparel, accessories, beauty)",
+      productCategory: "84-shop TikTok Shop portfolio",
+      noProductStrip: true,
+      results: [
+        { value: "$1.76M", label: "Peak monthly GMV (from $2.3K)" },
+        { value: "84", label: "Connected shops" },
+        { value: "$178", label: "GMV per shipped sample" },
+      ],
+      aboutTitle: "Eighty-four shops, one story to tell",
+      about: [
+        "Social Commerce Club is an agency operator running an 84-shop TikTok Shop portfolio — from HEYDUDE ($40.68M GMV) and Hanes ($9.67M) to Portland Leather Goods and Shapermint. Its top shop alone has driven $60.95M in GMV across 456,312 videos.",
+        "The challenge with portfolio scale isn't performance — it's communication. Aggregate numbers are impressive but abstract. Prospects want to see a single brand's journey, start to finish.",
+      ],
+      challengeTitle: "Portfolio wins that prospects could believe",
+      challengeParagraphs: [
+        "Managing 84 brands made the agency's wins hard to communicate. A new prospect can't relate to a blended portfolio number — they want to see a brand that started small and scaled, with the sample-and-creator mechanics laid bare.",
+        "Social Commerce Club needed portable proof: one brand's growth narrative, fully attributed, that could travel into every sales conversation.",
+      ],
+      challengeQuote:
+        "One brand makes the whole portfolio believable — a small-to-scale story prospects can actually picture themselves in.",
+      solutionIntro:
+        "Reacher tied the agency's shops into a single connected account set, then surfaced Portland Leather Goods as the proof brand — attaching every creator, sample, video, and view to its growth curve.",
+      solutions: [
+        { title: "Connected account set", body: "All 84 shops tied to the agency in one view, so portfolio-level and brand-level performance live in the same place instead of scattered across logins." },
+        { title: "Proof-brand surfacing", body: "Portland Leather Goods surfaced as the small-to-scale story: $2,292 in monthly GMV in November 2025 climbing to a $1,757,334 peak." },
+        { title: "Full attribution stack", body: "Creator, sample, video, and view data attached to the growth curve — 6,435 creators, 25,381 sample requests, 10,818 shipped, 33,150 videos, 77,491 live sessions." },
+        { title: "Portable growth story", body: "A clean, attributed narrative the agency can drop into any prospect conversation — $1.92M sample-attributed GMV at $178 per shipped sample." },
+      ],
+      resultParagraphs: [
+        "Portland Leather Goods grew from $2,292 to a $1.76M monthly-GMV peak, generating $1.92M in sample-attributed GMV at $178 per shipped sample and a 42.6% ship rate. Reacher turned that into portable proof — a single brand's journey, fully attributed, that makes the entire 84-shop portfolio believable to the next prospect.",
+      ],
+      wins: [
+        { stat: "$2.3K → $1.76M monthly GMV", note: "Portland Leather Goods, from Nov 2025" },
+        { stat: "$1.92M sample-attributed GMV", note: "at $178 per shipped sample" },
+        { stat: "42.6% ship rate", note: "10,818 shipped of 25,381 requests" },
+        { stat: "84 connected shops", note: "top shop at $60.95M GMV" },
+      ],
+      charts: [
+        {
+          type: "line",
+          title: "Portland Leather Goods monthly GMV",
+          badge: "$2.3K → $1.76M",
+          points: [
+            { x: "Nov", y: 0.002 },
+            { x: "Dec", y: 0.4 },
+            { x: "Jan", y: 0.95 },
+            { x: "Feb", y: 1.76 },
+          ],
+        },
+        {
+          type: "bar",
+          title: "Portfolio brands by GMV",
+          badge: "84 shops connected",
+          bars: [
+            { label: "HEYDUDE", value: 40.68, display: "$40.68M", highlight: true },
+            { label: "Hanes", value: 9.67, display: "$9.67M" },
+            { label: "Portland", value: 4.24, display: "$4.24M" },
+            { label: "Shapermint", value: 2.34, display: "$2.34M" },
+          ],
+        },
+      ],
+      closingQuote:
+        "The portfolio was always winning. Reacher made one brand's story portable enough to prove it.",
+      externalHref: "https://gtm46casestudiesvercel.vercel.app",
+    },
+  },
+  {
+    slug: "favoured",
+    brand: "Favoured",
+    category: "Agency · Portfolio Scale",
+    group: "Agencies",
+    headline: "How Favoured turned 47 shops into a ranked operating view",
+    tags: ["$76.36M Portfolio GMV", "47 Connected Shops", "810,993 Videos"],
+    image: "/reacher-assets/customers/favoured.png?v=1",
+    accent: "#8b6bff",
+    story: {
+      subtitle:
+        "At portfolio scale, the question isn't how each brand is doing — it's which lever each brand needs next. Reacher ranked 47 shops into one operating view so Favoured could pull the right lever, brand by brand.",
+      joined: "Joined Reacher 2025",
+      industry: "Agency · multi-category (beauty, apparel)",
+      productCategory: "47-shop TikTok Shop portfolio",
+      noProductStrip: true,
+      results: [
+        { value: "$76.36M", label: "Summed portfolio GMV" },
+        { value: "47", label: "Connected shops" },
+        { value: "$5.29M", label: "Sample-attributed GMV" },
+      ],
+      aboutTitle: "A portfolio that needed a control panel",
+      about: [
+        "Favoured is a multi-category agency running 47 connected TikTok Shops spanning beauty and apparel — Phlur ($14.53M GMV), Maybelline ($12.49M), L'Oréal Paris USA ($8.96M), GAP ($8.44M), and Elf ($7.89M) among them. Together the portfolio has driven $76.36M in GMV, 810,993 videos, 1.36M live sessions, and 4.52M items sold.",
+        "At that scale, every brand is a different machine. Some win on revenue efficiency, others on content volume. Running them all the same way leaves performance on the table.",
+      ],
+      challengeTitle: "Which brand needs which lever?",
+      challengeParagraphs: [
+        "With 47 shops, Favoured needed visibility into which operational lever each brand actually required — more creator volume, more samples, or a sharper live-commerce focus. Without a ranked view, every brand gets the same generic playbook.",
+        "The brands prove the point: GAP turned samples into $1.76M of attributed GMV (revenue-efficient), while Elf ran 202,934 videos (content-volume). Same portfolio, opposite motions.",
+      ],
+      challengeQuote:
+        "Different brands need different playbooks — the job is seeing, at a glance, which lever moves which brand.",
+      solutionIntro:
+        "Reacher ranked every brand across the metrics that matter, separating the revenue-efficient brands from the content-volume brands so Favoured could choose the right lever for each.",
+      solutions: [
+        { title: "Ranked portfolio view", body: "Each of the 47 brands ranked by GMV, videos, live sessions, shipped samples, and sample-attributed revenue — one operating view instead of 47 dashboards." },
+        { title: "Playbook separation", body: "Revenue-efficient brands (GAP: $1.76M sample-attributed GMV) cleanly separated from content-volume brands (Elf: 202,934 videos), so the right motion is obvious per brand." },
+        { title: "Lever selection", body: "With brands ranked side by side, Favoured can decide where to push volume, where to push samples, and where to lean into live commerce — brand by brand." },
+        { title: "Client reporting & retention", body: "The ranked view doubles as client-facing proof, turning operational clarity into retention with every brand in the portfolio." },
+      ],
+      resultParagraphs: [
+        "Favoured turned a 47-shop portfolio into a single ranked operating view across $76.36M in GMV and $5.29M in sample-attributed revenue. Instead of one generic playbook, the agency can now see which brand needs volume, which needs samples, and which needs live-commerce focus — and prove it to clients in the same view.",
+      ],
+      wins: [
+        { stat: "$76.36M summed portfolio GMV", note: "across 47 connected shops" },
+        { stat: "$5.29M sample-attributed GMV", note: "GAP alone at $1.76M" },
+        { stat: "810,993 videos", note: "Elf leading at 202,934" },
+        { stat: "4.52M items sold", note: "across 1.36M live sessions" },
+      ],
+      charts: [
+        {
+          type: "bar",
+          title: "Top brands by GMV",
+          badge: "$76.36M portfolio",
+          bars: [
+            { label: "Phlur", value: 14.53, display: "$14.53M", highlight: true },
+            { label: "Maybelline", value: 12.49, display: "$12.49M" },
+            { label: "L'Oréal", value: 8.96, display: "$8.96M" },
+            { label: "GAP", value: 8.44, display: "$8.44M" },
+            { label: "Elf", value: 7.89, display: "$7.89M" },
+          ],
+        },
+        {
+          type: "motions",
+          title: "Different brands, different levers",
+          badge: "Ranked per brand",
+          cards: [
+            { title: "Revenue-efficient", body: "GAP converts samples into revenue — $1.76M sample-attributed GMV from just 39,230 videos. The lever here is samples, not volume.", status: "GAP", tag: "$1.76M sample GMV" },
+            { title: "Content-volume", body: "Elf wins on sheer output — 202,934 videos driving $7.89M GMV. The lever here is creator volume and always-on reach.", status: "Elf", tag: "202,934 videos" },
+            { title: "Live-commerce focus", body: "Maybelline pairs scale with live — 162,520 videos and $12.49M GMV. The lever here is leaning into live sessions.", status: "Maybelline", tag: "$12.49M GMV" },
+          ],
+          footer: "Different brands need different playbooks. The ranked view makes the right motion obvious per brand.",
+        },
+      ],
+      closingQuote:
+        "47 shops, one ranked view — so every brand gets the lever it actually needs, not a generic playbook.",
+      externalHref: "https://gtm46casestudiesvercel.vercel.app",
+    },
+  },
 ];
 
-export const customerGroups = ["Beauty", "Supplements", "Health & Wellness", "Food & Pantry"] as const;
+export const customerGroups = ["Beauty", "Supplements", "Health & Wellness", "Food & Pantry", "Agencies"] as const;

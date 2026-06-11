@@ -117,19 +117,21 @@ export default async function CustomerStoryPage({ params }: { params: Promise<{ 
             ))}
           </div>
         </div>
-        <div className="mx-auto mt-10 grid max-w-[1040px] gap-4 sm:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-slate-100">
-              <Image
-                src={`/reacher-assets/customers/products/${customer.slug}-${n}.jpg`}
-                alt={`${customer.brand} product`}
-                fill
-                sizes="(min-width:640px) 340px, 100vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
+        {story.noProductStrip ? null : (
+          <div className="mx-auto mt-10 grid max-w-[1040px] gap-4 sm:grid-cols-3">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="relative aspect-[4/3] overflow-hidden rounded-[18px] bg-slate-100">
+                <Image
+                  src={`/reacher-assets/customers/products/${customer.slug}-${n}.jpg`}
+                  alt={`${customer.brand} product`}
+                  fill
+                  sizes="(min-width:640px) 340px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Challenge */}
