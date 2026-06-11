@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import type { Customer } from "@/lib/customers";
-import { deriveStats, productImages } from "@/lib/caseStudyStats";
+import { deriveStats, firstSentence, productImages } from "@/lib/caseStudyStats";
 import { testimonials } from "@/lib/testimonials";
 import CaseStudyCharts from "@/components/CaseStudyCharts";
 
@@ -56,12 +56,11 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     <div className="grid h-full w-full grid-cols-[1fr_0.85fr] bg-white">
       <div className="flex flex-col justify-center px-[9%]">
         <Eyebrow>About {customer.brand}</Eyebrow>
-        <h2 className="mt-3 text-[30px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{story.aboutTitle}</h2>
-        <div className="mt-4 flex flex-col gap-3">
-          {story.about.slice(0, 2).map((p, n) => (
-            <p key={n} className="text-[14.5px] leading-[1.6] text-slate-600">{p}</p>
-          ))}
-        </div>
+        <h2 className="mt-3 text-[34px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{story.aboutTitle}</h2>
+        <p className="mt-4 text-[17px] leading-[1.5] text-slate-500">{story.productCategory}</p>
+        <p className="mt-5 max-w-[92%] text-[15px] leading-[1.6] text-slate-600">
+          {firstSentence(story.about[0]).split(/\s+[—–]\s+/)[0].replace(/\s*\([^)]*\)/g, "").replace(/[.,]\s*$/, "") + "."}
+        </p>
       </div>
       <div className="relative overflow-hidden">
         <Image src={aboutImage} alt={customer.brand} fill sizes="520px" className="object-cover" />
@@ -88,15 +87,12 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
   const challengeSlide = (
     <div className="flex h-full w-full flex-col justify-center bg-[#f7f9ff] px-[9%]">
       <Eyebrow>The Challenge</Eyebrow>
-      <h2 className="mt-3 max-w-[82%] text-[32px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{story.challengeTitle}</h2>
-      <div className="mt-4 flex max-w-[86%] flex-col gap-3">
-        {story.challengeParagraphs.slice(0, 2).map((p, n) => (
-          <p key={n} className="text-[14.5px] leading-[1.6] text-slate-600">{p}</p>
-        ))}
-      </div>
+      <h2 className="mt-4 max-w-[84%] text-[40px] font-bold leading-[1.08] tracking-[-0.03em] text-slate-950">{story.challengeTitle}</h2>
       {story.challengeQuote ? (
-        <p className="mt-5 max-w-[80%] border-l-[3px] pl-5 text-[17px] italic leading-[1.45] text-slate-800" style={{ borderColor: accent }}>{story.challengeQuote}</p>
-      ) : null}
+        <p className="mt-7 max-w-[82%] border-l-[3px] pl-6 text-[21px] italic leading-[1.45] text-slate-700" style={{ borderColor: accent }}>{story.challengeQuote}</p>
+      ) : (
+        <p className="mt-6 max-w-[84%] text-[18px] leading-[1.6] text-slate-600">{firstSentence(story.challengeParagraphs[0])}</p>
+      )}
     </div>
   );
 
@@ -140,7 +136,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     <div className="grid h-full w-full grid-cols-[1.1fr_1fr] bg-white">
       <div className="flex flex-col justify-center px-[10%]">
         <Eyebrow>The Result</Eyebrow>
-        <p className="mt-4 text-[16px] leading-[1.65] text-slate-700">{story.resultParagraphs[0]}</p>
+        <p className="mt-4 text-[20px] font-medium leading-[1.5] tracking-[-0.01em] text-slate-800">{firstSentence(story.resultParagraphs[0])}</p>
       </div>
       <div className="flex flex-col justify-center bg-[#f1f5ff] px-[9%]">
         <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#2465f6]">Key wins</p>

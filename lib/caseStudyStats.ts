@@ -21,6 +21,12 @@ export function deriveStats(story: CustomerStory, max = 6): Stat[] {
     .slice(0, max);
 }
 
+/** First sentence of a paragraph (decimal-safe), for terse slide copy. */
+export function firstSentence(text: string): string {
+  const m = text.match(/^.*?[.!?](?=\s+[A-Z"$(]|$)/);
+  return (m ? m[0] : text).trim();
+}
+
 /** Product strip image paths for a slug, when the story has them. */
 export function productImages(slug: string, story: CustomerStory): string[] {
   if (story.noProductStrip) return [];
