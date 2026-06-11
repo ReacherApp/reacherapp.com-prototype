@@ -78,7 +78,7 @@ export default function CaseStudyCarousel({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -36 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="grid md:grid-cols-[340px_1fr]"
+            className={`grid ${embedded ? "md:grid-cols-[1.05fr_1fr]" : "md:grid-cols-[340px_1fr]"}`}
           >
             <Image
               src={active.image}
@@ -86,8 +86,8 @@ export default function CaseStudyCarousel({
               width={360}
               height={540}
               loading="eager"
-              sizes="(min-width: 768px) 340px, 100vw"
-              className="h-full min-h-[430px] w-full object-cover"
+              sizes={embedded ? "(min-width: 768px) 600px, 100vw" : "(min-width: 768px) 340px, 100vw"}
+              className={`w-full self-stretch object-cover ${embedded ? "min-h-[280px]" : "h-full min-h-[430px]"}`}
             />
             <div className="p-8 md:p-12">
               <p className="text-lg font-semibold text-slate-600">{active.brand}</p>
@@ -119,8 +119,9 @@ export default function CaseStudyCarousel({
           </motion.div>
         </AnimatePresence>
         );
-        const cardClass =
-          "group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left shadow-2xl shadow-blue-950/20 transition";
+        const cardClass = embedded
+          ? "group mx-auto mt-8 block max-w-[1180px] overflow-hidden rounded-[28px] border border-slate-200 bg-white text-left shadow-[0_24px_60px_-30px_rgba(16,24,40,0.32)] transition"
+          : "group mx-auto mt-8 block max-w-[1080px] overflow-hidden rounded-[2rem] bg-white text-left shadow-2xl shadow-blue-950/20 transition";
         return embedded ? (
           <div className={cardClass} style={{ color: "#0f172a" }}>
             {cardChildren}
