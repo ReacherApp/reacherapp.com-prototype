@@ -53,16 +53,11 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
             </div>
           </header>
 
-          {/* Hero: headline + hero image */}
-          <div className="mt-7 grid grid-cols-[1.35fr_1fr] items-stretch gap-7">
-            <div className="flex flex-col justify-center">
-              <p className={EYEBROW}>Customer Story · {story.industry}</p>
-              <h1 className="mt-2 text-[28px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{customer.headline}</h1>
-              <p className="mt-3 text-[12.5px] leading-[1.55] text-slate-600">{story.subtitle}</p>
-            </div>
-            <div className="relative min-h-[170px] overflow-hidden rounded-2xl bg-slate-100">
-              <Image src={customer.image} alt={customer.brand} fill sizes="320px" className="object-cover" />
-            </div>
+          {/* Hero: headline */}
+          <div className="mt-7">
+            <p className={EYEBROW}>Customer Story · {story.industry}</p>
+            <h1 className="mt-2 max-w-[88%] text-[30px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{customer.headline}</h1>
+            <p className="mt-3 max-w-[92%] text-[13px] leading-[1.6] text-slate-600">{story.subtitle}</p>
           </div>
 
           {/* Stat grid */}
