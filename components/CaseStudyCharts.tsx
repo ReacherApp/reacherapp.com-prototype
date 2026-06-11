@@ -199,9 +199,12 @@ function MotionsChart({ chart }: { chart: Extract<Chart, { type: "motions" }> })
   );
 }
 
-function BrandsGrid({ chart }: { chart: Extract<Chart, { type: "brands" }> }) {
+function BrandsGrid({ chart, compact }: { chart: Extract<Chart, { type: "brands" }>; compact?: boolean }) {
+  const tileH = compact ? "min-h-[132px]" : "min-h-[230px]";
+  const pad = compact ? "p-3" : "p-5";
+  const nameSz = compact ? "text-[14px]" : "text-[17px]";
   return (
-    <div className={`${CARD} bg-[#f7f9ff]`}>
+    <div className={`${CARD} bg-[#f7f9ff] ${compact ? "!p-5" : ""}`}>
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#6aa8ff] to-[#2465f6]" />
@@ -209,21 +212,21 @@ function BrandsGrid({ chart }: { chart: Extract<Chart, { type: "brands" }> }) {
         </div>
         <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">{chart.badge ?? "Top portfolio shops"}</span>
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${compact ? "mt-4 gap-2.5" : "mt-6 gap-4"}`}>
         {chart.items.map((b) =>
           b.image ? (
-            <div key={b.name} className="relative flex min-h-[230px] flex-col justify-end overflow-hidden rounded-2xl border border-slate-200">
+            <div key={b.name} className={`relative flex ${tileH} flex-col justify-end overflow-hidden rounded-2xl border border-slate-200`}>
               <Image src={b.image} alt={b.name} fill sizes="(min-width:1024px) 360px, (min-width:640px) 50vw, 100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/85 via-[#0b1f3a]/15 to-transparent" />
-              <div className="relative p-5">
-                <h4 className="text-[17px] font-bold leading-tight tracking-[-0.01em] text-white drop-shadow-sm">{b.name}</h4>
-                <p className="mt-1.5 text-[13px] font-semibold uppercase tracking-[0.04em] text-white/80">{b.gmv}</p>
+              <div className={`relative ${pad}`}>
+                <h4 className={`${nameSz} font-bold leading-tight tracking-[-0.01em] text-white drop-shadow-sm`}>{b.name}</h4>
+                <p className="mt-1.5 text-[12px] font-semibold uppercase tracking-[0.04em] text-white/80">{b.gmv}</p>
               </div>
             </div>
           ) : (
-            <div key={b.name} className="flex min-h-[230px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5">
-              <h4 className="text-[17px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{b.name}</h4>
-              <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.04em] text-slate-400">{b.gmv}</p>
+            <div key={b.name} className={`flex ${tileH} flex-col justify-between rounded-2xl border border-slate-200 bg-white ${pad}`}>
+              <h4 className={`${nameSz} font-bold leading-tight tracking-[-0.01em] text-slate-950`}>{b.name}</h4>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400">{b.gmv}</p>
             </div>
           ),
         )}
@@ -232,9 +235,9 @@ function BrandsGrid({ chart }: { chart: Extract<Chart, { type: "brands" }> }) {
   );
 }
 
-export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
+export default function CaseStudyCharts({ charts, compact = false }: { charts: Chart[]; compact?: boolean }) {
   return (
-    <div className="mt-8 grid gap-5 md:grid-cols-2">
+    <div className={`${compact ? "mt-0" : "mt-8"} grid gap-5 md:grid-cols-2`}>
       {charts.map((chart, i) => {
         if (chart.type === "bar") return <BarChart key={i} chart={chart} />;
         if (chart.type === "line") return <LineChart key={i} chart={chart} />;
@@ -249,7 +252,7 @@ export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
         if (chart.type === "brands")
           return (
             <div key={i} className="md:col-span-2">
-              <BrandsGrid chart={chart} />
+              <BrandsGrid chart={chart} compact={compact} />
             </div>
           );
         return (

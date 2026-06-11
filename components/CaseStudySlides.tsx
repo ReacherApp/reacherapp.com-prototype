@@ -93,8 +93,8 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
   // 5. One slide per chart (graphics)
   const chartSlides = (story.charts ?? []).map((chart, idx) => (
     <div key={idx} className="flex h-full w-full flex-col justify-center bg-white px-[6%]">
-      <div className="mx-auto w-full max-w-[1080px] [&>div]:mt-0 [&_*]:!shadow-none">
-        <CaseStudyCharts charts={[chart]} />
+      <div className="mx-auto w-full max-w-[1080px] [&_*]:!shadow-none">
+        <CaseStudyCharts charts={[chart]} compact />
       </div>
     </div>
   ));
