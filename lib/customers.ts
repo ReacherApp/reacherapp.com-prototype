@@ -10,7 +10,7 @@ export type Chart =
   | { type: "timeline"; title: string; badge?: string; steps: { day: string; label: string }[] }
   | { type: "comparison"; title: string; badge?: string; gateLabel?: string; retiredLabel: string; retired: string[]; activeLabel: string; active: string[]; footer?: string }
   | { type: "motions"; title: string; badge?: string; cards: { title: string; body: string; status: string; tag: string }[]; footer?: string }
-  | { type: "brands"; title: string; badge?: string; items: { name: string; gmv: string }[] };
+  | { type: "brands"; title: string; badge?: string; items: { name: string; gmv: string; image?: string }[] };
 
 export type CustomerStory = {
   /** hero subtitle */
@@ -785,9 +785,9 @@ export const customers: Customer[] = [
           title: "Portfolio proof by recognizable brands",
           badge: "Top portfolio shops",
           items: [
-            { name: "Phlur", gmv: "$14.53M GMV" },
-            { name: "Maybelline", gmv: "$12.49M GMV" },
-            { name: "L'Oreal Paris USA", gmv: "$8.96M GMV" },
+            { name: "Phlur", gmv: "$14.53M GMV", image: "/reacher-assets/customers/portfolio/phlur.jpg" },
+            { name: "Maybelline", gmv: "$12.49M GMV", image: "/reacher-assets/customers/portfolio/maybelline.jpg" },
+            { name: "L'Oreal Paris USA", gmv: "$8.96M GMV", image: "/reacher-assets/customers/portfolio/loreal.jpg" },
             { name: "GAP", gmv: "$8.44M GMV" },
             { name: "Elf", gmv: "$7.89M GMV" },
             { name: "NYX Cosmetics", gmv: "$6.52M GMV" },

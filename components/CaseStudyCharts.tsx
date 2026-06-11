@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Chart } from "@/lib/customers";
 
 const CARD = "rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_1px_2px_rgba(16,24,40,0.05)]";
@@ -209,12 +210,23 @@ function BrandsGrid({ chart }: { chart: Extract<Chart, { type: "brands" }> }) {
         <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">{chart.badge ?? "Top portfolio shops"}</span>
       </div>
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {chart.items.map((b) => (
-          <div key={b.name} className="flex min-h-[104px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4">
-            <h4 className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{b.name}</h4>
-            <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400">{b.gmv}</p>
-          </div>
-        ))}
+        {chart.items.map((b) =>
+          b.image ? (
+            <div key={b.name} className="relative flex min-h-[150px] flex-col justify-end overflow-hidden rounded-2xl border border-slate-200">
+              <Image src={b.image} alt={b.name} fill sizes="(min-width:1024px) 200px, 50vw" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/85 via-[#0b1f3a]/15 to-transparent" />
+              <div className="relative p-4">
+                <h4 className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-white drop-shadow-sm">{b.name}</h4>
+                <p className="mt-1.5 text-[12px] font-semibold uppercase tracking-[0.04em] text-white/80">{b.gmv}</p>
+              </div>
+            </div>
+          ) : (
+            <div key={b.name} className="flex min-h-[150px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4">
+              <h4 className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{b.name}</h4>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400">{b.gmv}</p>
+            </div>
+          ),
+        )}
       </div>
     </div>
   );
