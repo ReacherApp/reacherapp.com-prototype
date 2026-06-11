@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import type { Customer } from "@/lib/customers";
 import { deriveStats, productImages } from "@/lib/caseStudyStats";
+import { testimonials } from "@/lib/testimonials";
 import CaseStudyCharts from "@/components/CaseStudyCharts";
 
 const NAVY = "#07131f";
@@ -18,8 +19,11 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
   const accent = customer.accent ?? "#3559e9";
   const stats = deriveStats(story, 6);
   const products = productImages(customer.slug, story);
+  const aboutImage = products[0] ?? customer.image;
+  const testimonial = testimonials.find((t) => t.brand.toLowerCase() === customer.brand.toLowerCase());
+  const quoteText = testimonial?.quote ?? story.solutionQuote ?? story.challengeQuote;
 
-  // 1. Title — text left, hero image right
+  // 1. Title
   const titleSlide = (
     <div className="grid h-full w-full grid-cols-[1.15fr_0.85fr]" style={{ background: NAVY }}>
       <div className="relative flex flex-col justify-center overflow-hidden px-[9%]">
@@ -47,11 +51,29 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     </div>
   );
 
-  // 2. Stats — big numbers
+  // 2. About — who the brand is
+  const aboutSlide = (
+    <div className="grid h-full w-full grid-cols-[1fr_0.85fr] bg-white">
+      <div className="flex flex-col justify-center px-[9%]">
+        <Eyebrow>About {customer.brand}</Eyebrow>
+        <h2 className="mt-3 text-[30px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{story.aboutTitle}</h2>
+        <div className="mt-4 flex flex-col gap-3">
+          {story.about.slice(0, 2).map((p, n) => (
+            <p key={n} className="text-[14.5px] leading-[1.6] text-slate-600">{p}</p>
+          ))}
+        </div>
+      </div>
+      <div className="relative overflow-hidden">
+        <Image src={aboutImage} alt={customer.brand} fill sizes="520px" className="object-cover" />
+      </div>
+    </div>
+  );
+
+  // 3. Key improvements / metrics
   const statsSlide = (
     <div className="flex h-full w-full flex-col justify-center bg-white px-[8%]">
-      <Eyebrow>By the numbers</Eyebrow>
-      <div className={`mt-9 grid gap-x-8 gap-y-9 ${stats.length > 3 ? "grid-cols-3" : "grid-cols-3"}`}>
+      <Eyebrow>Key improvements we drove</Eyebrow>
+      <div className="mt-9 grid grid-cols-3 gap-x-8 gap-y-9">
         {stats.map((s) => (
           <div key={s.label + s.value}>
             <div className="text-[46px] font-bold leading-none tracking-[-0.04em] text-slate-950">{s.value}</div>
@@ -62,35 +84,49 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     </div>
   );
 
-  // 3. Product image showcase (only when product photos exist)
-  const productSlide = products.length > 0 ? (
-    <div className="grid h-full w-full grid-cols-3 gap-0 bg-white">
-      {products.map((src, n) => (
-        <div key={n} className="relative overflow-hidden">
-          <Image src={src} alt={`${customer.brand} product`} fill sizes="500px" className="object-cover" />
-          {n === 0 ? (
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07131f]/80 to-transparent p-6">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-white/70">{customer.brand}</p>
-              <p className="text-[18px] font-bold text-white">{story.productCategory}</p>
-            </div>
-          ) : null}
-        </div>
-      ))}
-    </div>
-  ) : null;
-
-  // 4. Challenge — short (title + one-line quote, no paragraphs)
+  // 4. Challenge
   const challengeSlide = (
     <div className="flex h-full w-full flex-col justify-center bg-[#f7f9ff] px-[9%]">
       <Eyebrow>The Challenge</Eyebrow>
-      <h2 className="mt-4 max-w-[80%] text-[40px] font-bold leading-[1.08] tracking-[-0.03em] text-slate-950">{story.challengeTitle}</h2>
+      <h2 className="mt-3 max-w-[82%] text-[32px] font-bold leading-[1.1] tracking-[-0.03em] text-slate-950">{story.challengeTitle}</h2>
+      <div className="mt-4 flex max-w-[86%] flex-col gap-3">
+        {story.challengeParagraphs.slice(0, 2).map((p, n) => (
+          <p key={n} className="text-[14.5px] leading-[1.6] text-slate-600">{p}</p>
+        ))}
+      </div>
       {story.challengeQuote ? (
-        <p className="mt-6 max-w-[78%] border-l-[3px] pl-5 text-[20px] italic leading-[1.45] text-slate-700" style={{ borderColor: accent }}>{story.challengeQuote}</p>
+        <p className="mt-5 max-w-[80%] border-l-[3px] pl-5 text-[17px] italic leading-[1.45] text-slate-800" style={{ borderColor: accent }}>{story.challengeQuote}</p>
       ) : null}
     </div>
   );
 
-  // 5. One slide per chart (graphics)
+  // 5. The Reacher solution (approach)
+  const solutionSlide = (
+    <div className="relative flex h-full w-full flex-col justify-center overflow-hidden px-[9%]" style={{ background: NAVY }}>
+      <div className="absolute right-[-8%] top-[-15%] h-[60%] w-[50%] rounded-full opacity-25 blur-3xl" style={{ background: accent }} />
+      <div className="relative">
+        <Eyebrow light>The Reacher Plus Solution</Eyebrow>
+        <p className="mt-5 max-w-[82%] text-[28px] font-semibold leading-[1.3] tracking-[-0.02em] text-white">{story.solutionIntro}</p>
+      </div>
+    </div>
+  );
+
+  // 6. Strategies & functions
+  const strategiesSlide = (
+    <div className="flex h-full w-full flex-col justify-center bg-white px-[7%]">
+      <Eyebrow>Strategies &amp; functions we provided</Eyebrow>
+      <div className="mt-6 grid grid-cols-2 gap-4">
+        {story.solutions.slice(0, 4).map((s) => (
+          <div key={s.title} className="rounded-2xl border border-[#dbe5ff] bg-[#f7f9ff] p-5">
+            <h3 className="text-[16px] font-bold text-[#2465f6]">{s.title}</h3>
+            <p className="mt-1.5 text-[13px] leading-[1.5] text-slate-600">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // 7+. one slide per chart
   const chartSlides = (story.charts ?? []).map((chart, idx) => (
     <div key={idx} className="flex h-full w-full flex-col justify-center bg-white px-[6%]">
       <div className="mx-auto w-full max-w-[1080px] [&_*]:!shadow-none">
@@ -99,7 +135,51 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     </div>
   ));
 
-  // 6. Closing (dark)
+  // 8. Result
+  const resultSlide = (
+    <div className="grid h-full w-full grid-cols-[1.1fr_1fr] bg-white">
+      <div className="flex flex-col justify-center px-[10%]">
+        <Eyebrow>The Result</Eyebrow>
+        <p className="mt-4 text-[16px] leading-[1.65] text-slate-700">{story.resultParagraphs[0]}</p>
+      </div>
+      <div className="flex flex-col justify-center bg-[#f1f5ff] px-[9%]">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#2465f6]">Key wins</p>
+        <ul className="mt-5 flex flex-col gap-3.5">
+          {story.wins.slice(0, 4).map((w) => (
+            <li key={w.stat} className="flex gap-3">
+              <span className="mt-[3px] text-[15px] font-bold text-[#2465f6]">✓</span>
+              <span className="text-[14px] leading-snug text-slate-700"><span className="font-bold text-slate-900">{w.stat}</span> — {w.note}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+
+  // 9. Testimonial (real if matched, else brand pull-quote)
+  const testimonialSlide = quoteText ? (
+    testimonial?.image ? (
+      <div className="grid h-full w-full grid-cols-[0.8fr_1.2fr] bg-white">
+        <div className="relative overflow-hidden">
+          <Image src={testimonial.image} alt={testimonial.name} fill sizes="500px" className="object-cover" />
+        </div>
+        <div className="flex flex-col justify-center px-[9%]">
+          <Eyebrow>In their words</Eyebrow>
+          <p className="mt-5 text-[23px] font-semibold leading-[1.4] tracking-[-0.02em] text-slate-950">“{quoteText}”</p>
+          <p className="mt-7 text-[15px] font-bold text-slate-900">{testimonial.name}</p>
+          <p className="text-[13px] text-slate-500">{testimonial.role} · {customer.brand}</p>
+        </div>
+      </div>
+    ) : (
+      <div className="flex h-full w-full flex-col items-center justify-center bg-[#f7f9ff] px-[12%] text-center">
+        <Eyebrow>In their words</Eyebrow>
+        <p className="mt-6 max-w-[88%] text-[26px] font-semibold leading-[1.4] tracking-[-0.02em] text-slate-950">“{quoteText}”</p>
+        <p className="mt-7 text-[14px] font-semibold text-slate-500">{customer.brand} × Reacher Plus</p>
+      </div>
+    )
+  ) : null;
+
+  // 10. Closing
   const closingSlide = (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-[8%] text-center" style={{ background: NAVY }}>
       <div className="absolute left-[-6%] bottom-[-20%] h-[70%] w-[55%] rounded-full opacity-35 blur-3xl" style={{ background: accent }} />
@@ -116,7 +196,28 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     </div>
   );
 
-  const slides = [titleSlide, statsSlide, ...(productSlide ? [productSlide] : []), challengeSlide, ...chartSlides, closingSlide];
+  const slides = [
+    titleSlide,
+    aboutSlide,
+    statsSlide,
+    challengeSlide,
+    solutionSlide,
+    strategiesSlide,
+    ...(products.length > 0 ? [(
+      <div key="prod" className="grid h-full w-full grid-cols-3 bg-white">
+        {products.map((src, n) => (
+          <div key={n} className="relative overflow-hidden">
+            <Image src={src} alt={`${customer.brand} product`} fill sizes="500px" className="object-cover" />
+          </div>
+        ))}
+      </div>
+    )] : []),
+    ...chartSlides,
+    resultSlide,
+    ...(testimonialSlide ? [testimonialSlide] : []),
+    closingSlide,
+  ];
+
   const [i, setI] = useState(0);
   const go = useCallback((n: number) => setI((c) => Math.min(slides.length - 1, Math.max(0, c + n))), [slides.length]);
 
