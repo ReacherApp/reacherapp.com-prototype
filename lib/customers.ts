@@ -736,7 +736,7 @@ export const customers: Customer[] = [
     group: "Agencies",
     headline: "How Favored turned 47 shops into a ranked operating view",
     tags: ["$76.36M Portfolio GMV", "47 Connected Shops", "810,993 Videos"],
-    image: "/reacher-assets/customers/favored.png?v=2",
+    image: "/reacher-assets/customers/favored.png?v=3",
     accent: "#8b6bff",
     story: {
       subtitle:
