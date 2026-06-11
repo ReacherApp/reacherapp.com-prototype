@@ -227,3 +227,13 @@ a {
   border-left-color: #3559e9 !important;
   background: #eef3ff !important;
 }
+
+/* ── Case-study one-pager / slides print support ── */
+.no-print { }
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background: #ffffff !important; }
+  .no-print { display: none !important; }
+  .print-sheet { box-shadow: none !important; margin: 0 !important; width: 100% !important; }
+  .print-break { page-break-after: always; break-after: page; }
+}
