@@ -792,7 +792,7 @@ export const customers: Customer[] = [
             { name: "Elf", gmv: "$7.89M GMV", image: "/reacher-assets/customers/portfolio/elf.jpg" },
             { name: "NYX Cosmetics", gmv: "$6.52M GMV", image: "/reacher-assets/customers/portfolio/nyx.jpg" },
             { name: "Bio Ionic", gmv: "$3.79M GMV", image: "/reacher-assets/customers/portfolio/bio-ionic.jpg" },
-            { name: "Kopari", gmv: "$2.85M GMV" },
+            { name: "Kopari", gmv: "$2.85M GMV", image: "/reacher-assets/customers/portfolio/kopari.jpg" },
             { name: "Benefit", gmv: "$1.48M GMV", image: "/reacher-assets/customers/portfolio/benefit.jpg" },
           ],
         },
