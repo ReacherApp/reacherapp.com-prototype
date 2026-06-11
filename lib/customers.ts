@@ -9,7 +9,8 @@ export type Chart =
   | { type: "coverage"; title: string; badge?: string; note?: string; before: number; after: number; total: number }
   | { type: "timeline"; title: string; badge?: string; steps: { day: string; label: string }[] }
   | { type: "comparison"; title: string; badge?: string; gateLabel?: string; retiredLabel: string; retired: string[]; activeLabel: string; active: string[]; footer?: string }
-  | { type: "motions"; title: string; badge?: string; cards: { title: string; body: string; status: string; tag: string }[]; footer?: string };
+  | { type: "motions"; title: string; badge?: string; cards: { title: string; body: string; status: string; tag: string }[]; footer?: string }
+  | { type: "brands"; title: string; badge?: string; items: { name: string; gmv: string }[] };
 
 export type CustomerStory = {
   /** hero subtitle */
@@ -657,7 +658,7 @@ export const customers: Customer[] = [
     group: "Agencies",
     headline: "How Social Commerce Club found a small-to-scale story inside an 84-shop portfolio",
     tags: ["$2.3K → $1.76M GMV", "84 Connected Shops", "$178 GMV / Sample"],
-    image: "/reacher-assets/customers/social-commerce-club.png?v=1",
+    image: "/reacher-assets/customers/social-commerce-club.png?v=2",
     accent: "#d98a3d",
     story: {
       subtitle:
@@ -665,7 +666,6 @@ export const customers: Customer[] = [
       joined: "Joined Reacher 2025",
       industry: "Agency · multi-brand (apparel, accessories, beauty)",
       productCategory: "84-shop TikTok Shop portfolio",
-      noProductStrip: true,
       results: [
         { value: "$1.76M", label: "Peak monthly GMV (from $2.3K)" },
         { value: "84", label: "Connected shops" },
@@ -730,17 +730,17 @@ export const customers: Customer[] = [
     },
   },
   {
-    slug: "favoured",
-    brand: "Favoured",
+    slug: "favored",
+    brand: "Favored",
     category: "Agency · Portfolio Scale",
     group: "Agencies",
-    headline: "How Favoured turned 47 shops into a ranked operating view",
+    headline: "How Favored turned 47 shops into a ranked operating view",
     tags: ["$76.36M Portfolio GMV", "47 Connected Shops", "810,993 Videos"],
-    image: "/reacher-assets/customers/favoured.png?v=1",
+    image: "/reacher-assets/customers/favored.png?v=2",
     accent: "#8b6bff",
     story: {
       subtitle:
-        "At portfolio scale, the question isn't how each brand is doing — it's which lever each brand needs next. Reacher ranked 47 shops into one operating view so Favoured could pull the right lever, brand by brand.",
+        "At portfolio scale, the question isn't how each brand is doing — it's which lever each brand needs next. Reacher ranked 47 shops into one operating view so Favored could pull the right lever, brand by brand.",
       joined: "Joined Reacher 2025",
       industry: "Agency · multi-category (beauty, apparel)",
       productCategory: "47-shop TikTok Shop portfolio",
@@ -752,26 +752,26 @@ export const customers: Customer[] = [
       ],
       aboutTitle: "A portfolio that needed a control panel",
       about: [
-        "Favoured is a multi-category agency running 47 connected TikTok Shops spanning beauty and apparel — Phlur ($14.53M GMV), Maybelline ($12.49M), L'Oréal Paris USA ($8.96M), GAP ($8.44M), and Elf ($7.89M) among them. Together the portfolio has driven $76.36M in GMV, 810,993 videos, 1.36M live sessions, and 4.52M items sold.",
+        "Favored is a multi-category agency running 47 connected TikTok Shops spanning beauty and apparel — Phlur ($14.53M GMV), Maybelline ($12.49M), L'Oréal Paris USA ($8.96M), GAP ($8.44M), and Elf ($7.89M) among them. Together the portfolio has driven $76.36M in GMV, 810,993 videos, 1.36M live sessions, and 4.52M items sold.",
         "At that scale, every brand is a different machine. Some win on revenue efficiency, others on content volume. Running them all the same way leaves performance on the table.",
       ],
       challengeTitle: "Which brand needs which lever?",
       challengeParagraphs: [
-        "With 47 shops, Favoured needed visibility into which operational lever each brand actually required — more creator volume, more samples, or a sharper live-commerce focus. Without a ranked view, every brand gets the same generic playbook.",
+        "With 47 shops, Favored needed visibility into which operational lever each brand actually required — more creator volume, more samples, or a sharper live-commerce focus. Without a ranked view, every brand gets the same generic playbook.",
         "The brands prove the point: GAP turned samples into $1.76M of attributed GMV (revenue-efficient), while Elf ran 202,934 videos (content-volume). Same portfolio, opposite motions.",
       ],
       challengeQuote:
         "Different brands need different playbooks — the job is seeing, at a glance, which lever moves which brand.",
       solutionIntro:
-        "Reacher ranked every brand across the metrics that matter, separating the revenue-efficient brands from the content-volume brands so Favoured could choose the right lever for each.",
+        "Reacher ranked every brand across the metrics that matter, separating the revenue-efficient brands from the content-volume brands so Favored could choose the right lever for each.",
       solutions: [
         { title: "Ranked portfolio view", body: "Each of the 47 brands ranked by GMV, videos, live sessions, shipped samples, and sample-attributed revenue — one operating view instead of 47 dashboards." },
         { title: "Playbook separation", body: "Revenue-efficient brands (GAP: $1.76M sample-attributed GMV) cleanly separated from content-volume brands (Elf: 202,934 videos), so the right motion is obvious per brand." },
-        { title: "Lever selection", body: "With brands ranked side by side, Favoured can decide where to push volume, where to push samples, and where to lean into live commerce — brand by brand." },
+        { title: "Lever selection", body: "With brands ranked side by side, Favored can decide where to push volume, where to push samples, and where to lean into live commerce — brand by brand." },
         { title: "Client reporting & retention", body: "The ranked view doubles as client-facing proof, turning operational clarity into retention with every brand in the portfolio." },
       ],
       resultParagraphs: [
-        "Favoured turned a 47-shop portfolio into a single ranked operating view across $76.36M in GMV and $5.29M in sample-attributed revenue. Instead of one generic playbook, the agency can now see which brand needs volume, which needs samples, and which needs live-commerce focus — and prove it to clients in the same view.",
+        "Favored turned a 47-shop portfolio into a single ranked operating view across $76.36M in GMV and $5.29M in sample-attributed revenue. Instead of one generic playbook, the agency can now see which brand needs volume, which needs samples, and which needs live-commerce focus — and prove it to clients in the same view.",
       ],
       wins: [
         { stat: "$76.36M summed portfolio GMV", note: "across 47 connected shops" },
@@ -781,15 +781,20 @@ export const customers: Customer[] = [
       ],
       charts: [
         {
-          type: "bar",
-          title: "Top brands by GMV",
-          badge: "$76.36M portfolio",
-          bars: [
-            { label: "Phlur", value: 14.53, display: "$14.53M", highlight: true },
-            { label: "Maybelline", value: 12.49, display: "$12.49M" },
-            { label: "L'Oréal", value: 8.96, display: "$8.96M" },
-            { label: "GAP", value: 8.44, display: "$8.44M" },
-            { label: "Elf", value: 7.89, display: "$7.89M" },
+          type: "brands",
+          title: "Portfolio proof by recognizable brands",
+          badge: "Top portfolio shops",
+          items: [
+            { name: "Phlur", gmv: "$14.53M GMV" },
+            { name: "Maybelline", gmv: "$12.49M GMV" },
+            { name: "L'Oreal Paris USA", gmv: "$8.96M GMV" },
+            { name: "GAP", gmv: "$8.44M GMV" },
+            { name: "Elf", gmv: "$7.89M GMV" },
+            { name: "NYX Cosmetics", gmv: "$6.52M GMV" },
+            { name: "Bio Ionic", gmv: "$3.79M GMV" },
+            { name: "Persona", gmv: "$3.53M GMV" },
+            { name: "Kopari", gmv: "$2.85M GMV" },
+            { name: "Benefit", gmv: "$1.48M GMV" },
           ],
         },
         {

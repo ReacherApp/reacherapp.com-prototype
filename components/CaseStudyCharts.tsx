@@ -198,6 +198,28 @@ function MotionsChart({ chart }: { chart: Extract<Chart, { type: "motions" }> })
   );
 }
 
+function BrandsGrid({ chart }: { chart: Extract<Chart, { type: "brands" }> }) {
+  return (
+    <div className={`${CARD} bg-[#f7f9ff]`}>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#6aa8ff] to-[#2465f6]" />
+          <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
+        </div>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">{chart.badge ?? "Top portfolio shops"}</span>
+      </div>
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {chart.items.map((b) => (
+          <div key={b.name} className="flex min-h-[104px] flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4">
+            <h4 className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{b.name}</h4>
+            <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400">{b.gmv}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
   return (
     <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -210,6 +232,12 @@ export default function CaseStudyCharts({ charts }: { charts: Chart[] }) {
           return (
             <div key={i} className="md:col-span-2">
               <ComparisonChart chart={chart} />
+            </div>
+          );
+        if (chart.type === "brands")
+          return (
+            <div key={i} className="md:col-span-2">
+              <BrandsGrid chart={chart} />
             </div>
           );
         return (
