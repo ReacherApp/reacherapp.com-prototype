@@ -35,7 +35,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
         {/* Accent top bar */}
         <div className="h-2 w-full" style={{ background: `linear-gradient(90deg, ${accent}, #2465f6)` }} />
 
-        <div className="flex flex-1 flex-col px-12 pb-0 pt-9">
+        <div className="flex flex-1 flex-col px-12 pb-12 pt-9">
           {/* Header */}
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -140,18 +140,6 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
             </div>
           ) : null}
 
-          {story.closingQuote ? (
-            <p className="mt-7 text-center text-[13px] font-medium italic leading-[1.5] text-slate-700">“{story.closingQuote}”</p>
-          ) : null}
-
-          {/* Footer CTA */}
-          <footer className="mt-auto -mx-12 mt-8 flex items-center justify-between bg-[#07131f] px-12 py-5 text-white">
-            <div>
-              <p className="text-[15px] font-bold tracking-[-0.01em]">Become the next story.</p>
-              <p className="text-[11px] text-white/60">Automate creator outreach and grow TikTok Shop revenue on autopilot.</p>
-            </div>
-            <span className="rounded-full bg-[#3559e9] px-5 py-2.5 text-[12px] font-semibold text-white">Book a demo →</span>
-          </footer>
         </div>
       </article>
     </main>
