@@ -27,7 +27,6 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
   const titleSlide = (
     <div className="grid h-full w-full grid-cols-[1.15fr_0.85fr]" style={{ background: NAVY }}>
       <div className="relative flex flex-col justify-center overflow-hidden px-[9%]">
-        <div className="absolute left-[-10%] top-[-20%] h-[70%] w-[60%] rounded-full opacity-30 blur-3xl" style={{ background: accent }} />
         <div className="relative">
           <div className="flex items-center gap-3">
             <span className="relative h-11 w-11 overflow-hidden rounded-full ring-1 ring-white/20">
@@ -46,7 +45,6 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
       </div>
       <div className="relative overflow-hidden">
         <Image src={customer.image} alt={customer.brand} fill sizes="600px" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#07131f] via-transparent to-transparent" />
       </div>
     </div>
   );
