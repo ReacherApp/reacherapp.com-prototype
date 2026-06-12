@@ -44,14 +44,13 @@ function LineChart({ chart }: { chart: Extract<Chart, { type: "line" }> }) {
   const coords = chart.points.map((p, i) => [i * stepX, H - (p.y / maxY) * H] as const);
   const linePath = coords.map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`).join(" ");
   const areaPath = `${linePath} L${W},${H} L0,${H} Z`;
-  const last = coords[coords.length - 1];
   return (
     <div className={CARD}>
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-[19px] font-bold tracking-[-0.01em] text-slate-950">{chart.title}</h3>
         {chart.badge ? <Badge>{chart.badge}</Badge> : null}
       </div>
-      <svg viewBox={`0 0 ${W} ${H + 22}`} className="mt-6 w-full" preserveAspectRatio="none">
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-5 h-[190px] w-full" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lc-fill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#3559e9" stopOpacity="0.22" />
@@ -59,17 +58,16 @@ function LineChart({ chart }: { chart: Extract<Chart, { type: "line" }> }) {
           </linearGradient>
         </defs>
         {chart.baseline !== undefined ? (
-          <line x1="0" y1={H - (chart.baseline / maxY) * H} x2={W} y2={H - (chart.baseline / maxY) * H} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1="0" y1={H - (chart.baseline / maxY) * H} x2={W} y2={H - (chart.baseline / maxY) * H} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="4 4" vectorEffect="non-scaling-stroke" />
         ) : null}
         <path d={areaPath} fill="url(#lc-fill)" />
-        <path d={linePath} fill="none" stroke="#2465f6" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-        <circle cx={last[0]} cy={last[1]} r="4.5" fill="#fff" stroke="#2465f6" strokeWidth="2.5" />
-        {chart.points.map((p, i) => (
-          <text key={p.x} x={i * stepX} y={H + 16} textAnchor={i === 0 ? "start" : i === chart.points.length - 1 ? "end" : "middle"} className="fill-slate-400 text-[9px] font-medium">
-            {p.x}
-          </text>
-        ))}
+        <path d={linePath} fill="none" stroke="#2465f6" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
       </svg>
+      <div className="mt-2 flex justify-between text-[11px] font-medium text-slate-400">
+        {chart.points.map((p) => (
+          <span key={p.x}>{p.x}</span>
+        ))}
+      </div>
       {chart.baselineLabel ? <p className="mt-2 text-[12px] text-slate-400">{chart.baselineLabel}</p> : null}
     </div>
   );
