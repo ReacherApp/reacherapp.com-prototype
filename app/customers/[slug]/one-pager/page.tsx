@@ -40,7 +40,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-slate-200">
-                <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="40px" className="object-cover" />
+                <Image loading="eager" src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="40px" className="object-cover" />
               </span>
               <div>
                 <p className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{customer.brand} × Reacher Plus</p>
@@ -48,7 +48,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Image src="/reacher-assets/contact/nav-logo.png" alt="Reacher" width={26} height={26} className="h-[26px] w-[26px] rounded-md object-contain" />
+              <Image loading="eager" src="/reacher-assets/contact/nav-logo.png" alt="Reacher" width={26} height={26} className="h-[26px] w-[26px] rounded-md object-contain" />
               <span className="text-[12px] font-semibold text-slate-400">reacherapp.com</span>
             </div>
           </header>
@@ -145,7 +145,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
             <div className="grid grid-cols-3 gap-3">
               {products.map((src, n) => (
                 <div key={n} className="relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">
-                  <Image src={src} alt={`${customer.brand} product`} fill sizes="260px" className="object-cover" />
+                  <Image loading="eager" src={src} alt={`${customer.brand} product`} fill sizes="260px" className="object-cover" />
                 </div>
               ))}
             </div>

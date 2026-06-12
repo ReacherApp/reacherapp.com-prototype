@@ -214,7 +214,7 @@ function BrandsGrid({ chart, compact }: { chart: Extract<Chart, { type: "brands"
         {chart.items.map((b) =>
           b.image ? (
             <div key={b.name} className={`relative flex ${tileH} flex-col justify-end overflow-hidden rounded-2xl border border-slate-200`}>
-              <Image src={b.image} alt={b.name} fill sizes="(min-width:1024px) 360px, (min-width:640px) 50vw, 100vw" className="object-cover" />
+              <Image loading="eager" src={b.image} alt={b.name} fill sizes="(min-width:1024px) 360px, (min-width:640px) 50vw, 100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f3a]/85 via-[#0b1f3a]/15 to-transparent" />
               <div className={`relative ${pad}`}>
                 <h4 className={`${nameSz} font-bold leading-tight tracking-[-0.01em] text-white drop-shadow-sm`}>{b.name}</h4>

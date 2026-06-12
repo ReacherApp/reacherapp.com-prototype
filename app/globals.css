@@ -233,6 +233,7 @@ a {
 @media print {
   @page { size: A4 portrait; margin: 0; }
   html, body { background: #ffffff !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .no-print { display: none !important; }
   .print-sheet { box-shadow: none !important; margin: 0 !important; width: 100% !important; }
   .print-break { page-break-after: always; break-after: page; }

@@ -30,7 +30,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
         <div className="relative">
           <div className="flex items-center gap-3">
             <span className="relative h-11 w-11 overflow-hidden rounded-full ring-1 ring-white/20">
-              <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="44px" className="object-cover" />
+              <Image loading="eager" src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="44px" className="object-cover" />
             </span>
             <span className="text-[16px] font-semibold text-white/80">{customer.brand} × Reacher Plus</span>
           </div>
@@ -44,7 +44,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <Image src={customer.image} alt={customer.brand} fill sizes="600px" className="object-cover" />
+        <Image loading="eager" src={customer.image} alt={customer.brand} fill sizes="600px" className="object-cover" />
       </div>
     </div>
   );
@@ -61,7 +61,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
         </p>
       </div>
       <div className="relative overflow-hidden">
-        <Image src={aboutImage} alt={customer.brand} fill sizes="520px" className="object-cover" />
+        <Image loading="eager" src={aboutImage} alt={customer.brand} fill sizes="520px" className="object-cover" />
       </div>
     </div>
   );
@@ -155,7 +155,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
     testimonial?.image ? (
       <div className="grid h-full w-full grid-cols-[0.8fr_1.2fr] bg-white">
         <div className="relative overflow-hidden">
-          <Image src={testimonial.image} alt={testimonial.name} fill sizes="500px" className="object-cover" />
+          <Image loading="eager" src={testimonial.image} alt={testimonial.name} fill sizes="500px" className="object-cover" />
         </div>
         <div className="flex flex-col justify-center px-[9%]">
           <Eyebrow>In their words</Eyebrow>
@@ -201,7 +201,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
       <div key="prod" className="grid h-full w-full grid-cols-3 bg-white">
         {products.map((src, n) => (
           <div key={n} className="relative overflow-hidden">
-            <Image src={src} alt={`${customer.brand} product`} fill sizes="500px" className="object-cover" />
+            <Image loading="eager" src={src} alt={`${customer.brand} product`} fill sizes="500px" className="object-cover" />
           </div>
         ))}
       </div>
@@ -228,7 +228,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-200 py-6 print:bg-white print:py-0">
-      <style>{`@media print{ @page{ size: A4 landscape; margin:0; } }`}</style>
+      <style>{`@media print{ @page{ size: 13.333in 7.5in; margin:0; } }`}</style>
 
       <div className="print:hidden">
         <div className="relative aspect-[16/9] w-[min(1200px,94vw,calc(84vh*16/9))] overflow-hidden rounded-[18px] bg-white shadow-[0_30px_80px_-30px_rgba(16,24,40,0.5)] ring-1 ring-black/5">
@@ -252,7 +252,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
 
       <div className="hidden print:block">
         {slides.map((s, n) => (
-          <div key={n} className="print-break aspect-[16/9] w-full overflow-hidden">{s}</div>
+          <div key={n} className="print-break h-[7.5in] w-[13.333in] overflow-hidden">{s}</div>
         ))}
       </div>
     </div>
