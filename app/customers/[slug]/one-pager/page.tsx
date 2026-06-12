@@ -61,7 +61,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
           </div>
 
           {/* Stat grid */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className={`grid gap-3 ${stats.length === 4 ? "grid-cols-4" : "grid-cols-3"}`}>
             {stats.map((s) => (
               <div key={s.label + s.value} className="rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3">
                 <div className="text-[24px] font-bold leading-none tracking-[-0.03em] text-slate-950">{s.value}</div>
@@ -99,7 +99,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
 
           {/* Result + wins */}
           <div className="grid grid-cols-[1.4fr_1fr] gap-8">
-            <section>
+            <section className="pt-4">
               <p className={EYEBROW}>The Result</p>
               <div className="mt-2 flex flex-col gap-2.5">
                 {story.resultParagraphs.map((p, i) => (
