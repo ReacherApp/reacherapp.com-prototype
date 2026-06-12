@@ -237,7 +237,7 @@ function BrandsGrid({ chart, compact }: { chart: Extract<Chart, { type: "brands"
 
 export default function CaseStudyCharts({ charts, compact = false }: { charts: Chart[]; compact?: boolean }) {
   return (
-    <div className={`${compact ? "mt-0" : "mt-8"} grid gap-5 md:grid-cols-2`}>
+    <div className={`grid gap-5 ${compact ? "mt-0 grid-cols-1" : "mt-8 md:grid-cols-2"}`}>
       {charts.map((chart, i) => {
         if (chart.type === "bar") return <BarChart key={i} chart={chart} />;
         if (chart.type === "line") return <LineChart key={i} chart={chart} />;
