@@ -72,7 +72,7 @@ export default function CustomersPage() {
               <span className="absolute bottom-5 left-5 flex items-center gap-2.5">
                 <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-white p-0.5 ring-1 ring-black/5">
                   <span className="relative block h-full w-full overflow-hidden rounded-full">
-                    <Image src={`/reacher-assets/customers/logos/${featured.slug}-avatar.png?v=2`} alt={featured.brand} fill sizes="44px" className="object-cover" />
+                    <Image src={`/reacher-assets/customers/logos/${featured.slug}-avatar.png?v=3`} alt={featured.brand} fill sizes="44px" className="object-cover" />
                   </span>
                 </span>
                 <span className="text-[17px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{featured.brand}</span>

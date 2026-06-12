@@ -62,7 +62,7 @@ export default function CustomersGrid({ customers }: { customers: Customer[] }) 
               <span className="absolute bottom-4 left-4 flex items-center gap-2.5">
                 <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-white p-0.5 ring-1 ring-black/5">
                   <span className="relative block h-full w-full overflow-hidden rounded-full">
-                    <Image src={`/reacher-assets/customers/logos/${c.slug}-avatar.png?v=2`} alt={c.brand} fill sizes="40px" className="object-cover" />
+                    <Image src={`/reacher-assets/customers/logos/${c.slug}-avatar.png?v=3`} alt={c.brand} fill sizes="40px" className="object-cover" />
                   </span>
                 </span>
                 <span className="text-[15px] font-bold tracking-[-0.01em] text-white drop-shadow-sm">{c.brand}</span>

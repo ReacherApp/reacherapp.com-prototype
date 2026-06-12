@@ -31,7 +31,7 @@ export default function CaseStudySlides({ customer }: { customer: Customer }) {
         <div className="relative">
           <div className="flex items-center gap-3">
             <span className="relative h-11 w-11 overflow-hidden rounded-full ring-1 ring-white/20">
-              <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=2`} alt={customer.brand} fill sizes="44px" className="object-cover" />
+              <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="44px" className="object-cover" />
             </span>
             <span className="text-[16px] font-semibold text-white/80">{customer.brand} × Reacher Plus</span>
           </div>

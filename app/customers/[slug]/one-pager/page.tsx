@@ -40,7 +40,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="relative h-10 w-10 overflow-hidden rounded-full ring-1 ring-slate-200">
-                <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=2`} alt={customer.brand} fill sizes="40px" className="object-cover" />
+                <Image src={`/reacher-assets/customers/logos/${customer.slug}-avatar.png?v=3`} alt={customer.brand} fill sizes="40px" className="object-cover" />
               </span>
               <div>
                 <p className="text-[15px] font-bold leading-tight tracking-[-0.01em] text-slate-950">{customer.brand} × Reacher Plus</p>
