@@ -98,7 +98,7 @@ export default async function OnePager({ params }: { params: Promise<{ slug: str
           </div>
 
           {/* Result + wins */}
-          <div className="grid grid-cols-[1.4fr_1fr] gap-8">
+          <div className="grid grid-cols-2 gap-8">
             <section className="pt-4">
               <p className={EYEBROW}>The Result</p>
               <div className="mt-2 flex flex-col gap-2.5">
